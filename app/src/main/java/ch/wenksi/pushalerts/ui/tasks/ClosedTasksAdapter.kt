@@ -13,6 +13,7 @@ import java.lang.Exception
 
 class ClosedTasksAdapter(
     private val tasks: List<Task>,
+    val onClickCard: (Task) -> Unit,
 ) :
     RecyclerView.Adapter<ClosedTasksAdapter.ViewHolder>() {
 
@@ -34,6 +35,7 @@ class ClosedTasksAdapter(
             binding.tvAssigned.text = task.user!!.email
             binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
+            binding.mcvTaskClosed.setOnClickListener { onClickCard(task) }
         }
     }
 

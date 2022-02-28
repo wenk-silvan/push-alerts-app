@@ -11,8 +11,13 @@ import ch.wenksi.pushalerts.databinding.ItemTaskOpenBinding
 import ch.wenksi.pushalerts.models.Task
 
 class OpenTasksAdapter(
-    private val tasks: List<Task>
-) :
+    private val tasks: List<Task>,
+    val onClickBtnAssign: (Task) -> Unit,
+    val onClickBtnClose: (Task) -> Unit,
+    val onClickBtnReject: (Task) -> Unit,
+    val onClickCard: (Task) -> Unit,
+
+    ) :
     RecyclerView.Adapter<OpenTasksAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -26,6 +31,11 @@ class OpenTasksAdapter(
             binding.tvTaskCreatedAt.text = task.createdAt.toString()
             binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
+
+            binding.btnAssign.setOnClickListener { onClickBtnAssign(task) }
+            binding.btnClose.setOnClickListener { onClickBtnClose(task) }
+            binding.btnReject.setOnClickListener { onClickBtnReject(task) }
+            binding.mcvTaskOpen.setOnClickListener { onClickCard(task) }
 
             if (task.user == null) {
                 binding.btnAssign.visibility = View.VISIBLE
