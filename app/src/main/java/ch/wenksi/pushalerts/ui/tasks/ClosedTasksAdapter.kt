@@ -27,7 +27,7 @@ class ClosedTasksAdapter(
             binding.tvTaskCreatedAt.text = task.createdAt.toString()
 //            binding.tvTaskClosedAt.text = task.closedAt.toString()
 //            binding.tvAssigned.text = task.user!!.email
-            binding.tvTaskDescription.text = task.description
+            binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
         }
     }
@@ -47,5 +47,9 @@ class ClosedTasksAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.databind(tasks[position])
+    }
+
+    private fun shortDescription(description: String): String {
+        return if (description.length > 20) description.substring(0, 20) + "..." else description
     }
 }
