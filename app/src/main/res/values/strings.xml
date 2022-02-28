@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PushAlerts</string>
+    <string name="tiTasksOpen">Open</string>
+    <string name="tiTasksClosed">Closed</string>
 </resources>

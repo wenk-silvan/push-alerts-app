@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mcvTaskOpen"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvTaskNumber"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="#12" />
+
+        <TextView
+            android:id="@+id/tvTaskName"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/tvTaskNumber"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="My Urgent Task" />
+
+        <ImageView
+            android:id="@+id/ivSourceIcon"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_outline_notifications_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskNumber" />
+
+        <TextView
+            android:id="@+id/tvTaskSource"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/ivSourceIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskNumber"
+            tools:text="This is the source" />
+
+        <ImageView
+            android:id="@+id/ivDescriptionIcon"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_outline_description_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivSourceIcon" />
+
+
+        <TextView
+            android:id="@+id/tvTaskDescription"
+            style="@style/TextAppearance.MaterialComponents.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@id/ivDescriptionIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
+            tools:text="This is a description" />
+
+        <TextView
+            android:id="@+id/tvTaskCreatedAt"
+            style="@style/TextAppearance.MaterialComponents.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="01.04.21 - 20:34" />
+
+        <TextView
+            android:id="@+id/tvAssigned"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mark" />
+
+        <Button
+            android:id="@+id/btnAssign"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="assign me"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskDescription" />
+
+        <Button
+            android:id="@+id/btnReject"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="reject"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskDescription"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnClose"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="close"
+            android:textSize="11sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/btnReject"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskDescription"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

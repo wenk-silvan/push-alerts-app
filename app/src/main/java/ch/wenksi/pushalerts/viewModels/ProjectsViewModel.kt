@@ -7,11 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.wenksi.pushalerts.models.Project
+import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.services.tasks.ProjectsRepository
 import ch.wenksi.pushalerts.services.tasks.ProjectsRetrievalError
 import kotlinx.coroutines.launch
+import java.util.*
 
 class ProjectsViewModel(application: Application) : AndroidViewModel(application) {
+    lateinit var selectedProjectUUID: UUID
+
     private val repository = ProjectsRepository()
 
     var projects: LiveData<List<Project>> = repository.projects
@@ -33,6 +37,12 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
                 Log.e("Error while fetching projects", error.message.toString())
             }
         }
+    }
+
+    fun getTaskOfSelectedProject(): List<Task> {
+        return projects.value?.first { p -> p.uuid == selectedProjectUUID }?.tasks
+            ?: throw Error("No tasks found for selected projects")
+        // TODO: Improve error handling
     }
 
     fun getMyTasks() {
