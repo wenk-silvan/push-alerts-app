@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/TasksFragment"
-        android:name="ch.wenksi.pushalerts.TasksFragment"
+        android:name="ch.wenksi.pushalerts.ui.TasksFragment"
         android:label="Tasks"
         tools:layout="@layout/fragment_tasks">
     </fragment>

@@ -10,7 +10,7 @@
         "title": "Task 1",
         "description": "This is task 1.",
         "source": "The source",
-        "createdAt": "2022-02-21 21:23:33.564"
+        "createdAt": "Nov 5, 2019 20:18:24"
       },
       {
         "_id": "2",
@@ -18,7 +18,7 @@
         "title": "Task 2",
         "description": "This is task 2.",
         "source": "The source",
-        "createdAt": "2022-02-21 21:23:33.564",
+        "createdAt": "Nov 5, 2019 20:18:24",
         "payload": "Task 2 custom data",
         "user": {
           "uuid": "c8474f18-7e90-416b-ab1c-f150630ddec7",
@@ -31,8 +31,8 @@
         "title": "Task 3",
         "description": "This is task 3.",
         "source": "The source",
-        "createdAt": "2022-02-21 21:23:33.564",
-        "closedAt": "2022-02-22 07:00:00.000",
+        "createdAt": "Nov 5, 2019 20:18:24",
+        "closedAt": "Nov 5, 2019 20:18:24",
         "user": {
           "uuid": "c8474f18-7e90-416b-ab1c-f150630ddec7",
           "email": "user@mail.com"
