@@ -23,10 +23,15 @@ class ClosedTasksAdapter(
         private val binding = ItemTaskClosedBinding.bind(itemView)
 
         fun databind(task: Task) {
+            if (task.closedAt == null) {
+                throw Exception("Closed task must have a closedAt timestamp.")
+            } else if (task.user == null) {
+                throw Exception("Closed task must have an assigned user")
+            }
             binding.tvTaskName.text = task.title
             binding.tvTaskCreatedAt.text = task.createdAt.toString()
-//            binding.tvTaskClosedAt.text = task.closedAt.toString()
-//            binding.tvAssigned.text = task.user!!.email
+            binding.tvTaskClosedAt.text = task.closedAt.toString()
+            binding.tvAssigned.text = task.user!!.email
             binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
         }

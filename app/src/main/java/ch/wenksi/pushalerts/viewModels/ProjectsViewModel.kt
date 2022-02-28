@@ -11,6 +11,7 @@ import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.services.tasks.ProjectsRepository
 import ch.wenksi.pushalerts.services.tasks.ProjectsRetrievalError
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.*
 
 class ProjectsViewModel(application: Application) : AndroidViewModel(application) {
@@ -39,9 +40,17 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun getTaskOfSelectedProject(): List<Task> {
+    fun getOpenTasksOfSelectedProject(): List<Task> {
+        return getTasksOfSelectedProject().filter { t -> t.closedAt == null }
+    }
+
+    fun getClosedTasksOfSelectedProject(): List<Task> {
+        return getTasksOfSelectedProject().filter { t -> t.closedAt != null }
+    }
+
+    private fun getTasksOfSelectedProject(): List<Task> {
         return projects.value?.first { p -> p.uuid == selectedProjectUUID }?.tasks
-            ?: throw Error("No tasks found for selected projects")
+            ?: throw Exception("No tasks found for selected projects")
         // TODO: Improve error handling
     }
 

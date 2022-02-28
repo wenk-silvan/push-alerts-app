@@ -30,7 +30,7 @@ class TabClosedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tasks.addAll(viewModel.getTaskOfSelectedProject()) // TODO: Only closed tasks
+        tasks.addAll(viewModel.getClosedTasksOfSelectedProject()) // TODO: Only closed tasks
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()

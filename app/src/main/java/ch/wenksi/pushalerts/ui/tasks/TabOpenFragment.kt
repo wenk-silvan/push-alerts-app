@@ -30,7 +30,7 @@ class TabOpenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tasks.addAll(viewModel.getTaskOfSelectedProject()) // TODO: Only open tasks
+        tasks.addAll(viewModel.getOpenTasksOfSelectedProject()) // TODO: Only open tasks
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()
