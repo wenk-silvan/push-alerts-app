@@ -46,7 +46,10 @@ class TabClosedFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        recyclerViewAdapter = ClosedTasksAdapter(tasks)
+        recyclerViewAdapter = ClosedTasksAdapter(
+            tasks
+        ) { t: Task -> onClickCard(t) }
+
         binding.rvTasks.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvTasks.adapter = recyclerViewAdapter
@@ -64,12 +67,8 @@ class TabClosedFragment : Fragment() {
             binding.swipeRefresh.isRefreshing = false
         }
     }
-}
 
-//    private fun observeTasks() {
-//        viewModel.projects.observe(viewLifecycleOwner) {
-//            tasks.clear()
-//            tasks.addAll(it) // TODO: Only closed tasks
-//            recyclerViewAdapter.notifyDataSetChanged()
-//        }
-//    }
+    private fun onClickCard(task: Task) {
+
+    }
+}

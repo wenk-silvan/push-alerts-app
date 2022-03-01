@@ -31,10 +31,10 @@ class ClosedTasksAdapter(
             }
             binding.tvTaskName.text = task.title
             binding.tvTaskCreatedAt.text = task.createdAt.toString()
-            binding.tvTaskClosedAt.text = task.closedAt.toString()
             binding.tvAssigned.text = task.user!!.email
             binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
+
             binding.mcvTaskClosed.setOnClickListener { onClickCard(task) }
         }
     }

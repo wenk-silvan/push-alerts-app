@@ -1,3 +1,3 @@
-package ch.wenksi.pushalerts.services.tasks
+package ch.wenksi.pushalerts.errors
 
 class ProjectsRetrievalError(message: String) : Exception(message)

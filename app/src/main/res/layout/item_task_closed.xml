@@ -82,17 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvTaskClosedAt"
-            tools:text="Created: 01.04.21 - 20:34" />
-
-        <TextView
-            android:id="@+id/tvTaskClosedAt"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Closed:  02.04.21 - 20:34" />
+            tools:text="Created: 01.04.21 - 20:34" />
 
         <TextView
             android:id="@+id/tvAssigned"

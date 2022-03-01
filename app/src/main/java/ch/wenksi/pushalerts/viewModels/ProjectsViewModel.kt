@@ -8,8 +8,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.models.Task
+import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.services.tasks.ProjectsRepository
-import ch.wenksi.pushalerts.services.tasks.ProjectsRetrievalError
+import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
@@ -41,11 +42,13 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun getOpenTasksOfSelectedProject(): List<Task> {
-        return getTasksOfSelectedProject().filter { t -> t.closedAt == null }
+        return getTasksOfSelectedProject()
+            .filter { t -> t.state == TaskState.Opened || t.state == TaskState.Assigned }
     }
 
     fun getClosedTasksOfSelectedProject(): List<Task> {
-        return getTasksOfSelectedProject().filter { t -> t.closedAt != null }
+        return getTasksOfSelectedProject()
+            .filter { t -> t.state == TaskState.Done || t.state == TaskState.Rejected }
     }
 
     private fun getTasksOfSelectedProject(): List<Task> {

@@ -4,12 +4,11 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
-import java.text.DateFormat
 
 
 private const val jsonFileName = "projects.json"

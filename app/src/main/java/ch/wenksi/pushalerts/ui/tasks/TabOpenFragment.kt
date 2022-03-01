@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.wenksi.pushalerts.databinding.FragmentTabOpenBinding
 import ch.wenksi.pushalerts.models.Task
+import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 
 class TabOpenFragment : Fragment() {
     private var _binding: FragmentTabOpenBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
+    private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: OpenTasksAdapter
 
@@ -30,7 +32,7 @@ class TabOpenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tasks.addAll(viewModel.getOpenTasksOfSelectedProject()) // TODO: Only open tasks
+        tasks.addAll(projectsViewModel.getOpenTasksOfSelectedProject()) // TODO: Only open tasks
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()
@@ -46,7 +48,14 @@ class TabOpenFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        recyclerViewAdapter = OpenTasksAdapter(tasks)
+        recyclerViewAdapter = OpenTasksAdapter(
+            tasks,
+            authenticationViewModel.user,
+            { t: Task -> onClickBtnAssign(t) },
+            { t: Task -> onClickBtnClose(t) },
+            { t: Task -> onClickBtnReject(t) },
+            { t: Task -> onClickCard(t) }
+        )
         binding.rvTasks.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.rvTasks.adapter = recyclerViewAdapter
@@ -58,18 +67,32 @@ class TabOpenFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.getProjects(true)
+            projectsViewModel.getProjects(true)
             binding.chipFilterMine.isChecked = false
             binding.chipFilterUnassigned.isChecked = false
             binding.swipeRefresh.isRefreshing = false
         }
     }
 
-//    private fun observeTasks() {
-//        viewModel.projects.observe(viewLifecycleOwner) {
-//            tasks.clear()
-//            tasks.addAll(it)
-//            recyclerViewAdapter.notifyDataSetChanged()
-//        }
-//    }
+    private fun onClickBtnAssign(task: Task) {
+        // TODO: Update in DB
+        task.assign(authenticationViewModel.user)
+        recyclerViewAdapter.notifyDataSetChanged()
+    }
+
+    private fun onClickBtnClose(task: Task) {
+        task.finish()
+        tasks.remove(task)
+        recyclerViewAdapter.notifyDataSetChanged()
+    }
+
+    private fun onClickBtnReject(task: Task) {
+        task.reject()
+        tasks.remove(task)
+        recyclerViewAdapter.notifyDataSetChanged()
+    }
+
+    private fun onClickCard(task: Task) {
+        // TODO: Navigate to detailed task fragment
+    }
 }
