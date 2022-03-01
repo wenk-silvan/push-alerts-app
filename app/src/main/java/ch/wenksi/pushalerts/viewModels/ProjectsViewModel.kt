@@ -57,12 +57,18 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
         // TODO: Improve error handling
     }
 
-    fun getMyTasks() {
+    fun getMyOpenTasks(uuid: UUID): List<Task> {
+        return getOpenTasksOfSelectedProject()
+            .filter { t -> t.user?.uuid == uuid }
     }
 
-    fun getUnassignedTasks() {
+    fun getMyClosedTasks(uuid: UUID): List<Task> {
+        return getClosedTasksOfSelectedProject()
+            .filter { t -> t.user?.uuid == uuid }
     }
 
-    fun updateTask(taskId: String, field: String, value: Any) {
+    fun getTasks(state: TaskState): List<Task> {
+        return getTasksOfSelectedProject()
+            .filter { t -> t.state == state }
     }
 }

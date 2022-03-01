@@ -22,13 +22,23 @@
             app:chipCornerRadius="8dp" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chipFilterOld"
+            android:id="@+id/chipFilterDone"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="Older than 30 days"
+            android:text="Done"
+            app:chipCornerRadius="8dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipFilterRejected"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="false"
+            android:text="Rejected"
             app:chipCornerRadius="8dp" />
     </com.google.android.material.chip.ChipGroup>
 

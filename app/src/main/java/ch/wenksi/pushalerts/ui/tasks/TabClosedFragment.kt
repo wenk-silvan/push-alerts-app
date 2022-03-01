@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.wenksi.pushalerts.databinding.FragmentTabClosedBinding
 import ch.wenksi.pushalerts.models.Task
+import ch.wenksi.pushalerts.models.TaskState
+import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 
 class TabClosedFragment : Fragment() {
     private var _binding: FragmentTabClosedBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ProjectsViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
+    private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: ClosedTasksAdapter
 
@@ -30,7 +33,7 @@ class TabClosedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tasks.addAll(viewModel.getClosedTasksOfSelectedProject()) // TODO: Only closed tasks
+        tasks.addAll(projectsViewModel.getClosedTasksOfSelectedProject()) // TODO: Only closed tasks
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()
@@ -42,7 +45,20 @@ class TabClosedFragment : Fragment() {
     }
 
     private fun initChipGroup() {
-        // TODO: Setup filters
+        binding.chipFilterMine.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) refreshTaskList(
+                projectsViewModel.getMyClosedTasks(authenticationViewModel.user.uuid)
+            )
+            else refreshTaskList(projectsViewModel.getClosedTasksOfSelectedProject())
+        }
+        binding.chipFilterDone.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) refreshTaskList(projectsViewModel.getTasks(TaskState.Done))
+            else refreshTaskList(projectsViewModel.getClosedTasksOfSelectedProject())
+        }
+        binding.chipFilterRejected.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) refreshTaskList(projectsViewModel.getTasks(TaskState.Rejected))
+            else refreshTaskList(projectsViewModel.getClosedTasksOfSelectedProject())
+        }
     }
 
     private fun initRecyclerView() {
@@ -61,14 +77,21 @@ class TabClosedFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.getProjects(true)
+            projectsViewModel.getProjects(true)
             binding.chipFilterMine.isChecked = false
-            binding.chipFilterOld.isChecked = false
+            binding.chipFilterDone.isChecked = false
+            binding.chipFilterRejected.isChecked = false
             binding.swipeRefresh.isRefreshing = false
         }
     }
 
     private fun onClickCard(task: Task) {
 
+    }
+
+    private fun refreshTaskList(tasks: List<Task>) {
+        this.tasks.clear()
+        this.tasks.addAll(tasks)
+        recyclerViewAdapter.notifyDataSetChanged()
     }
 }

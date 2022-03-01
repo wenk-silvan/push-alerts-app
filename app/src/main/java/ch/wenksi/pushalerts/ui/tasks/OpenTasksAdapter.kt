@@ -2,6 +2,7 @@ package ch.wenksi.pushalerts.ui.tasks
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,12 +42,15 @@ class OpenTasksAdapter(
                 binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#f3f6f4"))
             } else if (task.state == TaskState.Assigned) {
                 binding.btnAssign.visibility = View.GONE
-                binding.tvAssigned.visibility = View.VISIBLE
                 binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#ffffff"))
-                binding.tvAssigned.text = task.user?.email
                 if (assignedToMe(task)) {
                     binding.btnReject.visibility = View.VISIBLE
                     binding.btnClose.visibility = View.VISIBLE
+                } else {
+                    binding.tvAssigned.visibility = View.VISIBLE
+                    binding.tvAssigned.text = task.user?.email
+                    binding.tvAssigned.paintFlags =
+                        binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG
                 }
             }
         }

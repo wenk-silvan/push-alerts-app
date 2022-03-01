@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.wenksi.pushalerts.databinding.FragmentTabOpenBinding
 import ch.wenksi.pushalerts.models.Task
+import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 
@@ -44,7 +45,14 @@ class TabOpenFragment : Fragment() {
     }
 
     private fun initChipGroup() {
-        // TODO: Setup filters
+        binding.chipFilterMine.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) refreshTaskList(projectsViewModel.getMyOpenTasks(authenticationViewModel.user.uuid))
+            else refreshTaskList(projectsViewModel.getOpenTasksOfSelectedProject())
+        }
+        binding.chipFilterUnassigned.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) refreshTaskList(projectsViewModel.getTasks(TaskState.Opened))
+            else refreshTaskList(projectsViewModel.getOpenTasksOfSelectedProject())
+        }
     }
 
     private fun initRecyclerView() {
@@ -94,5 +102,11 @@ class TabOpenFragment : Fragment() {
 
     private fun onClickCard(task: Task) {
         // TODO: Navigate to detailed task fragment
+    }
+
+    private fun refreshTaskList(tasks: List<Task>) {
+        this.tasks.clear()
+        this.tasks.addAll(tasks)
+        recyclerViewAdapter.notifyDataSetChanged()
     }
 }
