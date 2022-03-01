@@ -81,6 +81,7 @@ class OpenTasksAdapter(
     }
 
     private fun setupTextFields(binding: ItemTaskOpenBinding, task: Task) {
+        binding.tvTaskNumber.text = "#${task._id}"
         binding.tvTaskName.text = task.title
         binding.tvTaskCreatedAt.text = task.createdAt.toString()
         binding.tvTaskDescription.text = shortDescription(task.description)

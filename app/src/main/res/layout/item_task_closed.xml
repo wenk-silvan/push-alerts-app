@@ -35,6 +35,15 @@
             tools:text="My Urgent Task" />
 
         <ImageView
+            android:id="@+id/ivStateIcon"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            tools:src="@drawable/ic_outline_check_circle_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
             android:id="@+id/ivSourceIcon"
             android:layout_width="19dp"
             android:layout_height="19dp"
@@ -83,17 +92,17 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Created: 01.04.21 - 20:34" />
+            tools:text="01.04.21 - 20:34" />
 
         <TextView
             android:id="@+id/tvAssigned"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Mark" />
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivDescriptionIcon"
+            tools:text="user@mail.com" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
