@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.tasks.TaskDetailsFragment">
+
+    <TextView
+        android:id="@+id/tvTaskName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Investigate Q Server"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivTaskSourceIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_notifications_24"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskName"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ivTaskSourceIcon" />
+
+    <TextView
+        android:id="@+id/tvTaskSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="Grafana"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskName"
+        app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerTaskSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivTaskDescriptionIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_description_24"
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskSource"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ivTaskDescriptionIcon" />
+
+    <TextView
+        android:id="@+id/tvTaskDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="maar-q-zz-11 has high CPU load of 95% since more than 2 hours. Please investigate the Grafana node-explorer dashboard.\https://link-to-dashboard.com"
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskSource"
+        app:layout_constraintStart_toEndOf="@id/ivTaskDescriptionIcon" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerTaskDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskDescription"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivTaskCreatedIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_add_24"
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ivTaskCreatedIcon" />
+
+    <TextView
+        android:id="@+id/tvTaskCreated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="2022/02/01 20:34"
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
+        app:layout_constraintStart_toEndOf="@id/ivTaskCreatedIcon" />
+
+    <ImageView
+        android:id="@+id/ivTaskAssignedIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_person_24"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskCreated"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ivTaskAssignedIcon" />
+
+    <TextView
+        android:id="@+id/tvTaskAssigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="2022/02/01 20:34"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskCreated"
+        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
+
+    <ImageView
+        android:id="@+id/ivTaskClosedIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_outline_check_24"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/ivTaskClosedIcon" />
+
+    <TextView
+        android:id="@+id/tvTaskClosed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="2022/02/01 20:34"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned"
+        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerTimestamps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskClosed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskPayloadTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        tools:text="Additional Information"
+        app:layout_constraintTop_toBottomOf="@id/dividerTimestamps"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskPayload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="Optional data here"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskPayloadTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerPayload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskPayload"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskUserTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        tools:text="Assignee"
+        app:layout_constraintTop_toBottomOf="@id/dividerPayload"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTaskUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        tools:text="mark.rogers@company.com"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnRejectTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnRejectTask"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnFinishTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnFinishTask"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
+        app:layout_constraintStart_toEndOf="@id/btnRejectTask" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

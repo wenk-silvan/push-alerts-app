@@ -1,5 +1,17 @@
 <resources>
+    <!-- COMMON -->
     <string name="app_name">PushAlerts</string>
+
+    <!-- FRAGMENT TASK -->
     <string name="tiTasksOpen">Open</string>
     <string name="tiTasksClosed">Closed</string>
+
+    <!-- FRAGMENT TASK DETAILS -->
+    <string name="btnRejectTask">reject</string>
+    <string name="btnFinishTask">done</string>
+    <string name="ivTaskSourceIcon">task source name icon</string>
+    <string name="ivTaskDescriptionIcon">task description name icon</string>
+    <string name="ivTaskCreatedIcon">task created timestamp icon</string>
+    <string name="ivTaskAssignedIcon">task assigned timestamp icon</string>
+    <string name="ivTaskClosedIcon">task closed timestamp icon</string>
 </resources>

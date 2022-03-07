@@ -10,5 +10,13 @@
         android:name="ch.wenksi.pushalerts.ui.MainFragment"
         android:label="Tasks"
         tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_TasksFragment_to_TaskDetailsFragment"
+            app:destination="@id/TaskDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/TaskDetailsFragment"
+        android:name="ch.wenksi.pushalerts.ui.tasks.TaskDetailsFragment"
+        android:label="Task Details"
+        tools:layout="@layout/fragment_task_details" />
 </navigation>

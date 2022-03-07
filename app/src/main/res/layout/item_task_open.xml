@@ -35,7 +35,7 @@
             tools:text="My Urgent Task" />
 
         <ImageView
-            android:id="@+id/ivSourceIcon"
+            android:id="@+id/ivTaskSourceIcon"
             android:layout_width="19dp"
             android:layout_height="19dp"
             android:layout_marginTop="8dp"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@id/ivSourceIcon"
+            app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon"
             app:layout_constraintTop_toBottomOf="@id/tvTaskNumber"
             tools:text="This is the source" />
 
@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_outline_description_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivSourceIcon" />
+            app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon" />
 
 
         <TextView
