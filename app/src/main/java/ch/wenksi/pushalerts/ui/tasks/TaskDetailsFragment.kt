@@ -38,7 +38,8 @@ class TaskDetailsFragment : Fragment() {
         val uuid = arguments?.getString(BUNDLE_TASK_ID)
         task = projectsViewModel.getTask(uuid)
         setupTextViews()
-        setupElementVisibilities()
+        setElementVisibilities()
+        setupClickListeners()
     }
 
     override fun onDestroyView() {
@@ -46,18 +47,29 @@ class TaskDetailsFragment : Fragment() {
         _binding = null
     }
 
-    private fun setupTextViews() {
-        binding.tvTaskAssigned.text = if (task.assignedAt == null) "-" else task.assignedAt.toString()
-        binding.tvTaskClosed.text = if (task.closedAt == null) "-" else task.closedAt.toString()
-        binding.tvTaskCreated.text = task.createdAt.toString()
-        binding.tvTaskDescription.text = task.description
-        binding.tvTaskName.text = task.title
-        binding.tvTaskPayload.text = task.payload
-        binding.tvTaskSource.text = task.source
-        binding.tvTaskUser.text = task.user?.email
+    private fun onClickBtnAssign() {
+        // TODO: Update in DB
+        task.assign(authenticationViewModel.user)
+        setElementVisibilities()
     }
 
-    private fun setupElementVisibilities() {
+    private fun onClickBtnFinish() {
+        task.finish()
+        setElementVisibilities()
+    }
+
+    private fun onClickBtnReject() {
+        task.reject()
+        setElementVisibilities()
+    }
+
+    private fun setupClickListeners() {
+        binding.btnAssignTask.setOnClickListener { onClickBtnAssign() }
+        binding.btnFinishTask.setOnClickListener { onClickBtnFinish() }
+        binding.btnRejectTask.setOnClickListener { onClickBtnReject() }
+    }
+
+    private fun setElementVisibilities() {
         when(task.state) {
             TaskState.Opened -> {
                 binding.tvTaskUser.visibility = View.GONE
@@ -84,5 +96,16 @@ class TaskDetailsFragment : Fragment() {
                 binding.btnRejectTask.visibility = View.GONE
             }
         }
+    }
+
+    private fun setupTextViews() {
+        binding.tvTaskAssigned.text = if (task.assignedAt == null) "-" else task.assignedAt.toString()
+        binding.tvTaskClosed.text = if (task.closedAt == null) "-" else task.closedAt.toString()
+        binding.tvTaskCreated.text = task.createdAt.toString()
+        binding.tvTaskDescription.text = task.description
+        binding.tvTaskName.text = task.title
+        binding.tvTaskPayload.text = task.payload
+        binding.tvTaskSource.text = task.source
+        binding.tvTaskUser.text = task.user?.email
     }
 }
