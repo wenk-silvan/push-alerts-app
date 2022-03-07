@@ -14,7 +14,7 @@ class Task {
     val createdAt: Date = Timestamp.from(Instant.now())
     var assignedAt: Date? = null
     var closedAt: Date? = null
-    val payload: String = "" // TODO: Use dictionary<string,string>
+    val payload: String = "-" // TODO: Use dictionary<string,string>
     var user: User? = null
     var state: TaskState = TaskState.Opened
 

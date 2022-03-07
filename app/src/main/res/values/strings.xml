@@ -7,6 +7,7 @@
     <string name="tiTasksClosed">Closed</string>
 
     <!-- FRAGMENT TASK DETAILS -->
+    <string name="btnAssignTask">assign me</string>
     <string name="btnRejectTask">reject</string>
     <string name="btnFinishTask">done</string>
     <string name="ivTaskSourceIcon">task source name icon</string>
@@ -14,4 +15,6 @@
     <string name="ivTaskCreatedIcon">task created timestamp icon</string>
     <string name="ivTaskAssignedIcon">task assigned timestamp icon</string>
     <string name="ivTaskClosedIcon">task closed timestamp icon</string>
+    <string name="tvTaskUserTitle">Assignee</string>
+    <string name="tvTaskPayloadTitle">Additional Information</string>
 </resources>

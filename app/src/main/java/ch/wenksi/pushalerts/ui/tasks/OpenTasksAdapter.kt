@@ -31,7 +31,7 @@ class OpenTasksAdapter(
         private val binding = ItemTaskOpenBinding.bind(itemView)
 
         fun databind(task: Task) {
-            setupTextFields(binding, task)
+            setupTextViews(binding, task)
             setupOnClickListeners(binding, task)
 
             if (task.state == TaskState.Opened) {
@@ -84,7 +84,7 @@ class OpenTasksAdapter(
         binding.mcvTaskOpen.setOnClickListener { onClickCard(task) }
     }
 
-    private fun setupTextFields(binding: ItemTaskOpenBinding, task: Task) {
+    private fun setupTextViews(binding: ItemTaskOpenBinding, task: Task) {
         binding.tvTaskNumber.text = "#${task._id}"
         binding.tvTaskName.text = task.title
         binding.tvTaskCreatedAt.text = task.createdAt.toString()

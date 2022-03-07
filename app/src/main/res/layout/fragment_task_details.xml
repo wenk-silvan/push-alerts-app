@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        tools:text="Additional Information"
+        android:text="@string/tvTaskPayloadTitle"
         app:layout_constraintTop_toBottomOf="@id/dividerTimestamps"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        tools:text="Assignee"
+        android:text="@string/tvTaskUserTitle"
         app:layout_constraintTop_toBottomOf="@id/dividerPayload"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -167,6 +167,16 @@
         style="@style/TextAppearance.MaterialComponents.Body2"
         tools:text="mark.rogers@company.com"
         app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnAssignTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnAssignTask"
+        style="?attr/materialButtonOutlinedStyle"
+        tools:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

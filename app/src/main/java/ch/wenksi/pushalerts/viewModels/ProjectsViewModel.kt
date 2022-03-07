@@ -67,6 +67,11 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
             .filter { t -> t.user?.uuid == uuid }
     }
 
+    fun getTask(uuid: String?): Task {
+        return getTasksOfSelectedProject()
+            .first { t -> t.uuid.toString() == uuid}
+    }
+
     fun getTasks(state: TaskState): List<Task> {
         return getTasksOfSelectedProject()
             .filter { t -> t.state == state }
