@@ -17,4 +17,7 @@
     <string name="ivTaskClosedIcon">task closed timestamp icon</string>
     <string name="tvTaskUserTitle">Assignee</string>
     <string name="tvTaskPayloadTitle">Additional Information</string>
+    <string name="btnReject">reject</string>
+    <string name="btnClose">close</string>
+    <string name="btnAssign">assign me</string>
 </resources>

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Investigate Q Server"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
+        style="@style/Widget.PushAlerts.Headline2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -28,7 +28,7 @@
         android:id="@+id/tvTaskSource"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="Grafana"
         app:layout_constraintTop_toBottomOf="@id/tvTaskName"
         app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon" />
@@ -53,7 +53,7 @@
         android:id="@+id/tvTaskDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="maar-q-zz-11 has high CPU load of 95% since more than 2 hours. Please investigate the Grafana node-explorer dashboard.\https://link-to-dashboard.com"
         app:layout_constraintTop_toBottomOf="@id/dividerTaskSource"
         app:layout_constraintStart_toEndOf="@id/ivTaskDescriptionIcon" />
@@ -78,7 +78,7 @@
         android:id="@+id/tvTaskCreated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="2022/02/01 20:34"
         app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
         app:layout_constraintStart_toEndOf="@id/ivTaskCreatedIcon" />
@@ -96,7 +96,7 @@
         android:id="@+id/tvTaskAssigned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="2022/02/01 20:34"
         app:layout_constraintTop_toBottomOf="@id/tvTaskCreated"
         app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
@@ -114,7 +114,7 @@
         android:id="@+id/tvTaskClosed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="2022/02/01 20:34"
         app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned"
         app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
@@ -130,7 +130,7 @@
         android:id="@+id/tvTaskPayloadTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/Widget.PushAlerts.Subtitle"
         android:text="@string/tvTaskPayloadTitle"
         app:layout_constraintTop_toBottomOf="@id/dividerTimestamps"
         app:layout_constraintStart_toStartOf="parent" />
@@ -139,7 +139,7 @@
         android:id="@+id/tvTaskPayload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="Optional data here"
         app:layout_constraintTop_toBottomOf="@id/tvTaskPayloadTitle"
         app:layout_constraintStart_toStartOf="parent" />
@@ -155,7 +155,7 @@
         android:id="@+id/tvTaskUserTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
+        style="@style/Widget.PushAlerts.Subtitle"
         android:text="@string/tvTaskUserTitle"
         app:layout_constraintTop_toBottomOf="@id/dividerPayload"
         app:layout_constraintStart_toStartOf="parent" />
@@ -164,7 +164,7 @@
         android:id="@+id/tvTaskUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body2"
+        style="@style/Widget.PushAlerts.Body2"
         tools:text="mark.rogers@company.com"
         app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
         app:layout_constraintStart_toStartOf="parent" />

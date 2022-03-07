@@ -1,17 +1,32 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.PushAlerts" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+    <style name="Theme.PushAlerts" parent="Theme.MaterialComponents.DayNight">
+        <item name="fontFamily">@font/gothica1_light</item>
+        <item name="android:fontFamily">@font/gothica1_light</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/textSecondary</item>
+
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/textPrimary</item>
+
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+<!--        <item name="colorPrimaryVariant">#0039CB</item>-->
+<!--        <item name="colorSecondaryVariant">#0039CB</item>-->
+<!--        <item name="colorError">#F44336</item>-->
+<!--        <item name="colorOnError">#FFFFFF</item>-->
+<!--        <item name="colorSurface">#FFFFFF</item>-->
+<!--        <item name="colorOnSurface">#212121</item>-->
+<!--        <item name="android:colorBackground">@color/background</item>-->
+<!--        <item name="colorOnBackground">#212121</item>-->
+
+        <!-- OVERWRITING MATERIAL STYLES -->
+        <item name="materialButtonStyle">@style/Widget.PushAlerts.Buttons</item>
+        <item name="chipStyle">@style/Widget.PushAlerts.Chips</item>
+        <item name="textAppearanceBody2">@style/Widget.PushAlerts.Body2</item>
     </style>
 
     <style name="Theme.PushAlerts.NoActionBar">
@@ -22,4 +37,45 @@
     <style name="Theme.PushAlerts.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PushAlerts.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Widget.PushAlerts.Buttons" parent="Widget.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/gothica1_extrabold</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Chips" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:fontFamily">@font/gothica1_bold</item>
+    </style>
+
+
+    <!-- CUSTOM FONTS -->
+
+    <style name="Widget.PushAlerts.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/textPrimaryLight</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="Widget.PushAlerts.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/textPrimaryLight</item>
+    </style>
 </resources>
