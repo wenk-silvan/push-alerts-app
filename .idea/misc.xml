@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1_light.xml" value="0.28425925925925927" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/content_main.xml" value="0.17864583333333334" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_closed.xml" value="0.1671875" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_open.xml" value="0.1671875" />

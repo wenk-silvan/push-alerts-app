@@ -5,32 +5,22 @@
         <item name="android:fontFamily">@font/gothica1_light</item>
         <item name="android:textColor">@color/textPrimary</item>
         <item name="android:windowTranslucentStatus">true</item>
-
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/textSecondary</item>
-
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/textPrimary</item>
-
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-<!--        <item name="colorPrimaryVariant">#0039CB</item>-->
-<!--        <item name="colorSecondaryVariant">#0039CB</item>-->
-<!--        <item name="colorError">#F44336</item>-->
-<!--        <item name="colorOnError">#FFFFFF</item>-->
-<!--        <item name="colorSurface">#FFFFFF</item>-->
-<!--        <item name="colorOnSurface">#212121</item>-->
-<!--        <item name="android:colorBackground">@color/background</item>-->
-<!--        <item name="colorOnBackground">#212121</item>-->
 
         <!-- OVERWRITING MATERIAL STYLES -->
         <item name="materialButtonStyle">@style/Widget.PushAlerts.Buttons</item>
         <item name="chipStyle">@style/Widget.PushAlerts.Chips</item>
         <item name="textAppearanceBody2">@style/Widget.PushAlerts.Body2</item>
+        <item name="toolbarStyle">@style/Widget.PushAlerts.Toolbar</item>
     </style>
 
-    <style name="Theme.PushAlerts.NoActionBar">
-        <item name="windowActionBar">false</item>
+    <style name="Theme.PushAlerts.NoActionBar" parent="Theme.PushAlerts">
         <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="Theme.PushAlerts.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -38,18 +28,21 @@
     <style name="Theme.PushAlerts.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Widget.PushAlerts.Buttons" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/gothica1_extrabold</item>
         <item name="android:fontFamily">@font/gothica1_extrabold</item>
     </style>
 
     <style name="Widget.PushAlerts.Chips" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="fontFamily">@font/gothica1_bold</item>
         <item name="android:fontFamily">@font/gothica1_bold</item>
     </style>
 
-    <style name="Widget.PushAlerts.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="backgroundTint">@color/secondary</item>
-        <item name="android:textColor">@color/primary</item>
-    </style>
+    <style name="Widget.PushAlerts.Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+        <item name="android:background">@color/background</item>
+        <item name="titleTextColor">@color/primary</item>
+        <item name="android:titleTextColor">@color/primary</item>
 
+    </style>
 
     <!-- CUSTOM FONTS -->
 

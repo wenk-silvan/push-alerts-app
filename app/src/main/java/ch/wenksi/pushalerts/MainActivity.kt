@@ -1,16 +1,17 @@
 package ch.wenksi.pushalerts
 
-import android.content.res.Configuration
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -22,10 +23,12 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.topAppBar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        binding.topAppBar.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // TODO: Fix dissapearing hamburger menu
+        binding.topAppBar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
+        binding.topAppBar.setNavigationIconTint(resources.getColor(R.color.primary))
         binding.topAppBar.setNavigationOnClickListener {
             binding.drawerLayout.open()
         }
@@ -37,17 +40,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.top_app_bar, menu)
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        return true
+    }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.favorite -> true
-//            else -> super.onOptionsItemSelected(item)
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)

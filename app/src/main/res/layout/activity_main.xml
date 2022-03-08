@@ -23,10 +23,7 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Test"
-                app:navigationIcon="@drawable/ic_baseline_menu_24"
-                style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
-                android:background="@android:color/transparent"
+                app:popupTheme="@style/Theme.PushAlerts.PopupOverlay"
                 android:elevation="0dp" />
 
         </com.google.android.material.appbar.AppBarLayout>
