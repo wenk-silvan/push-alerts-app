@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1_light.xml" value="0.28425925925925927" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/content_main.xml" value="0.17864583333333334" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_closed.xml" value="0.1671875" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_open.xml" value="0.1671875" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_task_details.xml" value="0.33" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tasks.xml" value="0.19479166666666667" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/header_navigation_drawer.xml" value="0.18795289855072464" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/item_task_closed.xml" value="0.33" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/item_task_open.xml" value="0.25" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/menu/menu_main.xml" value="0.203125" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/menu/navigation_menu.xml" value="0.33177083333333335" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/menu/top_app_bar.xml" value="0.33177083333333335" />
       </map>
     </option>
   </component>

@@ -1,14 +1,12 @@
 package ch.wenksi.pushalerts
 
+import android.content.res.Configuration
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import androidx.navigation.ui.setupWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,13 +19,35 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.topAppBar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+        binding.topAppBar.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        binding.topAppBar.setNavigationOnClickListener {
+            binding.drawerLayout.open()
+        }
+
+        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            menuItem.isChecked = true
+            binding.drawerLayout.close()
+            true
+        }
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.top_app_bar, menu)
+//        return true
+//    }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.favorite -> true
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
