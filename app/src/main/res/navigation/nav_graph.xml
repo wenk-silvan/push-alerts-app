@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/TasksFragment">
+    app:startDestination="@id/MainFragment">
 
     <fragment
-        android:id="@+id/TasksFragment"
+        android:id="@+id/MainFragment"
         android:name="ch.wenksi.pushalerts.ui.MainFragment"
         android:label="Tasks"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_TasksFragment_to_TaskDetailsFragment"
+            android:id="@+id/action_MainFragment_to_TaskDetailsFragment"
             app:destination="@id/TaskDetailsFragment" />
+        <action
+            android:id="@+id/action_MainFragment_to_AboutFragment"
+            app:destination="@id/AboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/TaskDetailsFragment"
@@ -22,6 +25,6 @@
     <fragment
         android:id="@+id/AboutFragment"
         android:name="ch.wenksi.pushalerts.ui.AboutFragment"
-        android:label="AboutFragment"
+        android:label="About"
         tools:layout="@layout/fragment_about" />
 </navigation>

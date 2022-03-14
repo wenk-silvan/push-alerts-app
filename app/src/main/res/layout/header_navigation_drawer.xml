@@ -13,4 +13,9 @@
         android:textColor="@color/textSecondary"
         android:text="Push Alerts"
         android:textAppearance="@style/Widget.PushAlerts.Headline1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 </LinearLayout>

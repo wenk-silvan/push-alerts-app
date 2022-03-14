@@ -13,6 +13,7 @@ import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.ui.tasks.TabLayoutFragmentAdapter
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.tabs.TabLayout
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
@@ -31,7 +32,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getTasks(false)
+        viewModel.getTasks(false, UUID.randomUUID())
         initTabLayout()
     }
 

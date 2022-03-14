@@ -17,6 +17,8 @@ import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
+import java.util.*
+import kotlin.collections.ArrayList
 
 class TabClosedFragment : Fragment() {
     private var _binding: FragmentTabClosedBinding? = null
@@ -80,7 +82,7 @@ class TabClosedFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            tasksViewModel.getTasks(true)
+            tasksViewModel.getTasks(true, UUID.randomUUID()) // TODO: Fix uuid
             binding.chipFilterMine.isChecked = false
             binding.chipFilterDone.isChecked = false
             binding.chipFilterRejected.isChecked = false
@@ -90,7 +92,7 @@ class TabClosedFragment : Fragment() {
 
     private fun onClickCard(task: Task) {
         findNavController().navigate(
-            R.id.action_TasksFragment_to_TaskDetailsFragment,
+            R.id.action_MainFragment_to_TaskDetailsFragment,
             bundleOf(BUNDLE_TASK_ID to task.uuid.toString())
         )
     }

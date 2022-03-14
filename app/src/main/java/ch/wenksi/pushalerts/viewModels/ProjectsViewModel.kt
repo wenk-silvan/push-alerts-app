@@ -40,4 +40,8 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
             }
         }
     }
+
+    fun getProjectByMenuId(menuId: Int): Project? {
+        return projects.value?.find { p -> p.menuId == menuId }
+    }
 }

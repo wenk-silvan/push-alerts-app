@@ -22,7 +22,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     private val _errorText: MutableLiveData<String> = MutableLiveData()
     val errorText: LiveData<String> get() = _errorText
 
-    fun getTasks(isRefresh: Boolean) {
+    fun getTasks(isRefresh: Boolean, projectUUID: UUID) {
         _errorText.value = null
         if (!isRefresh && repository.tasks.value != null) {
             return
