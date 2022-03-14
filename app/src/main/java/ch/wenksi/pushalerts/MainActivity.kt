@@ -5,10 +5,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.forEach
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
@@ -28,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.topAppBar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
 
         setupNavigationDrawer()
 
@@ -62,15 +64,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigationDrawer() {
-
-        // TODO: Fix dissapearing hamburger menu
-        binding.topAppBar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
-        binding.topAppBar.setNavigationIconTint(resources.getColor(R.color.primary))
-        binding.topAppBar.setNavigationOnClickListener {
-            binding.drawerLayout.open()
-        }
-
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
+            binding.navigationView.menu.forEach { i ->
+                i.isChecked = false
+            }
+            when(menuItem.title == "About") {
+
+            }
             menuItem.isChecked = true
             binding.drawerLayout.close()
             true
@@ -80,8 +80,13 @@ class MainActivity : AppCompatActivity() {
     private fun addMenuItemsForProjects() {
         val menu = binding.navigationView.menu
         projects.forEach {
-            menu.add(R.id.Projects, Menu.NONE, Menu.NONE, it.name)
+            menu.add(R.id.Projects, Menu.NONE, Menu.NONE, "Project ${it.name}")
         }
+        menu.add(R.id.Actions, Menu.NONE, Menu.NONE, "About")
+            .setIcon(R.drawable.ic_baseline_info_24)
+        menu.add(R.id.Actions, Menu.NONE, Menu.NONE, "Logout")
+            .setIcon(R.drawable.ic_baseline_logout_24)
+        menu.getItem(0).isChecked = true
         binding.navigationView.invalidate()
     }
 }

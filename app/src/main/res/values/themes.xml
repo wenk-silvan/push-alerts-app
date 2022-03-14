@@ -9,11 +9,14 @@
         <item name="colorOnPrimary">@color/textSecondary</item>
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/textPrimary</item>
+        <item name="colorOnSurface">@color/primary</item>
+        <item name="colorOnPrimarySurface">@color/textSecondary</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
         <!-- OVERWRITING MATERIAL STYLES -->
         <item name="materialButtonStyle">@style/Widget.PushAlerts.Buttons</item>
         <item name="chipStyle">@style/Widget.PushAlerts.Chips</item>
+        <item name="textAppearanceBody1">@style/Widget.PushAlerts.Body1</item>
         <item name="textAppearanceBody2">@style/Widget.PushAlerts.Body2</item>
         <item name="toolbarStyle">@style/Widget.PushAlerts.Toolbar</item>
     </style>
@@ -37,15 +40,19 @@
         <item name="android:fontFamily">@font/gothica1_bold</item>
     </style>
 
-    <style name="Widget.PushAlerts.Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
-        <item name="android:background">@color/background</item>
-        <item name="titleTextColor">@color/primary</item>
-        <item name="android:titleTextColor">@color/primary</item>
+    <style name="Widget.PushAlerts.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar</item>
+        <item name="titleTextAppearance">@style/Widget.PushAlerts.Subtitle</item>
+        <item name="subtitleTextAppearance">@style/Widget.PushAlerts.Subtitle</item>
+    </style>
 
+    <style name="ThemeOverlay.App.Toolbar" parent="">
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryVariant">@color/background</item>
+        <item name="colorOnPrimary">@color/primary</item>
     </style>
 
     <!-- CUSTOM FONTS -->
-
     <style name="Widget.PushAlerts.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/primary</item>
@@ -74,5 +81,18 @@
     <style name="Widget.PushAlerts.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/textPrimaryLight</item>
+    </style>
+
+    <style name="Widget.PushAlerts.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <item name="android:background">@color/primary</item>
+        <item name="itemIconTint">@color/navigation_item_color</item>
+        <item name="itemTextColor">@color/navigation_item_color</item>
+        <item name="itemShapeFillColor">@color/navigation_item_background_color</item>
+        <item name="navigationIconTint">@color/primary</item>
+    </style>
+
+    <style name="Widget.PushAlerts.FontBold" parent="android:Widget.TextView">
+        <item name="fontFamily">@font/gothica1_bold</item>
+        <item name="android:fontFamily">@font/gothica1_bold</item>
     </style>
 </resources>

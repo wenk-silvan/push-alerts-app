@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/divider_white.xml" value="0.1575" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1_light.xml" value="0.28425925925925927" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_task_details.xml" value="0.33" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tasks.xml" value="0.19479166666666667" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/header_navigation_drawer.xml" value="0.18795289855072464" />
-        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/item_task_closed.xml" value="0.33" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/item_task_closed.xml" value="0.25" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/item_task_open.xml" value="0.25" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/menu/menu_main.xml" value="0.203125" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/menu/navigation_menu.xml" value="0.33177083333333335" />

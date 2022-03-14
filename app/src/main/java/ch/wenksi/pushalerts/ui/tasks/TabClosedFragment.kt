@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTabClosedBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
@@ -86,10 +89,10 @@ class TabClosedFragment : Fragment() {
     }
 
     private fun onClickCard(task: Task) {
-//        findNavController().navigate(
-//            R.id.action_TasksFragment_to_TaskDetailsFragment,
-//            bundleOf(BUNDLE_TASK_ID to task.uuid.toString())
-//        )
+        findNavController().navigate(
+            R.id.action_TasksFragment_to_TaskDetailsFragment,
+            bundleOf(BUNDLE_TASK_ID to task.uuid.toString())
+        )
     }
 
     private fun refreshTaskList(tasks: List<Task>?) {
