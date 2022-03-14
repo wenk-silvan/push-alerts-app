@@ -5,20 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import ch.wenksi.pushalerts.databinding.FragmentTaskDetailsBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
-import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
+import ch.wenksi.pushalerts.viewModels.TasksViewModel
 
 const val BUNDLE_TASK_ID = "bundle_task_uuid"
 
 class TaskDetailsFragment : Fragment() {
     private var _binding: FragmentTaskDetailsBinding? = null
     private val binding get() = _binding!!
-    private val projectsViewModel: ProjectsViewModel by activityViewModels()
+    private val tasksViewModel: TasksViewModel by activityViewModels()
     private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
     private lateinit var task: Task
 
@@ -37,7 +36,7 @@ class TaskDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val uuid = arguments?.getString(BUNDLE_TASK_ID)
-        task = projectsViewModel.getTask(uuid)
+        task = tasksViewModel.getTask(uuid)
         setupTextViews()
         setElementVisibilities()
         setupClickListeners()

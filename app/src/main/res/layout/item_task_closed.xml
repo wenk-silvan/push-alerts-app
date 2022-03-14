@@ -16,21 +16,12 @@
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/tvTaskNumber"
-            style="@style/Widget.PushAlerts.Body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="#12" />
-
-        <TextView
             android:id="@+id/tvTaskName"
             style="@style/Widget.PushAlerts.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/tvTaskNumber"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="My Urgent Task" />
 
@@ -50,7 +41,7 @@
             android:src="@drawable/ic_outline_notifications_24"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/tvTaskNumber" />
+            app:layout_constraintTop_toBottomOf="@id/tvTaskName" />
 
         <TextView
             android:id="@+id/tvTaskSource"
@@ -60,7 +51,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon"
-            app:layout_constraintTop_toBottomOf="@id/tvTaskNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvTaskName"
             tools:text="This is the source" />
 
         <ImageView

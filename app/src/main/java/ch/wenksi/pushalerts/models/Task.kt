@@ -6,7 +6,6 @@ import java.time.Instant
 import java.util.*
 
 class Task {
-    val _id: String = ""
     val uuid: UUID = UUID.randomUUID()
     val title: String = ""
     val description: String = ""

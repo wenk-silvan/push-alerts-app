@@ -11,14 +11,14 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentMainBinding
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.ui.tasks.TabLayoutFragmentAdapter
-import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
+import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ProjectsViewModel by activityViewModels()
+    private val viewModel: TasksViewModel by activityViewModels()
     private val projects: ArrayList<Project> = arrayListOf()
 
     override fun onCreateView(
@@ -31,9 +31,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getTasks(false)
         initTabLayout()
-        viewModel.getProjects(false)
-        observeProjects()
     }
 
     override fun onDestroyView() {
@@ -41,14 +40,6 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    private fun observeProjects() {
-        viewModel.projects.observe(viewLifecycleOwner) {
-            projects.clear()
-            projects.addAll(it)
-            // TODO: Potentially order projects
-            viewModel.selectedProjectUUID = it.first().uuid
-        }
-    }
     private fun initTabLayout() {
         val fm = requireActivity().supportFragmentManager
         binding.viewPager.adapter = TabLayoutFragmentAdapter(fm, lifecycle)

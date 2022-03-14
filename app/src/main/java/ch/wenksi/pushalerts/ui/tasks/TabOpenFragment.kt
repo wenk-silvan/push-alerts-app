@@ -4,24 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTabOpenBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
-import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
+import ch.wenksi.pushalerts.viewModels.TasksViewModel
 
 class TabOpenFragment : Fragment() {
     private var _binding: FragmentTabOpenBinding? = null
     private val binding get() = _binding!!
-    private val projectsViewModel: ProjectsViewModel by activityViewModels()
+    private val tasksViewModel: TasksViewModel by activityViewModels()
     private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: OpenTasksAdapter
@@ -36,10 +33,10 @@ class TabOpenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tasks.addAll(projectsViewModel.getOpenTasksOfSelectedProject()) // TODO: Only open tasks
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()
+        observeTasks()
     }
 
     override fun onDestroyView() {
@@ -49,12 +46,12 @@ class TabOpenFragment : Fragment() {
 
     private fun initChipGroup() {
         binding.chipFilterMine.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(projectsViewModel.getMyOpenTasks(authenticationViewModel.user.uuid))
-            else refreshTaskList(projectsViewModel.getOpenTasksOfSelectedProject())
+            if (isChecked) refreshTaskList(tasksViewModel.getMyOpenTasks(authenticationViewModel.user.uuid))
+            else refreshTaskList(tasksViewModel.getOpenTasks())
         }
         binding.chipFilterUnassigned.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(projectsViewModel.getTasks(TaskState.Opened))
-            else refreshTaskList(projectsViewModel.getOpenTasksOfSelectedProject())
+            if (isChecked) refreshTaskList(tasksViewModel.getTasks(TaskState.Opened))
+            else refreshTaskList(tasksViewModel.getOpenTasks())
         }
     }
 
@@ -78,7 +75,7 @@ class TabOpenFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            projectsViewModel.getProjects(true)
+            tasksViewModel.getTasks(true)
             binding.chipFilterMine.isChecked = false
             binding.chipFilterUnassigned.isChecked = false
             binding.swipeRefresh.isRefreshing = false
@@ -104,14 +101,22 @@ class TabOpenFragment : Fragment() {
     }
 
     private fun onClickCard(task: Task) {
-        findNavController().navigate(
-            R.id.action_TasksFragment_to_TaskDetailsFragment,
-            bundleOf(BUNDLE_TASK_ID to task.uuid.toString()))
+//        findNavController().navigate(
+//            R.id.action_TasksFragment_to_TaskDetailsFragment,
+//            bundleOf(BUNDLE_TASK_ID to task.uuid.toString()))
     }
 
-    private fun refreshTaskList(tasks: List<Task>) {
-        this.tasks.clear()
-        this.tasks.addAll(tasks)
-        recyclerViewAdapter.notifyDataSetChanged()
+    private fun refreshTaskList(tasks: List<Task>?) {
+        if (tasks != null) {
+            this.tasks.clear()
+            this.tasks.addAll(tasks)
+            recyclerViewAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun observeTasks() {
+        tasksViewModel.tasks.observe(viewLifecycleOwner) {
+            refreshTaskList(tasksViewModel.getOpenTasks())
+        }
     }
 }

@@ -9,8 +9,8 @@ import androidx.lifecycle.viewModelScope
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.services.tasks.ProjectsRepository
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
+import ch.wenksi.pushalerts.repositories.ProjectsRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
@@ -39,41 +39,5 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
                 Log.e("Error while fetching projects", error.message.toString())
             }
         }
-    }
-
-    fun getOpenTasksOfSelectedProject(): List<Task> {
-        return getTasksOfSelectedProject()
-            .filter { t -> t.state == TaskState.Opened || t.state == TaskState.Assigned }
-    }
-
-    fun getClosedTasksOfSelectedProject(): List<Task> {
-        return getTasksOfSelectedProject()
-            .filter { t -> t.state == TaskState.Done || t.state == TaskState.Rejected }
-    }
-
-    private fun getTasksOfSelectedProject(): List<Task> {
-        return projects.value?.first { p -> p.uuid == selectedProjectUUID }?.tasks
-            ?: throw Exception("No tasks found for selected projects")
-        // TODO: Improve error handling
-    }
-
-    fun getMyOpenTasks(uuid: UUID): List<Task> {
-        return getOpenTasksOfSelectedProject()
-            .filter { t -> t.user?.uuid == uuid }
-    }
-
-    fun getMyClosedTasks(uuid: UUID): List<Task> {
-        return getClosedTasksOfSelectedProject()
-            .filter { t -> t.user?.uuid == uuid }
-    }
-
-    fun getTask(uuid: String?): Task {
-        return getTasksOfSelectedProject()
-            .first { t -> t.uuid.toString() == uuid}
-    }
-
-    fun getTasks(state: TaskState): List<Task> {
-        return getTasksOfSelectedProject()
-            .filter { t -> t.state == state }
     }
 }

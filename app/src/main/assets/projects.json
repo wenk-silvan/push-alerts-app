@@ -1,48 +1,12 @@
 [
   {
     "uuid": "bde8db7e-a3c4-4eca-afdc-f0ec7751a9c9",
-    "name": "The project",
-    "description": "This is the project.",
-    "tasks": [
-      {
-        "_id": "1",
-        "uuid": "f1512126-b428-42d8-8a66-2ddb0aac9058",
-        "title": "Task 1",
-        "description": "This is task 1.",
-        "source": "The source",
-        "createdAt": "Nov 5, 2019 20:18:24",
-        "state": "Opened"
-      },
-      {
-        "_id": "2",
-        "uuid": "53a6588c-7bf3-4bfc-96fd-dbed633a351b",
-        "title": "Task 2",
-        "description": "This is task 2.",
-        "source": "The source",
-        "createdAt": "Nov 5, 2019 20:18:24",
-        "assignedAt": "Nov 5, 2019 22:18:24",
-        "state": "Assigned",
-        "payload": "Task 2 custom data",
-        "user": {
-          "uuid": "c8474f18-7e90-416b-ab1c-f150630ddec7",
-          "email": "user@mail.com"
-        }
-      },
-      {
-        "_id": "3",
-        "uuid": "d1652779-c93b-4839-b913-6cb23ee25f56",
-        "title": "Task 3",
-        "description": "This is task 3.",
-        "source": "The source",
-        "createdAt": "Nov 5, 2019 20:18:24",
-        "assignedAt": "Nov 5, 2019 22:18:24",
-        "closedAt": "Nov 5, 2019 23:18:24",
-        "state": "Done",
-        "user": {
-          "uuid": "c8474f18-7e90-416b-ab1c-f150630ddec7",
-          "email": "user@mail.com"
-        }
-      }
-    ]
+    "name": "Alpha",
+    "description": "This is project Alpha."
+  },
+  {
+    "uuid": "6f733b10-d7c1-4e00-ae63-75b9bc284849",
+    "name": "Project Beta",
+    "description": "This is project Beta."
   }
 ]

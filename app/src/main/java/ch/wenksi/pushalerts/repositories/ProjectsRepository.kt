@@ -1,4 +1,4 @@
-package ch.wenksi.pushalerts.services.tasks
+package ch.wenksi.pushalerts.repositories
 
 import android.content.Context
 import android.util.Log
@@ -32,7 +32,7 @@ class ProjectsRepository() {
             throw ProjectsRetrievalError("Can't open json file: \n${e.message}")
         }
         catch (e: Exception) {
-            throw ProjectsRetrievalError("Error while fetching projects from json file: \n${e.cause}")
+            throw ProjectsRetrievalError("Error while fetching projects from json file: \n${e.message}")
         }
     }
 

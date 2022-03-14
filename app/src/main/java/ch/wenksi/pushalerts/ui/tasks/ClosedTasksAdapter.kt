@@ -31,7 +31,6 @@ class ClosedTasksAdapter(
             } else if (task.user == null) {
                 throw Exception("Closed task must have an assigned user")
             }
-            binding.tvTaskNumber.text = "#${task._id}"
             binding.tvTaskName.text = task.title
             binding.tvTaskCreatedAt.text = task.createdAt.toString()
             binding.tvAssigned.text = task.user!!.email
