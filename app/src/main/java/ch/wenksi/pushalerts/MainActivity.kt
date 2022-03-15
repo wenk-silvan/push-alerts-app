@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
             projects.clear()
             projects.addAll(it)
             // TODO: Potentially order projects
-            projectsViewModel.selectedProjectUUID = it.first().uuid
             addMenuItemsForProjects()
         }
     }
@@ -83,7 +82,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     val project = projectsViewModel.getProjectByMenuId(menuItem.itemId)
-                    if (project != null) tasksViewModel.getTasks(false, project.uuid)
+                    if (project != null) {
+                        projectsViewModel.selectedProjectUUID = project.uuid
+                        tasksViewModel.getTasks(project.uuid)
+                    }
                 }
             }
             menuItem.isChecked = true

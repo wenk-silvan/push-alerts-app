@@ -9,18 +9,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentMainBinding
-import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.ui.tasks.TabLayoutFragmentAdapter
+import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.tabs.TabLayout
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: TasksViewModel by activityViewModels()
-    private val projects: ArrayList<Project> = arrayListOf()
+    private val tasksViewModel: TasksViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +31,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getTasks(false, UUID.randomUUID())
+        projectsViewModel.projects.observe(viewLifecycleOwner) {
+            projectsViewModel.selectedProjectUUID = it.first().uuid
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+        }
         initTabLayout()
     }
 
@@ -46,10 +48,12 @@ class MainFragment : Fragment() {
         binding.viewPager.adapter = TabLayoutFragmentAdapter(fm, lifecycle)
         binding.tabLayout.removeAllTabs()
         binding.tabLayout.addTab(
-            binding.tabLayout.newTab().setText(getString(R.string.tiTasksOpen)).setIcon(R.drawable.ic_outline_playlist_add_24)
+            binding.tabLayout.newTab().setText(getString(R.string.tiTasksOpen))
+                .setIcon(R.drawable.ic_outline_playlist_add_24)
         )
         binding.tabLayout.addTab(
-            binding.tabLayout.newTab().setText(getString(R.string.tiTasksClosed)).setIcon(R.drawable.ic_outline_history_24)
+            binding.tabLayout.newTab().setText(getString(R.string.tiTasksClosed))
+                .setIcon(R.drawable.ic_outline_history_24)
         )
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -67,5 +71,4 @@ class MainFragment : Fragment() {
             }
         })
     }
-
 }

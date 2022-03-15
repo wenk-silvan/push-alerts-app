@@ -22,11 +22,12 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     private val _errorText: MutableLiveData<String> = MutableLiveData()
     val errorText: LiveData<String> get() = _errorText
 
-    fun getTasks(isRefresh: Boolean, projectUUID: UUID) {
+    fun getTasks(projectUUID: UUID) {
         _errorText.value = null
-        if (!isRefresh && repository.tasks.value != null) {
-            return
-        }
+//        if (!isRefresh && repository.tasks.value != null) {
+//            return
+//        }
+        // TODO: Implement caching
 
         viewModelScope.launch {
             try {
@@ -51,11 +52,11 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getMyOpenTasks(uuid: UUID): List<Task>? {
-        return tasks.value?.filter { t -> t.user?.uuid == uuid }
+        return getOpenTasks()?.filter { t -> t.user?.uuid == uuid }
     }
 
     fun getMyClosedTasks(uuid: UUID): List<Task>? {
-        return tasks.value?.filter { t -> t.user?.uuid == uuid }
+        return getClosedTasks()?.filter { t -> t.user?.uuid == uuid }
     }
 
     fun getTask(uuid: String?): Task {

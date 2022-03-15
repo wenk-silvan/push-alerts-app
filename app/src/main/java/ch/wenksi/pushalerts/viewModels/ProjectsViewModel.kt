@@ -16,7 +16,7 @@ import java.lang.Exception
 import java.util.*
 
 class ProjectsViewModel(application: Application) : AndroidViewModel(application) {
-    lateinit var selectedProjectUUID: UUID
+    var selectedProjectUUID: UUID = UUID.randomUUID()
 
     private val repository = ProjectsRepository()
 

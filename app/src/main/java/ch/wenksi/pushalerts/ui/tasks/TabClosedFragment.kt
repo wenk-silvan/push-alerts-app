@@ -16,6 +16,7 @@ import ch.wenksi.pushalerts.databinding.FragmentTabClosedBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
+import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,6 +25,7 @@ class TabClosedFragment : Fragment() {
     private var _binding: FragmentTabClosedBinding? = null
     private val binding get() = _binding!!
     private val tasksViewModel: TasksViewModel by activityViewModels()
+    private val projectsViewModel: ProjectsViewModel by activityViewModels()
     private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: ClosedTasksAdapter
@@ -82,7 +84,7 @@ class TabClosedFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            tasksViewModel.getTasks(true, UUID.randomUUID()) // TODO: Fix uuid
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID) // TODO: Fix uuid
             binding.chipFilterMine.isChecked = false
             binding.chipFilterDone.isChecked = false
             binding.chipFilterRejected.isChecked = false

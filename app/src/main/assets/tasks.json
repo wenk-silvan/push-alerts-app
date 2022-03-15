@@ -1,6 +1,5 @@
 [
   {
-    "_id": "1",
     "uuid": "f1512126-b428-42d8-8a66-2ddb0aac9058",
     "title": "Task 1",
     "description": "This is task 1.",
@@ -9,7 +8,6 @@
     "state": "Opened"
   },
   {
-    "_id": "2",
     "uuid": "53a6588c-7bf3-4bfc-96fd-dbed633a351b",
     "title": "Task 2",
     "description": "This is task 2.",
@@ -24,7 +22,6 @@
     }
   },
   {
-    "_id": "3",
     "uuid": "d1652779-c93b-4839-b913-6cb23ee25f56",
     "title": "Task 3",
     "description": "This is task 3.",
@@ -33,6 +30,20 @@
     "assignedAt": "Nov 5, 2019 22:18:24",
     "closedAt": "Nov 5, 2019 23:18:24",
     "state": "Done",
+    "user": {
+      "uuid": "98bc6a1c-1276-44cd-8156-d2d5866b10be",
+      "email": "bob@mail.com"
+    }
+  },
+  {
+    "uuid": "5d18539b-ed27-453f-b492-e12d9a844403",
+    "title": "Task 4",
+    "description": "This is task 4.",
+    "source": "The source",
+    "createdAt": "Nov 6, 2020 20:18:24",
+    "assignedAt": "Nov 6, 2020 22:18:24",
+    "closedAt": "Nov 5, 2019 23:18:24",
+    "state": "Rejected",
     "user": {
       "uuid": "98bc6a1c-1276-44cd-8156-d2d5866b10be",
       "email": "bob@mail.com"
