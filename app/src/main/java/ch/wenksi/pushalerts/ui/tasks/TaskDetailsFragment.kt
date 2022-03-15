@@ -1,5 +1,6 @@
 package ch.wenksi.pushalerts.ui.tasks
 
+import android.graphics.Paint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -109,6 +110,7 @@ class TaskDetailsFragment : Fragment() {
         binding.tvTaskPayload.text = task.payload
         binding.tvTaskSource.text = task.source
         binding.tvTaskUser.text = task.user?.email
+        binding.tvTaskUser.paintFlags = binding.tvTaskUser.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
         when (task.state) {
             TaskState.Opened -> {
