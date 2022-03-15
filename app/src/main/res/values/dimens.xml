@@ -1,3 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="spacing_body">8dp</dimen>
+    <dimen name="spacing_heading">12dp</dimen>
 </resources>

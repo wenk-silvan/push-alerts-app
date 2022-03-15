@@ -1,200 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="12dp"
     tools:context=".ui.tasks.TaskDetailsFragment">
 
     <TextView
         android:id="@+id/tvTaskName"
+        style="@style/Widget.PushAlerts.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Investigate Q Server"
-        style="@style/Widget.PushAlerts.Headline2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:text="Investigate Q Server" />
 
     <ImageView
         android:id="@+id/ivTaskSourceIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_heading"
+        android:contentDescription="@string/ivTaskSourceIcon"
         android:src="@drawable/ic_outline_notifications_24"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskName"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/ivTaskSourceIcon" />
+        app:layout_constraintTop_toBottomOf="@id/tvTaskName" />
 
     <TextView
         android:id="@+id/tvTaskSource"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="Grafana"
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon"
         app:layout_constraintTop_toBottomOf="@id/tvTaskName"
-        app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/dividerTaskSource"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:text="Grafana" />
 
     <ImageView
         android:id="@+id/ivTaskDescriptionIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
+        android:contentDescription="@string/ivTaskDescriptionIcon"
         android:src="@drawable/ic_outline_description_24"
-        app:layout_constraintTop_toBottomOf="@id/dividerTaskSource"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/ivTaskDescriptionIcon" />
+        app:layout_constraintTop_toBottomOf="@id/tvTaskSource" />
 
     <TextView
         android:id="@+id/tvTaskDescription"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="maar-q-zz-11 has high CPU load of 95% since more than 2 hours. Please investigate the Grafana node-explorer dashboard.\https://link-to-dashboard.com"
-        app:layout_constraintTop_toBottomOf="@id/dividerTaskSource"
-        app:layout_constraintStart_toEndOf="@id/ivTaskDescriptionIcon" />
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_body"
+        app:layout_constraintStart_toEndOf="@id/ivTaskDescriptionIcon"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
+        tools:text="maar-q-zz-11 has high CPU load of 95% since more than 2 hours. Please investigate the Grafana node-explorer dashboard.\https://link-to-dashboard.com" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/dividerTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskDescription"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskDescription" />
 
     <ImageView
         android:id="@+id/ivTaskCreatedIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_heading"
+        android:contentDescription="@string/ivTaskCreatedIcon"
         android:src="@drawable/ic_outline_add_24"
-        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/ivTaskCreatedIcon" />
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription" />
 
     <TextView
         android:id="@+id/tvTaskCreated"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="2022/02/01 20:34"
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toEndOf="@id/ivTaskCreatedIcon"
         app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
-        app:layout_constraintStart_toEndOf="@id/ivTaskCreatedIcon" />
+        tools:text="2022/02/01 20:34" />
 
     <ImageView
         android:id="@+id/ivTaskAssignedIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
+        android:contentDescription="@string/ivTaskAssignedIcon"
         android:src="@drawable/ic_outline_person_24"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskCreated"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/ivTaskAssignedIcon" />
+        app:layout_constraintTop_toBottomOf="@id/tvTaskCreated" />
 
     <TextView
         android:id="@+id/tvTaskAssigned"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="2022/02/01 20:34"
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_body"
+        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon"
         app:layout_constraintTop_toBottomOf="@id/tvTaskCreated"
-        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
+        tools:text="2022/02/01 20:34" />
 
     <ImageView
         android:id="@+id/ivTaskClosedIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
+        android:contentDescription="@string/ivTaskClosedIcon"
         android:src="@drawable/ic_outline_check_24"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/ivTaskClosedIcon" />
+        app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned" />
 
     <TextView
         android:id="@+id/tvTaskClosed"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="2022/02/01 20:34"
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_body"
+        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon"
         app:layout_constraintTop_toBottomOf="@id/tvTaskAssigned"
-        app:layout_constraintStart_toEndOf="@id/ivTaskAssignedIcon" />
+        tools:text="2022/02/01 20:34" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/dividerTimestamps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskClosed"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskClosed" />
 
     <TextView
         android:id="@+id/tvTaskPayloadTitle"
+        style="@style/Widget.PushAlerts.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Subtitle"
+        android:layout_marginTop="@dimen/spacing_heading"
         android:text="@string/tvTaskPayloadTitle"
-        app:layout_constraintTop_toBottomOf="@id/dividerTimestamps"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerTimestamps" />
 
     <TextView
         android:id="@+id/tvTaskPayload"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="Optional data here"
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTaskPayloadTitle"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:text="Optional data here" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/dividerPayload"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskPayload"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskPayload" />
 
     <TextView
         android:id="@+id/tvTaskUserTitle"
+        style="@style/Widget.PushAlerts.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Subtitle"
+        android:layout_marginTop="@dimen/spacing_heading"
         android:text="@string/tvTaskUserTitle"
-        app:layout_constraintTop_toBottomOf="@id/dividerPayload"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerPayload" />
+
+    <TextView
+        android:id="@+id/tvTaskStatus"
+        style="@style/Widget.PushAlerts.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
+        tools:text="Done by: " />
 
     <TextView
         android:id="@+id/tvTaskUser"
+        style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.PushAlerts.Body2"
-        tools:text="mark.rogers@company.com"
+        android:layout_marginTop="@dimen/spacing_heading"
+        android:layout_marginStart="@dimen/spacing_body"
+        app:layout_constraintStart_toEndOf="@id/tvTaskStatus"
         app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:text="mark.rogers@company.com" />
 
     <Button
         android:id="@+id/btnAssignTask"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
         android:text="@string/btnAssignTask"
-        style="?attr/materialButtonOutlinedStyle"
-        tools:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskStatus"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/btnRejectTask"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
         android:text="@string/btnRejectTask"
-        style="?attr/materialButtonOutlinedStyle"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskStatus" />
 
     <Button
         android:id="@+id/btnFinishTask"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_body"
+        android:layout_marginTop="@dimen/spacing_body"
         android:text="@string/btnFinishTask"
-        style="?attr/materialButtonOutlinedStyle"
-        app:layout_constraintTop_toBottomOf="@id/tvTaskUser"
-        app:layout_constraintStart_toEndOf="@id/btnRejectTask" />
+        app:layout_constraintStart_toEndOf="@id/btnRejectTask"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskStatus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

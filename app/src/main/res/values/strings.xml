@@ -15,9 +15,10 @@
     <string name="ivTaskCreatedIcon">task created timestamp icon</string>
     <string name="ivTaskAssignedIcon">task assigned timestamp icon</string>
     <string name="ivTaskClosedIcon">task closed timestamp icon</string>
-    <string name="tvTaskUserTitle">Assignee</string>
+    <string name="tvTaskUserTitle">Status</string>
     <string name="tvTaskPayloadTitle">Additional Information</string>
-    <string name="btnReject">reject</string>
-    <string name="btnClose">close</string>
-    <string name="btnAssign">assign me</string>
+    <string name="tvTaskStatus_Created">Created</string>
+    <string name="tvTaskStatus_Assigned">Assigned to: </string>
+    <string name="tvTaskStatus_Rejected">Rejected by: </string>
+    <string name="tvTaskStatus_Done">Done by: </string>
 </resources>

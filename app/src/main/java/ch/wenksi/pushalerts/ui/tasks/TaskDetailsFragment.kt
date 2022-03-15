@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTaskDetailsBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
@@ -106,6 +107,12 @@ class TaskDetailsFragment : Fragment() {
         binding.tvTaskName.text = task.title
         binding.tvTaskPayload.text = task.payload
         binding.tvTaskSource.text = task.source
+        binding.tvTaskStatus.text = when(task.state) {
+            TaskState.Opened -> getString(R.string.tvTaskStatus_Created)
+            TaskState.Assigned -> getString(R.string.tvTaskStatus_Assigned)
+            TaskState.Rejected -> getString(R.string.tvTaskStatus_Rejected)
+            TaskState.Done -> getString(R.string.tvTaskStatus_Done)
+        }
         binding.tvTaskUser.text = task.user?.email
     }
 }
