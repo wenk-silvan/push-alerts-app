@@ -42,8 +42,22 @@
     "source": "The source",
     "createdAt": "Nov 6, 2020 20:18:24",
     "assignedAt": "Nov 6, 2020 22:18:24",
-    "closedAt": "Nov 5, 2019 23:18:24",
+    "closedAt": "Nov 5, 2020 23:18:24",
     "state": "Rejected",
+    "user": {
+      "uuid": "98bc6a1c-1276-44cd-8156-d2d5866b10be",
+      "email": "bob@mail.com"
+    }
+  },
+  {
+    "uuid": "2eba3be1-d044-4928-ad65-7aa55378fdab",
+    "title": "Task 5",
+    "description": "This is task 5.",
+    "source": "The source",
+    "createdAt": "Nov 8, 2020 20:18:24",
+    "assignedAt": "Nov 8, 2020 22:18:24",
+    "closedAt": "Nov 8, 2020 23:18:24",
+    "state": "Assigned",
     "user": {
       "uuid": "98bc6a1c-1276-44cd-8156-d2d5866b10be",
       "email": "bob@mail.com"

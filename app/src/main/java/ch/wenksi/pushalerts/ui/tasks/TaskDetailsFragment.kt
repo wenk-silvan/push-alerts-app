@@ -101,9 +101,9 @@ class TaskDetailsFragment : Fragment() {
 
     private fun setupTextViews() {
         binding.tvTaskAssigned.text =
-            if (task.assignedAt == null) "-" else task.assignedAt.toString()
-        binding.tvTaskClosed.text = if (task.closedAt == null) "-" else task.closedAt.toString()
-        binding.tvTaskCreated.text = task.createdAt.toString()
+            if (task.assignedAt == null) "-" else task.assignedAtFormatted()
+        binding.tvTaskClosed.text = if (task.closedAt == null) "-" else task.closedAtFormatted()
+        binding.tvTaskCreated.text = task.createdAtFormatted()
         binding.tvTaskDescription.text = task.description
         binding.tvTaskName.text = task.title
         binding.tvTaskPayload.text = task.payload

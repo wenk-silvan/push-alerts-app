@@ -2,8 +2,11 @@ package ch.wenksi.pushalerts.models
 
 import ch.wenksi.pushalerts.errors.TaskStateError
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.util.*
+
+const val DATE_PATTERN = "yyyy/MM/dd, hh:mm"
 
 class Task {
     val uuid: UUID = UUID.randomUUID()
@@ -53,4 +56,8 @@ class Task {
             }
         }
     }
+
+    fun createdAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(createdAt)
+    fun assignedAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(assignedAt)
+    fun closedAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(closedAt)
 }

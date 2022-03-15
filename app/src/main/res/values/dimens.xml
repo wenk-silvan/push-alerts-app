@@ -2,4 +2,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="spacing_body">8dp</dimen>
     <dimen name="spacing_heading">12dp</dimen>
+    <dimen name="spacing_cards">12dp</dimen>
+    <dimen name="size_icon_small">19dp</dimen>
 </resources>

@@ -86,7 +86,7 @@ class OpenTasksAdapter(
 
     private fun setupTextViews(binding: ItemTaskOpenBinding, task: Task) {
         binding.tvTaskName.text = task.title
-        binding.tvTaskCreatedAt.text = task.createdAt.toString()
+        binding.tvTaskCreatedAt.text = task.createdAtFormatted()
         binding.tvTaskDescription.text = shortDescription(task.description)
         binding.tvTaskSource.text = task.source
     }

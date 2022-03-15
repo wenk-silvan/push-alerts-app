@@ -13,34 +13,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="@dimen/spacing_cards">
 
         <TextView
             android:id="@+id/tvTaskName"
             style="@style/Widget.PushAlerts.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="My Urgent Task" />
 
         <ImageView
             android:id="@+id/ivStateIcon"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
+            android:layout_width="@dimen/size_icon_small"
+            android:layout_height="@dimen/size_icon_small"
             tools:src="@drawable/ic_outline_check_circle_24"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/spacing_body"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ivTaskSourceIcon"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
+            android:layout_width="@dimen/size_icon_small"
+            android:layout_height="@dimen/size_icon_small"
             android:src="@drawable/ic_outline_notifications_24"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/spacing_body"
             app:layout_constraintTop_toBottomOf="@id/tvTaskName" />
 
         <TextView
@@ -48,19 +47,19 @@
             style="@style/Widget.PushAlerts.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/spacing_body"
+            android:layout_marginStart="@dimen/spacing_body"
             app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon"
             app:layout_constraintTop_toBottomOf="@id/tvTaskName"
             tools:text="This is the source" />
 
         <ImageView
             android:id="@+id/ivDescriptionIcon"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
+            android:layout_width="@dimen/size_icon_small"
+            android:layout_height="@dimen/size_icon_small"
             android:src="@drawable/ic_outline_description_24"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/spacing_body"
             app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon" />
 
 
@@ -69,8 +68,8 @@
             style="@style/Widget.PushAlerts.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/spacing_body"
+            android:layout_marginStart="@dimen/spacing_body"
             app:layout_constraintStart_toEndOf="@id/ivDescriptionIcon"
             app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
             tools:text="This is a description" />
@@ -89,7 +88,7 @@
             style="@style/Widget.PushAlerts.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/spacing_heading"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivDescriptionIcon"
             tools:text="user@mail.com" />

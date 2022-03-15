@@ -32,7 +32,7 @@ class ClosedTasksAdapter(
                 throw Exception("Closed task must have an assigned user")
             }
             binding.tvTaskName.text = task.title
-            binding.tvTaskCreatedAt.text = task.createdAt.toString()
+            binding.tvTaskCreatedAt.text = task.createdAtFormatted()
             binding.tvAssigned.text = task.user!!.email
             binding.tvAssigned.paintFlags =
                 binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG

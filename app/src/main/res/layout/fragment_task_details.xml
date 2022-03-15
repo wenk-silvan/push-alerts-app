@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/ivTaskSourceIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_heading"
         android:contentDescription="@string/ivTaskSourceIcon"
         android:src="@drawable/ic_outline_notifications_24"
@@ -39,8 +39,8 @@
 
     <ImageView
         android:id="@+id/ivTaskDescriptionIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskDescriptionIcon"
         android:src="@drawable/ic_outline_description_24"
@@ -78,8 +78,8 @@
 
     <ImageView
         android:id="@+id/ivTaskCreatedIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskCreatedIcon"
         android:src="@drawable/ic_outline_add_24"
@@ -99,8 +99,8 @@
 
     <ImageView
         android:id="@+id/ivTaskAssignedIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskAssignedIcon"
         android:src="@drawable/ic_outline_person_24"
@@ -120,8 +120,8 @@
 
     <ImageView
         android:id="@+id/ivTaskClosedIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskClosedIcon"
         android:src="@drawable/ic_outline_check_24"
@@ -187,8 +187,8 @@
 
     <ImageView
         android:id="@+id/ivTaskStatusIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/size_icon_small"
+        android:layout_height="@dimen/size_icon_small"
         android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskAssignedIcon"
         android:src="@drawable/ic_outline_add_24"
