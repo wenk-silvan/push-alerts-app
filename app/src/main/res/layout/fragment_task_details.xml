@@ -66,15 +66,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTaskDescription" />
 
+    <TextView
+        android:id="@+id/tvTaskHistoryTitle"
+        style="@style/Widget.PushAlerts.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_heading"
+        android:text="@string/tvTaskHistoryTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription" />
+
     <ImageView
         android:id="@+id/ivTaskCreatedIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_heading"
+        android:layout_marginTop="@dimen/spacing_body"
         android:contentDescription="@string/ivTaskCreatedIcon"
         android:src="@drawable/ic_outline_add_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription" />
+        app:layout_constraintTop_toBottomOf="@id/tvTaskHistoryTitle" />
 
     <TextView
         android:id="@+id/tvTaskCreated"
@@ -84,7 +94,7 @@
         android:layout_marginStart="@dimen/spacing_body"
         android:layout_marginTop="@dimen/spacing_heading"
         app:layout_constraintStart_toEndOf="@id/ivTaskCreatedIcon"
-        app:layout_constraintTop_toBottomOf="@id/dividerTaskDescription"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskHistoryTitle"
         tools:text="2022/02/01 20:34" />
 
     <ImageView
@@ -152,7 +162,7 @@
         style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_heading"
+        android:layout_marginTop="@dimen/spacing_body"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTaskPayloadTitle"
         tools:text="Optional data here" />
@@ -175,13 +185,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dividerPayload" />
 
+    <ImageView
+        android:id="@+id/ivTaskStatusIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_body"
+        android:contentDescription="@string/ivTaskAssignedIcon"
+        android:src="@drawable/ic_outline_add_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle" />
+
     <TextView
         android:id="@+id/tvTaskStatus"
         style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_heading"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/spacing_body"
+        android:layout_marginStart="@dimen/spacing_body"
+        app:layout_constraintStart_toEndOf="@id/ivTaskStatusIcon"
         app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"
         tools:text="Done by: " />
 
@@ -190,7 +211,7 @@
         style="@style/Widget.PushAlerts.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_heading"
+        android:layout_marginTop="@dimen/spacing_body"
         android:layout_marginStart="@dimen/spacing_body"
         app:layout_constraintStart_toEndOf="@id/tvTaskStatus"
         app:layout_constraintTop_toBottomOf="@id/tvTaskUserTitle"

@@ -71,7 +71,7 @@ class TaskDetailsFragment : Fragment() {
     }
 
     private fun setElementVisibilities() {
-        when(task.state) {
+        when (task.state) {
             TaskState.Opened -> {
                 binding.tvTaskUser.visibility = View.GONE
                 binding.btnAssignTask.visibility = View.VISIBLE
@@ -100,19 +100,38 @@ class TaskDetailsFragment : Fragment() {
     }
 
     private fun setupTextViews() {
-        binding.tvTaskAssigned.text = if (task.assignedAt == null) "-" else task.assignedAt.toString()
+        binding.tvTaskAssigned.text =
+            if (task.assignedAt == null) "-" else task.assignedAt.toString()
         binding.tvTaskClosed.text = if (task.closedAt == null) "-" else task.closedAt.toString()
         binding.tvTaskCreated.text = task.createdAt.toString()
         binding.tvTaskDescription.text = task.description
         binding.tvTaskName.text = task.title
         binding.tvTaskPayload.text = task.payload
         binding.tvTaskSource.text = task.source
-        binding.tvTaskStatus.text = when(task.state) {
-            TaskState.Opened -> getString(R.string.tvTaskStatus_Created)
-            TaskState.Assigned -> getString(R.string.tvTaskStatus_Assigned)
-            TaskState.Rejected -> getString(R.string.tvTaskStatus_Rejected)
-            TaskState.Done -> getString(R.string.tvTaskStatus_Done)
-        }
         binding.tvTaskUser.text = task.user?.email
+
+        when (task.state) {
+            TaskState.Opened -> {
+                binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_outline_check_24)
+                binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Created)
+                binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_outline_add_24)
+            }
+            TaskState.Assigned -> {
+                binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_outline_check_24)
+                binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Assigned)
+                binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_outline_person_24)
+            }
+            TaskState.Rejected -> {
+                binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_baseline_remove_24)
+                binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Rejected)
+                binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_baseline_remove_24)
+
+            }
+            TaskState.Done -> {
+                binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_outline_check_24)
+                binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Done)
+                binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_outline_check_24)
+            }
+        }
     }
 }
