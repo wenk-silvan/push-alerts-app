@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -18,7 +19,6 @@ import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
-import java.util.*
 import kotlin.collections.ArrayList
 
 class TabOpenFragment : Fragment() {
@@ -52,14 +52,9 @@ class TabOpenFragment : Fragment() {
     }
 
     private fun initChipGroup() {
-        binding.chipFilterMine.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(tasksViewModel.getMyOpenTasks(authenticationViewModel.user.uuid))
-            else refreshTaskList(tasksViewModel.getOpenTasks())
-        }
-        binding.chipFilterUnassigned.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(tasksViewModel.getTasks(TaskState.Opened))
-            else refreshTaskList(tasksViewModel.getOpenTasks())
-        }
+        val listener = CompoundButton.OnCheckedChangeListener { _, _ -> filterTasks() }
+        binding.chipFilterMine.setOnCheckedChangeListener(listener)
+        binding.chipFilterUnassigned.setOnCheckedChangeListener(listener)
     }
 
     private fun initRecyclerView() {
@@ -110,7 +105,21 @@ class TabOpenFragment : Fragment() {
     private fun onClickCard(task: Task) {
         findNavController().navigate(
             R.id.action_MainFragment_to_TaskDetailsFragment,
-            bundleOf(BUNDLE_TASK_ID to task.uuid.toString()))
+            bundleOf(BUNDLE_TASK_ID to task.uuid.toString())
+        )
+    }
+
+    private fun filterTasks() {
+        if (tasksViewModel.tasks.value == null) return
+        var tasks = tasksViewModel.getOpenTasks(tasksViewModel.tasks.value!!)
+
+        if (binding.chipFilterMine.isChecked) {
+            tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.uuid, tasks)
+        }
+        if (binding.chipFilterUnassigned.isChecked) {
+            tasks = tasksViewModel.getTasks(TaskState.Opened, tasks)
+        }
+        refreshTaskList(tasks)
     }
 
     private fun refreshTaskList(tasks: List<Task>?) {
@@ -123,7 +132,7 @@ class TabOpenFragment : Fragment() {
 
     private fun observeTasks() {
         tasksViewModel.tasks.observe(viewLifecycleOwner) {
-            refreshTaskList(tasksViewModel.getOpenTasks())
+            refreshTaskList(tasksViewModel.getOpenTasks(tasksViewModel.tasks.value!!))
         }
     }
 }

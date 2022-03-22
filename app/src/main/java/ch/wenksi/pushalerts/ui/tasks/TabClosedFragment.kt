@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -18,6 +19,7 @@ import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
+import com.google.android.material.chip.ChipGroup
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -52,20 +54,10 @@ class TabClosedFragment : Fragment() {
     }
 
     private fun initChipGroup() {
-        binding.chipFilterMine.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(
-                tasksViewModel.getMyClosedTasks(authenticationViewModel.user.uuid)
-            )
-            else refreshTaskList(tasksViewModel.getClosedTasks())
-        }
-        binding.chipFilterDone.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(tasksViewModel.getTasks(TaskState.Done))
-            else refreshTaskList(tasksViewModel.getClosedTasks())
-        }
-        binding.chipFilterRejected.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) refreshTaskList(tasksViewModel.getTasks(TaskState.Rejected))
-            else refreshTaskList(tasksViewModel.getClosedTasks())
-        }
+        val listener = CompoundButton.OnCheckedChangeListener { _, _ -> filterTasks() }
+        binding.chipFilterMine.setOnCheckedChangeListener(listener)
+        binding.chipFilterDone.setOnCheckedChangeListener(listener)
+        binding.chipFilterRejected.setOnCheckedChangeListener(listener)
     }
 
     private fun initRecyclerView() {
@@ -99,6 +91,22 @@ class TabClosedFragment : Fragment() {
         )
     }
 
+    private fun filterTasks() {
+        if (tasksViewModel.tasks.value == null) return
+        var tasks = tasksViewModel.getClosedTasks(tasksViewModel.tasks.value!!)
+
+        if (binding.chipFilterMine.isChecked) {
+            tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.uuid, tasks)
+        }
+        if (binding.chipFilterDone.isChecked) {
+            tasks = tasksViewModel.getTasks(TaskState.Done, tasks)
+        }
+        if (binding.chipFilterRejected.isChecked) {
+            tasks = tasksViewModel.getTasks(TaskState.Rejected, tasks)
+        }
+        refreshTaskList(tasks)
+    }
+
     private fun refreshTaskList(tasks: List<Task>?) {
         if (tasks != null) {
             this.tasks.clear()
@@ -109,7 +117,7 @@ class TabClosedFragment : Fragment() {
 
     private fun observeTasks() {
         tasksViewModel.tasks.observe(viewLifecycleOwner) {
-            refreshTaskList(tasksViewModel.getClosedTasks())
+            refreshTaskList(tasksViewModel.getClosedTasks(tasksViewModel.tasks.value!!))
         }
     }
 }

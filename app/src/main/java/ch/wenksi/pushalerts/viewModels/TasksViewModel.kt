@@ -39,29 +39,24 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getTasks(state: TaskState): List<Task>? {
-        return tasks.value?.filter { t -> t.state == state }
+    fun getTasks(state: TaskState, tasks: List<Task>): List<Task> {
+        return tasks.filter { t -> t.state == state }
     }
 
-    fun getOpenTasks(): List<Task>? {
-        return tasks.value?.filter { t -> t.state == TaskState.Opened || t.state == TaskState.Assigned }
+    fun getOpenTasks(tasks: List<Task>): List<Task> {
+        return tasks.filter { t -> t.state == TaskState.Opened || t.state == TaskState.Assigned }
     }
 
-    fun getClosedTasks(): List<Task>? {
-        return tasks.value?.filter { t -> t.state == TaskState.Done || t.state == TaskState.Rejected }
+    fun getClosedTasks(tasks: List<Task>): List<Task> {
+        return tasks.filter { t -> t.state == TaskState.Done || t.state == TaskState.Rejected }
     }
 
-    fun getMyOpenTasks(uuid: UUID): List<Task>? {
-        return getOpenTasks()?.filter { t -> t.user?.uuid == uuid }
-    }
-
-    fun getMyClosedTasks(uuid: UUID): List<Task>? {
-        return getClosedTasks()?.filter { t -> t.user?.uuid == uuid }
+    fun getTasksOfUser(uuid: UUID, tasks: List<Task>): List<Task> {
+        return tasks.filter { t -> t.user?.uuid == uuid }
     }
 
     fun getTask(uuid: String?): Task {
-        var task: Task? = tasks.value?.first { t -> t.uuid.toString() == uuid }
+        return tasks.value?.first { t -> t.uuid.toString() == uuid }
             ?: throw TasksRetrievalError("Task with uuid: ${uuid.toString()} not found.")
-        return task!!
     }
 }
