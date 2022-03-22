@@ -33,26 +33,7 @@ class OpenTasksAdapter(
         fun databind(task: Task) {
             setupTextViews(binding, task)
             setupOnClickListeners(binding, task)
-
-            if (task.state == TaskState.Opened) {
-                binding.btnAssign.visibility = View.VISIBLE
-                binding.tvAssigned.visibility = View.GONE
-                binding.btnReject.visibility = View.GONE
-                binding.btnClose.visibility = View.GONE
-                binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#f3f6f4"))
-            } else if (task.state == TaskState.Assigned) {
-                binding.btnAssign.visibility = View.GONE
-                binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#ffffff"))
-                if (assignedToMe(task)) {
-                    binding.btnReject.visibility = View.VISIBLE
-                    binding.btnClose.visibility = View.VISIBLE
-                } else {
-                    binding.tvAssigned.visibility = View.VISIBLE
-                    binding.tvAssigned.text = task.user?.email
-                    binding.tvAssigned.paintFlags =
-                        binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-                }
-            }
+            setupVisibilities(binding, task)
         }
     }
 
@@ -89,6 +70,30 @@ class OpenTasksAdapter(
         binding.tvTaskCreatedAt.text = task.createdAtFormatted()
         binding.tvTaskDescription.text = shortDescription(task.description)
         binding.tvTaskSource.text = task.source
+    }
+
+    private fun setupVisibilities(binding: ItemTaskOpenBinding, task: Task) {
+        if (task.state == TaskState.Opened) {
+            binding.btnAssign.visibility = View.VISIBLE
+            binding.tvAssigned.visibility = View.GONE
+            binding.btnReject.visibility = View.GONE
+            binding.btnClose.visibility = View.GONE
+            binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#f3f6f4"))
+        } else if (task.state == TaskState.Assigned) {
+            binding.btnAssign.visibility = View.GONE
+            binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#ffffff"))
+            if (assignedToMe(task)) {
+                binding.btnReject.visibility = View.VISIBLE
+                binding.btnClose.visibility = View.VISIBLE
+            } else {
+                binding.btnReject.visibility = View.GONE
+                binding.btnClose.visibility = View.GONE
+                binding.tvAssigned.visibility = View.VISIBLE
+                binding.tvAssigned.text = task.user?.email
+                binding.tvAssigned.paintFlags =
+                    binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+            }
+        }
     }
 
     private fun assignedToMe(task: Task): Boolean {
