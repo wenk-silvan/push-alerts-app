@@ -22,7 +22,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     private val _errorText: MutableLiveData<String> = MutableLiveData()
     val errorText: LiveData<String> get() = _errorText
 
-    fun getTasks(projectUUID: UUID) {
+    fun getTasks(projectUuid: UUID) {
         _errorText.value = null
 //        if (!isRefresh && repository.tasks.value != null) {
 //            return
@@ -31,7 +31,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
         viewModelScope.launch {
             try {
-                repository.getTasksFromJson(getApplication())
+                repository.getTasksFromServer(projectUuid)
             } catch (error: TasksRetrievalError) {
                 _errorText.value = error.message
                 Log.e("Error while fetching projects", error.message.toString())
@@ -40,19 +40,19 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getTasks(state: TaskState, tasks: List<Task>): List<Task> {
-        return tasks.filter { t -> t.state == state }
+        return tasks.filter { t -> t.status == state }
     }
 
     fun getOpenTasks(tasks: List<Task>): List<Task> {
-        return tasks.filter { t -> t.state == TaskState.Opened || t.state == TaskState.Assigned }
+        return tasks.filter { t -> t.status == TaskState.Opened || t.status == TaskState.Assigned }
     }
 
     fun getClosedTasks(tasks: List<Task>): List<Task> {
-        return tasks.filter { t -> t.state == TaskState.Done || t.state == TaskState.Rejected }
+        return tasks.filter { t -> t.status == TaskState.Done || t.status == TaskState.Rejected }
     }
 
-    fun getTasksOfUser(uuid: UUID, tasks: List<Task>): List<Task> {
-        return tasks.filter { t -> t.user?.uuid == uuid }
+    fun getTasksOfUser(email: String, tasks: List<Task>): List<Task> {
+        return tasks.filter { t -> t.userEmail == email }
     }
 
     fun getTask(uuid: String?): Task {

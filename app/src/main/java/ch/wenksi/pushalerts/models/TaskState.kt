@@ -1,6 +1,6 @@
 package ch.wenksi.pushalerts.models
 
-enum class TaskState {
+enum class TaskState() {
     Opened,
     Assigned,
     Done,

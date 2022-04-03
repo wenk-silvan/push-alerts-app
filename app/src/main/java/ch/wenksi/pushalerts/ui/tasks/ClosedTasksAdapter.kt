@@ -28,19 +28,20 @@ class ClosedTasksAdapter(
         fun databind(task: Task) {
             if (task.closedAt == null) {
                 throw Exception("Closed task must have a closedAt timestamp.")
-            } else if (task.user == null) {
+            } else if (task.userEmail == null) {
                 throw Exception("Closed task must have an assigned user")
             }
             binding.tvTaskName.text = task.title
             binding.tvTaskCreatedAt.text = task.createdAtFormatted()
-            binding.tvAssigned.text = task.user!!.email
+            binding.tvAssigned.text = task.userEmail!!
             binding.tvAssigned.paintFlags =
                 binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG
             binding.tvTaskDescription.text = shortDescription(task.description)
             binding.tvTaskSource.text = task.source
             binding.ivStateIcon.setImageResource(
-                if (task.state == TaskState.Rejected) R.drawable.ic_outline_remove_circle_outline_24
-                else R.drawable.ic_outline_check_circle_24)
+                if (task.status == TaskState.Rejected) R.drawable.ic_outline_remove_circle_outline_24
+                else R.drawable.ic_outline_check_circle_24
+            )
 
             binding.mcvTaskClosed.setOnClickListener { onClickCard(task) }
         }

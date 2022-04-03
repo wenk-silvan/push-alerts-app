@@ -72,7 +72,7 @@ class TaskDetailsFragment : Fragment() {
     }
 
     private fun setElementVisibilities() {
-        when (task.state) {
+        when (task.status) {
             TaskState.Opened -> {
                 binding.tvTaskUser.visibility = View.GONE
                 binding.btnAssignTask.visibility = View.VISIBLE
@@ -109,10 +109,10 @@ class TaskDetailsFragment : Fragment() {
         binding.tvTaskName.text = task.title
         binding.tvTaskPayload.text = task.payload
         binding.tvTaskSource.text = task.source
-        binding.tvTaskUser.text = task.user?.email
+        binding.tvTaskUser.text = task.userEmail
         binding.tvTaskUser.paintFlags = binding.tvTaskUser.paintFlags or Paint.UNDERLINE_TEXT_FLAG
 
-        when (task.state) {
+        when (task.status) {
             TaskState.Opened -> {
                 binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_outline_check_24)
                 binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Created)

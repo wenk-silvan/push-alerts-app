@@ -7,8 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import ch.wenksi.pushalerts.Constants
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
-import ch.wenksi.pushalerts.services.ProjectsApiService
-import ch.wenksi.pushalerts.services.ProjectsService
+import ch.wenksi.pushalerts.services.projects.ProjectsApiService
+import ch.wenksi.pushalerts.services.projects.ProjectsService
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout

@@ -1,4 +1,4 @@
-package ch.wenksi.pushalerts.services
+package ch.wenksi.pushalerts.services.projects
 
 import ch.wenksi.pushalerts.Constants
 import okhttp3.OkHttpClient

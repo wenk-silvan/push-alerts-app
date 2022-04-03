@@ -96,7 +96,7 @@ class TabClosedFragment : Fragment() {
         var tasks = tasksViewModel.getClosedTasks(tasksViewModel.tasks.value!!)
 
         if (binding.chipFilterMine.isChecked) {
-            tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.uuid, tasks)
+            tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.email, tasks)
         }
         if (binding.chipFilterDone.isChecked) {
             tasks = tasksViewModel.getTasks(TaskState.Done, tasks)
@@ -117,7 +117,7 @@ class TabClosedFragment : Fragment() {
 
     private fun observeTasks() {
         tasksViewModel.tasks.observe(viewLifecycleOwner) {
-            refreshTaskList(tasksViewModel.getClosedTasks(tasksViewModel.tasks.value!!))
+            refreshTaskList(tasksViewModel.getClosedTasks(it))
         }
     }
 }

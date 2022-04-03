@@ -73,13 +73,13 @@ class OpenTasksAdapter(
     }
 
     private fun setupVisibilities(binding: ItemTaskOpenBinding, task: Task) {
-        if (task.state == TaskState.Opened) {
+        if (task.status == TaskState.Opened) {
             binding.btnAssign.visibility = View.VISIBLE
             binding.tvAssigned.visibility = View.GONE
             binding.btnReject.visibility = View.GONE
             binding.btnClose.visibility = View.GONE
             binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#f3f6f4"))
-        } else if (task.state == TaskState.Assigned) {
+        } else if (task.status == TaskState.Assigned) {
             binding.btnAssign.visibility = View.GONE
             binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#ffffff"))
             if (assignedToMe(task)) {
@@ -89,7 +89,7 @@ class OpenTasksAdapter(
                 binding.btnReject.visibility = View.GONE
                 binding.btnClose.visibility = View.GONE
                 binding.tvAssigned.visibility = View.VISIBLE
-                binding.tvAssigned.text = task.user?.email
+                binding.tvAssigned.text = task.userEmail
                 binding.tvAssigned.paintFlags =
                     binding.tvAssigned.paintFlags or Paint.UNDERLINE_TEXT_FLAG
             }
@@ -97,6 +97,6 @@ class OpenTasksAdapter(
     }
 
     private fun assignedToMe(task: Task): Boolean {
-        return task.user?.uuid == authenticatedUser.uuid
+        return task.userEmail == authenticatedUser.email
     }
 }

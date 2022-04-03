@@ -13,6 +13,6 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     )
 
     fun isAssignedToMe(task: Task): Boolean {
-        return user.uuid == task.user?.uuid
+        return user.email == task.userEmail
     }
 }
