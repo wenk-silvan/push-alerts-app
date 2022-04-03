@@ -4,16 +4,21 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.wenksi.pushalerts.Constants
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
+import ch.wenksi.pushalerts.services.ProjectsApiService
+import ch.wenksi.pushalerts.services.ProjectsService
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
 
 private const val jsonFileName = "projects.json"
 
 class ProjectsRepository() {
+    private val projectsService: ProjectsService = ProjectsApiService.createApi()
     private val _projects: MutableLiveData<List<Project>> = MutableLiveData()
 
     val projects: LiveData<List<Project>> get() = _projects
@@ -38,7 +43,10 @@ class ProjectsRepository() {
 
     suspend fun getProjectsFromServer() {
         try {
-
+            val result = withTimeout(Constants.apiTimeout) {
+                projectsService.getProjects()
+            }
+            _projects.value = result
         } catch (e: Exception) {
             throw ProjectsRetrievalError("Error while fetching projects from web server: \n${e.message}")
         }

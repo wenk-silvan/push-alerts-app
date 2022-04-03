@@ -33,7 +33,7 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
 
         viewModelScope.launch {
             try {
-                repository.getProjectsFromJson(getApplication())
+                repository.getProjectsFromServer()
             } catch (error: ProjectsRetrievalError) {
                 _errorText.value = error.message
                 Log.e("Error while fetching projects", error.message.toString())
