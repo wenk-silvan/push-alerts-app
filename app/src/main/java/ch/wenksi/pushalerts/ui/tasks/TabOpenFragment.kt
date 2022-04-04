@@ -43,7 +43,7 @@ class TabOpenFragment : Fragment() {
         initChipGroup()
         initRecyclerView()
         initSwipeToRefresh()
-        observeTasks()
+        initTaskChangeListeners()
     }
 
     override fun onDestroyView() {
@@ -61,9 +61,9 @@ class TabOpenFragment : Fragment() {
         recyclerViewAdapter = OpenTasksAdapter(
             tasks,
             authenticationViewModel.user,
-            { t: Task -> onClickBtnAssign(t) },
-            { t: Task -> onClickBtnClose(t) },
-            { t: Task -> onClickBtnReject(t) },
+            { t: Task -> tasksViewModel.assignTask(t, authenticationViewModel.user) },
+            { t: Task -> tasksViewModel.finishTask(t) },
+            { t: Task -> tasksViewModel.rejectTask(t) },
             { t: Task -> onClickCard(t) }
         )
         binding.rvTasks.layoutManager =
@@ -82,24 +82,6 @@ class TabOpenFragment : Fragment() {
             binding.chipFilterUnassigned.isChecked = false
             binding.swipeRefresh.isRefreshing = false
         }
-    }
-
-    private fun onClickBtnAssign(task: Task) {
-        // TODO: Update in DB
-        task.assign(authenticationViewModel.user)
-        recyclerViewAdapter.notifyDataSetChanged()
-    }
-
-    private fun onClickBtnClose(task: Task) {
-        task.finish()
-        tasks.remove(task)
-        recyclerViewAdapter.notifyDataSetChanged()
-    }
-
-    private fun onClickBtnReject(task: Task) {
-        task.reject()
-        tasks.remove(task)
-        recyclerViewAdapter.notifyDataSetChanged()
     }
 
     private fun onClickCard(task: Task) {
@@ -130,7 +112,7 @@ class TabOpenFragment : Fragment() {
         }
     }
 
-    private fun observeTasks() {
+    private fun initTaskChangeListeners() {
         tasksViewModel.tasks.observe(viewLifecycleOwner) {
             refreshTaskList(tasksViewModel.getOpenTasks(it))
         }

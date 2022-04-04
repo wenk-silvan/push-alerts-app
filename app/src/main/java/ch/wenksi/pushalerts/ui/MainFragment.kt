@@ -31,10 +31,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        projectsViewModel.projects.observe(viewLifecycleOwner) {
-            projectsViewModel.selectedProjectUUID = it.first().uuid
-            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
-        }
+        initDataChangeListeners()
         initTabLayout()
     }
 
@@ -70,5 +67,15 @@ class MainFragment : Fragment() {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
             }
         })
+    }
+
+    private fun initDataChangeListeners() {
+        projectsViewModel.projects.observe(viewLifecycleOwner) {
+            projectsViewModel.selectedProjectUUID = it.first().uuid
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+        }
+        tasksViewModel.taskUpdate.observe(viewLifecycleOwner) {
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+        }
     }
 }

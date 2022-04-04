@@ -8,8 +8,8 @@ import java.util.*
 
 class AuthenticationViewModel(application: Application) : AndroidViewModel(application) {
     val user = User(
-        UUID.fromString("c8474f18-7e90-416b-ab1c-f150630ddec7"),
-        "alice@mail.com"
+        UUID.fromString("d94a2afa-1962-4329-a79c-9722de0f20d2"),
+        "alice@company.com"
     )
 
     fun isAssignedToMe(task: Task): Boolean {

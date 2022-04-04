@@ -8,6 +8,7 @@ import ch.wenksi.pushalerts.Constants
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
+import ch.wenksi.pushalerts.models.User
 import ch.wenksi.pushalerts.services.tasks.TasksApiService
 import ch.wenksi.pushalerts.services.tasks.TasksService
 import com.google.gson.GsonBuilder
@@ -22,8 +23,10 @@ private const val jsonFileName = "tasks.json"
 class TasksRepository() {
     private val tasksService: TasksService = TasksApiService.createApi()
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData()
+    private val _taskUpdate: MutableLiveData<Boolean> = MutableLiveData()
 
     val tasks: LiveData<List<Task>> get() = _tasks
+    val taskUpdate: LiveData<Boolean> get() = _taskUpdate
 
     suspend fun getTasksFromJson(context: Context) {
         try {
@@ -32,7 +35,7 @@ class TasksRepository() {
             Log.i("data", jsonString)
             val gson = GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
             val listTaskType = object : TypeToken<List<Task>>() {}.type
-            var tempTasks: List<Task> = gson.fromJson(jsonString, listTaskType)
+            val tempTasks: List<Task> = gson.fromJson(jsonString, listTaskType)
             _tasks.value = tempTasks
         } catch (e: IOException) {
             throw TasksRetrievalError("Can't open json file: \n${e.message}")
@@ -52,25 +55,25 @@ class TasksRepository() {
         }
     }
 
-    suspend fun assignTask(taskUUID: UUID, userUUID: UUID) {
+    suspend fun assignTask(task: Task, user: User) {
         try {
-            val result = withTimeout(Constants.apiTimeout) {
-                tasksService.assignTask(taskUUID.toString(), userUUID.toString())
+            withTimeout(Constants.apiTimeout) {
+                tasksService.assignTask(task.uuid.toString(), user.uuid.toString())
             }
-            Log.i("", result.toString());  // TODO: Fix logging
+            _taskUpdate.value = true
         } catch (e: Exception) {
-            throw TasksRetrievalError("Error while assigning task with uuid ${taskUUID}: \n${e.message}")
+            throw TasksRetrievalError("Error while assigning task with uuid ${task.uuid}: \n${e.message}")
         }
     }
 
     suspend fun closeTask(taskUUID: UUID, state: TaskState) {
         try {
-            val result = withTimeout(Constants.apiTimeout) {
-                tasksService.close(taskUUID.toString(), state)
+            withTimeout(Constants.apiTimeout) {
+                tasksService.close(taskUUID.toString(), state.ordinal)
             }
-            Log.i("", result.toString());  // TODO: Fix logging
+            _taskUpdate.value = true
         } catch (e: Exception) {
-            throw TasksRetrievalError("Error while assigning task with uuid ${taskUUID}: \n${e.message}")
+            throw TasksRetrievalError("Error while closing task with uuid ${taskUUID}: \n${e.message}")
         }
     }
 }

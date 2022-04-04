@@ -6,9 +6,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ch.wenksi.pushalerts.errors.TaskUpdateError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.TaskState
+import ch.wenksi.pushalerts.models.User
 import ch.wenksi.pushalerts.repositories.TasksRepository
 import kotlinx.coroutines.launch
 import java.util.*
@@ -18,26 +20,51 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = TasksRepository()
 
     var tasks: LiveData<List<Task>> = repository.tasks
+    var taskUpdate: LiveData<Boolean> = repository.taskUpdate
 
-    private val _errorText: MutableLiveData<String> = MutableLiveData()
-    val errorText: LiveData<String> get() = _errorText
+    fun assignTask(task: Task, user: User) {
+        task.assign(user)
+        viewModelScope.launch {
+            try {
+                repository.assignTask(task, user)
+            } catch (error: TaskUpdateError) {
+                Log.e("Error while assigning task with uuid ${task.uuid}", error.message.toString())
+            }
+        }
+    }
+
+    fun rejectTask(task: Task) {
+        task.reject()
+        viewModelScope.launch {
+            try {
+                repository.closeTask(task.uuid, TaskState.Rejected)
+            } catch (error: TaskUpdateError) {
+                Log.e("Error while closing task with uuid ${task.uuid}", error.message.toString())
+            }
+        }
+    }
+
+    fun finishTask(task: Task) {
+        task.finish()
+        viewModelScope.launch {
+            try {
+                repository.closeTask(task.uuid, TaskState.Done)
+            } catch (error: TaskUpdateError) {
+                Log.e("Error while closing task with uuid ${task.uuid}", error.message.toString())
+            }
+        }
+    }
 
     fun getTasks(projectUuid: UUID) {
-        _errorText.value = null
-//        if (!isRefresh && repository.tasks.value != null) {
-//            return
-//        }
-        // TODO: Implement caching
-
         viewModelScope.launch {
             try {
                 repository.getTasksFromServer(projectUuid)
             } catch (error: TasksRetrievalError) {
-                _errorText.value = error.message
-                Log.e("Error while fetching projects", error.message.toString())
+                Log.e("Error while fetching tasks", error.message.toString())
             }
         }
     }
+
 
     fun getTasks(state: TaskState, tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.status == state }
