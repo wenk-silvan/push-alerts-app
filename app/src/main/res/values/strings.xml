@@ -22,4 +22,5 @@
     <string name="tvTaskStatus_Assigned">Assigned to: </string>
     <string name="tvTaskStatus_Rejected">Rejected by: </string>
     <string name="tvTaskStatus_Done">Done by: </string>
+    <string name="errorTaskDetailsMissingArguments">Error while opening task details.</string>
 </resources>
