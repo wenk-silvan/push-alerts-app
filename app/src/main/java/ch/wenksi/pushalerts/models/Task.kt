@@ -8,19 +8,19 @@ import java.util.*
 
 const val DATE_PATTERN = "yyyy/MM/dd, hh:mm"
 
-class Task {
-    val uuid: UUID = UUID.randomUUID()
-    val title: String = ""
-    val description: String = ""
-    val source: String = ""
-    private val createdAt: Date = Timestamp.from(Instant.now())
-    var assignedAt: Date? = null
-    var closedAt: Date? = null
-    val payload: String = "-" // TODO: Use dictionary<string,string>
-    var userEmail: String? = null
+class Task(
+    val uuid: UUID = UUID.randomUUID(),
+    val title: String = "",
+    val description: String = "",
+    val source: String = "",
+    val createdAt: Date = Timestamp.from(Instant.now()),
+    var assignedAt: Date? = null,
+    var closedAt: Date? = null,
+    val payload: String = "-", // TODO: Use dictionary<string,string>
+    var userEmail: String? = null,
     var status: TaskState = TaskState.Opened
-
-    fun assign(user: User) {
+) {
+    fun assign(user: User): Task {
         when {
             this.status != TaskState.Opened -> throw TaskStateError("Can't assign user if task state is not Opened.")
             this.userEmail != null -> throw TaskStateError("Can't assign user if task already contains another user.")
@@ -31,21 +31,23 @@ class Task {
                 this.userEmail = user.email
             }
         }
+        return this
     }
 
-    fun finish() {
+    fun finish(): Task {
         when {
             this.status != TaskState.Assigned -> throw TaskStateError("Can't close if task state is not Assigned.")
             this.userEmail == null -> throw TaskStateError("Can't close task if no user is assigned.")
             this.closedAt != null -> throw TaskStateError("Can't finish if task already has a closedAt timestamp.")
             else -> {
-                this.status = TaskState.Done
+                this.status = TaskState.Finished
                 this.closedAt = Timestamp.from(Instant.now())
             }
         }
+        return this
     }
 
-    fun reject() {
+    fun reject(): Task {
         when {
             this.status != TaskState.Assigned -> throw TaskStateError("Can't reject if task state is not Assigned.")
             this.userEmail == null -> throw TaskStateError("Can't reject task if no user is assigned.")
@@ -55,6 +57,7 @@ class Task {
                 this.closedAt = Timestamp.from(Instant.now())
             }
         }
+        return this
     }
 
     fun createdAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(createdAt)

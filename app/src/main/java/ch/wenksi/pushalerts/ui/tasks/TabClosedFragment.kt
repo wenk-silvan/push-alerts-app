@@ -19,8 +19,6 @@ import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
-import com.google.android.material.chip.ChipGroup
-import java.util.*
 import kotlin.collections.ArrayList
 
 class TabClosedFragment : Fragment() {
@@ -99,7 +97,7 @@ class TabClosedFragment : Fragment() {
             tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.email, tasks)
         }
         if (binding.chipFilterDone.isChecked) {
-            tasks = tasksViewModel.getTasks(TaskState.Done, tasks)
+            tasks = tasksViewModel.getTasks(TaskState.Finished, tasks)
         }
         if (binding.chipFilterRejected.isChecked) {
             tasks = tasksViewModel.getTasks(TaskState.Rejected, tasks)

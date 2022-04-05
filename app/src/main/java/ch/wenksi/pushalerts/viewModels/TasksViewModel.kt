@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.wenksi.pushalerts.errors.TaskUpdateError
 import ch.wenksi.pushalerts.models.Task
@@ -48,7 +47,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         task.finish()
         viewModelScope.launch {
             try {
-                repository.closeTask(task.uuid, TaskState.Done)
+                repository.closeTask(task.uuid, TaskState.Finished)
             } catch (error: TaskUpdateError) {
                 Log.e("Error while closing task with uuid ${task.uuid}", error.message.toString())
             }
@@ -75,7 +74,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getClosedTasks(tasks: List<Task>): List<Task> {
-        return tasks.filter { t -> t.status == TaskState.Done || t.status == TaskState.Rejected }
+        return tasks.filter { t -> t.status == TaskState.Finished || t.status == TaskState.Rejected }
     }
 
     fun getTasksOfUser(email: String, tasks: List<Task>): List<Task> {

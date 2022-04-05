@@ -87,7 +87,7 @@ class TaskDetailsFragment : Fragment() {
             TaskState.Assigned -> setupElementVisibilitiesTaskStateAssigned(
                 authenticationViewModel.isAssignedToMe(task)
             )
-            TaskState.Done, TaskState.Rejected -> setupElementVisibilitiesTaskStateDoneAndRejected()
+            TaskState.Finished, TaskState.Rejected -> setupElementVisibilitiesTaskStateDoneAndRejected()
         }
     }
 
@@ -146,7 +146,7 @@ class TaskDetailsFragment : Fragment() {
                 binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Rejected)
                 binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_baseline_remove_24)
             }
-            TaskState.Done -> {
+            TaskState.Finished -> {
                 binding.ivTaskClosedIcon.setImageResource(R.drawable.ic_outline_check_24)
                 binding.tvTaskStatus.text = getString(R.string.tvTaskStatus_Done)
                 binding.ivTaskStatusIcon.setImageResource(R.drawable.ic_outline_check_24)
