@@ -19,6 +19,12 @@ jobs:
       - name: Run unit tests
         run: bash ./gradlew test --stacktrace
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build Project
+        run: ./gradlew assemble
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -31,9 +37,6 @@ jobs:
             See commits for changes
           draft: false
           prerelease: false
-
-      - name: Build Project
-        run: ./gradlew assemble
 
       - name: Build Debug APK
         run: bash ./gradlew :app:assembleDebug
