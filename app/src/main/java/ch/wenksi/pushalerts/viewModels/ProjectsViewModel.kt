@@ -16,26 +16,17 @@ import java.lang.Exception
 import java.util.*
 
 class ProjectsViewModel(application: Application) : AndroidViewModel(application) {
-    var selectedProjectUUID: UUID = UUID.randomUUID()
+    var selectedProjectUUID: UUID? = null
 
     private val repository = ProjectsRepository()
 
     var projects: LiveData<List<Project>> = repository.projects
 
-    private val _errorText: MutableLiveData<String> = MutableLiveData()
-    val errorText: LiveData<String> get() = _errorText
-
-    fun getProjects(isRefresh: Boolean) {
-        _errorText.value = null
-        if (!isRefresh && repository.projects.value != null) {
-            return
-        }
-
+    fun getProjects() {
         viewModelScope.launch {
             try {
                 repository.getProjectsFromServer()
             } catch (error: ProjectsRetrievalError) {
-                _errorText.value = error.message
                 Log.e("Error while fetching projects", error.message.toString())
             }
         }

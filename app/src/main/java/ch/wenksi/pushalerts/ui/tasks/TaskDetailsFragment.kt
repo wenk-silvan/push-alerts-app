@@ -54,7 +54,7 @@ class TaskDetailsFragment : Fragment() {
 
     private fun initDataChangeListeners() {
         tasksViewModel.taskUpdate.observe(viewLifecycleOwner) {
-            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
         }
         tasksViewModel.tasks.observe(viewLifecycleOwner) {
             initTaskData()

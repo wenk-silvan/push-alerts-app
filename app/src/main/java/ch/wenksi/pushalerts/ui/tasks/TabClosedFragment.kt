@@ -76,7 +76,7 @@ class TabClosedFragment : Fragment() {
 
     private fun initSwipeToRefresh() {
         binding.swipeRefresh.setOnRefreshListener {
-            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID) // TODO: Fix uuid
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
             binding.chipFilterMine.isChecked = false
             binding.chipFilterDone.isChecked = false
             binding.chipFilterRejected.isChecked = false

@@ -31,14 +31,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.topAppBar)
-//        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
-
-        setupNavigationDrawer()
-
-        projectsViewModel.getProjects(false)
+        binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
+        projectsViewModel.getProjects()
         observeProjects()
     }
 
@@ -64,34 +61,31 @@ class MainActivity : AppCompatActivity() {
         projectsViewModel.projects.observe(this) {
             projects.clear()
             projects.addAll(it)
-            // TODO: Potentially order projects
             addMenuItemsForProjects()
         }
     }
 
-    private fun setupNavigationDrawer() {
-        binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-            binding.navigationView.menu.forEach { i ->
-                i.isChecked = false
-            }
-            when (menuItem.itemId) {
-                R.id.AboutFragment -> findNavController(R.id.nav_host_fragment_content_main)
-                    .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
-                MENU_ID_LOGOUT -> {
-                    // TODO: Log out
-                }
-                else -> {
-                    val project = projectsViewModel.getProjectByMenuId(menuItem.itemId)
-                    if (project != null) {
-                        projectsViewModel.selectedProjectUUID = project.uuid
-                        tasksViewModel.getTasks(project.uuid)
-                    }
-                }
-            }
-            menuItem.isChecked = true
-            binding.drawerLayout.close()
-            true
+    private fun onClickMenuItem(menuItem: MenuItem): Boolean {
+        binding.navigationView.menu.forEach { i ->
+            i.isChecked = false
         }
+        when (menuItem.itemId) {
+            R.id.AboutFragment -> findNavController(R.id.nav_host_fragment_content_main)
+                .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
+            MENU_ID_LOGOUT -> {
+                // TODO: Log out
+            }
+            else -> {
+                val project = projectsViewModel.getProjectByMenuId(menuItem.itemId)
+                if (project != null) {
+                    projectsViewModel.selectedProjectUUID = project.uuid
+                    tasksViewModel.getTasks(project.uuid)
+                }
+            }
+        }
+        menuItem.isChecked = true
+        binding.drawerLayout.close()
+        return true
     }
 
     private fun addMenuItemsForProjects() {

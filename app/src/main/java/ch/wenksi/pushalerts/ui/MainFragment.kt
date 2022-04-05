@@ -71,11 +71,12 @@ class MainFragment : Fragment() {
 
     private fun initDataChangeListeners() {
         projectsViewModel.projects.observe(viewLifecycleOwner) {
-            projectsViewModel.selectedProjectUUID = it.first().uuid
-            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+            if (projectsViewModel.selectedProjectUUID == null)
+                projectsViewModel.selectedProjectUUID = it.first().uuid
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
         }
         tasksViewModel.taskUpdate.observe(viewLifecycleOwner) {
-            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID)
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
         }
     }
 }
