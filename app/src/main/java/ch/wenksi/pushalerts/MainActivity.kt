@@ -12,8 +12,15 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import ch.wenksi.pushalerts.models.Project
+import ch.wenksi.pushalerts.services.notifications.AppFirebaseMessagingService
+import ch.wenksi.pushalerts.util.Events
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.FirebaseApp
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.app
+import okhttp3.internal.wait
 
 // 0 - 1000 is reserved for project menu items.
 const val MENU_ID_LOGOUT = 1001
@@ -27,8 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
+        FirebaseApp.initializeApp(applicationContext)
         setContentView(binding.root)
         setSupportActionBar(binding.topAppBar)
         val navController = findNavController(R.id.nav_host_fragment_content_main)
@@ -36,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
         binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
         projectsViewModel.getProjects()
+        observeNotifications()
         observeProjects()
     }
 
@@ -62,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             projects.clear()
             projects.addAll(it)
             addMenuItemsForProjects()
+            AppFirebaseMessagingService.subscribeToNotifications(projects)
         }
     }
 
@@ -99,5 +108,15 @@ class MainActivity : AppCompatActivity() {
             .setIcon(R.drawable.ic_baseline_logout_24)
         menu.getItem(0).isChecked = true
         binding.navigationView.invalidate()
+    }
+
+    private fun observeNotifications() {
+        Events.newNotification.observe(this) {
+            MaterialAlertDialogBuilder(this@MainActivity)
+                .setTitle(it.title)
+                .setMessage(it.description)
+                .setNeutralButton("Ok") { _, _ -> }
+                .show()
+        }
     }
 }
