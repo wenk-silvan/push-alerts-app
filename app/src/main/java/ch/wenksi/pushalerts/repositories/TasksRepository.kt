@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.wenksi.pushalerts.Constants
+import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState

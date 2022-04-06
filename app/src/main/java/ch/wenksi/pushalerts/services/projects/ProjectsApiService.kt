@@ -1,6 +1,6 @@
 package ch.wenksi.pushalerts.services.projects
 
-import ch.wenksi.pushalerts.Constants
+import ch.wenksi.pushalerts.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

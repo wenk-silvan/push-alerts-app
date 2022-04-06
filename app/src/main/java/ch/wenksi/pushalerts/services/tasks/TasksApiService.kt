@@ -1,6 +1,6 @@
 package ch.wenksi.pushalerts.services.tasks
 
-import ch.wenksi.pushalerts.Constants
+import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.models.TaskState
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

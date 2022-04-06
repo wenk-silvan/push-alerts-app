@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.wenksi.pushalerts.Constants
+import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.services.projects.ProjectsApiService

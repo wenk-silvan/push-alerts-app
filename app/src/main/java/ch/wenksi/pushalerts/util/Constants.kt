@@ -1,4 +1,4 @@
-package ch.wenksi.pushalerts
+package ch.wenksi.pushalerts.util
 
 object Constants {
     const val apiTimeout: Long = 5_000

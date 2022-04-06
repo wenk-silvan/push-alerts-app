@@ -1,8 +1,7 @@
 package ch.wenksi.pushalerts.services.tasks
 
-import ch.wenksi.pushalerts.Constants
+import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.models.Task
-import ch.wenksi.pushalerts.models.TaskState
 import retrofit2.http.*
 
 interface TasksService {
