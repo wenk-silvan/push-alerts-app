@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity() {
                 .setMessage(it.description)
                 .setNeutralButton("Ok") { _, _ -> }
                 .show()
+            tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
         }
     }
 }
