@@ -125,7 +125,7 @@ class TaskDetailsFragment : Fragment() {
         binding.tvTaskCreated.text = task.createdAtFormatted()
         binding.tvTaskDescription.text = task.description
         binding.tvTaskName.text = task.title
-        binding.tvTaskPayload.text = task.payload
+        binding.tvTaskPayload.text = if(task.payload == "") "No additional information" else task.payload
         binding.tvTaskSource.text = task.source
         binding.tvTaskUser.text = task.userEmail
         binding.tvTaskUser.paintFlags = binding.tvTaskUser.paintFlags or Paint.UNDERLINE_TEXT_FLAG
