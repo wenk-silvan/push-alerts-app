@@ -23,4 +23,7 @@
     <string name="tvTaskStatus_Rejected">Rejected by: </string>
     <string name="tvTaskStatus_Done">Done by: </string>
     <string name="errorTaskDetailsMissingArguments">Error while opening task details.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ivCompanyLogo">The company logo</string>
 </resources>

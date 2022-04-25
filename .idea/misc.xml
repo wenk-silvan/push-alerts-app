@@ -5,12 +5,14 @@
       <map>
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/divider_white.xml" value="0.1575" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/drawable/schindlerlogo.xml" value="0.3205" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1.xml" value="0.1" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/font/gothic_a1_light.xml" value="0.28425925925925927" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/content_main.xml" value="0.17864583333333334" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragement_about.xml" value="0.20516304347826086" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_about.xml" value="0.1606962663975782" />
+        <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_closed.xml" value="0.1671875" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_tab_open.xml" value="0.1671875" />
         <entry key="..\:/Development/hslu/baa/PushAlertsApp/app/src/main/res/layout/fragment_task_details.xml" value="0.33" />

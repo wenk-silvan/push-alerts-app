@@ -18,9 +18,6 @@ import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.FirebaseApp
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
-import okhttp3.internal.wait
 
 // 0 - 1000 is reserved for project menu items.
 const val MENU_ID_LOGOUT = 1001
