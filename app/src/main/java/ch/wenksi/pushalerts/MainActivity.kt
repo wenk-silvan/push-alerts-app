@@ -79,9 +79,7 @@ class MainActivity : AppCompatActivity() {
         when (menuItem.itemId) {
             R.id.AboutFragment -> findNavController(R.id.nav_host_fragment_content_main)
                 .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
-            MENU_ID_LOGOUT -> {
-                // TODO: Log out
-            }
+            MENU_ID_LOGOUT -> logout()
             else -> {
                 val project = projectsViewModel.getProjectByMenuId(menuItem.itemId)
                 if (project != null) {
@@ -117,5 +115,10 @@ class MainActivity : AppCompatActivity() {
                 .show()
             tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
         }
+    }
+
+    private fun logout() {
+        SessionManager.clear()
+        finish()
     }
 }
