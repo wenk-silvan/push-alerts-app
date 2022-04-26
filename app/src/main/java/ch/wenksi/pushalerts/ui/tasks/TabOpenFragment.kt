@@ -16,9 +16,10 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTabOpenBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
+import ch.wenksi.pushalerts.services.login.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
+import ch.wenksi.pushalerts.viewModels.UserViewModel
 import kotlin.collections.ArrayList
 
 class TabOpenFragment : Fragment() {
@@ -26,7 +27,7 @@ class TabOpenFragment : Fragment() {
     private val binding get() = _binding!!
     private val tasksViewModel: TasksViewModel by activityViewModels()
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: OpenTasksAdapter
 
@@ -60,8 +61,14 @@ class TabOpenFragment : Fragment() {
     private fun initRecyclerView() {
         recyclerViewAdapter = OpenTasksAdapter(
             tasks,
-            authenticationViewModel.user,
-            { t: Task -> tasksViewModel.assignTask(t, authenticationViewModel.user) },
+            SessionManager.requireToken().email,
+            { t: Task ->
+                tasksViewModel.assignTask(
+                    t,
+                    SessionManager.requireToken().uuid,
+                    SessionManager.requireToken().email
+                )
+            },
             { t: Task -> tasksViewModel.finishTask(t) },
             { t: Task -> tasksViewModel.rejectTask(t) },
             { t: Task -> onClickCard(t) }
@@ -96,7 +103,9 @@ class TabOpenFragment : Fragment() {
         var tasks = tasksViewModel.getOpenTasks(tasksViewModel.tasks.value!!)
 
         if (binding.chipFilterMine.isChecked) {
-            tasks = tasksViewModel.getTasksOfUser(authenticationViewModel.user.email, tasks)
+            tasks = tasksViewModel.getTasksOfUser(
+                SessionManager.requireToken().email, tasks
+            )
         }
         if (binding.chipFilterUnassigned.isChecked) {
             tasks = tasksViewModel.getTasks(TaskState.Opened, tasks)

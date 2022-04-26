@@ -46,9 +46,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun hasActiveSession(): Boolean {
-        val token = SessionManager.getToken()
-        return token != null
-                && token.expiryUtc > Date.from(Instant.now())
+        return SessionManager.hasValidToken()
     }
 
     private fun navigateToHomeScreen() {
@@ -64,7 +62,6 @@ class LoginFragment : Fragment() {
     private fun observeLogin() {
         userViewModel.token.observe(viewLifecycleOwner) {
             SessionManager.storeToken(it)
-            Snackbar.make(binding.root, "Logged in user", Snackbar.LENGTH_SHORT).show()
             navigateToHomeScreen()
         }
         userViewModel.error.observe(viewLifecycleOwner) {

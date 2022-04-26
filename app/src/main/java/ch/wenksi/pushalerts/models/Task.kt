@@ -20,7 +20,7 @@ class Task(
     var userEmail: String? = null,
     var status: TaskState = TaskState.Opened
 ) {
-    fun assign(user: User): Task {
+    fun assign(email: String): Task {
         when {
             this.status != TaskState.Opened -> throw TaskStateError("Can't assign user if task state is not Opened.")
             this.userEmail != null -> throw TaskStateError("Can't assign user if task already contains another user.")
@@ -28,7 +28,7 @@ class Task(
             else -> {
                 this.status = TaskState.Assigned
                 this.assignedAt = Timestamp.from(Instant.now())
-                this.userEmail = user.email
+                this.userEmail = email
             }
         }
         return this

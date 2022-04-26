@@ -8,7 +8,6 @@ import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.models.User
 import ch.wenksi.pushalerts.services.tasks.TasksApiService
 import ch.wenksi.pushalerts.services.tasks.TasksService
 import com.google.gson.GsonBuilder
@@ -55,10 +54,10 @@ class TasksRepository() {
         }
     }
 
-    suspend fun assignTask(task: Task, user: User) {
+    suspend fun assignTask(task: Task, userUUID: UUID) {
         try {
             withTimeout(Constants.apiTimeout) {
-                tasksService.assignTask(task.uuid.toString(), user.uuid.toString())
+                tasksService.assignTask(task.uuid.toString(), userUUID.toString())
             }
             _taskUpdate.value = true
         } catch (e: Exception) {

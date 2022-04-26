@@ -11,9 +11,10 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTaskDetailsBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.viewModels.AuthenticationViewModel
+import ch.wenksi.pushalerts.services.login.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
+import ch.wenksi.pushalerts.viewModels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 
 const val BUNDLE_TASK_ID = "bundle_task_uuid"
@@ -23,7 +24,7 @@ class TaskDetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private val tasksViewModel: TasksViewModel by activityViewModels()
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private val authenticationViewModel: AuthenticationViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +76,11 @@ class TaskDetailsFragment : Fragment() {
 
     private fun setupClickListeners(task: Task) {
         binding.btnAssignTask.setOnClickListener {
-            tasksViewModel.assignTask(task, authenticationViewModel.user)
+            tasksViewModel.assignTask(
+                task,
+                SessionManager.requireToken().uuid,
+                SessionManager.requireToken().email
+            )
         }
         binding.btnFinishTask.setOnClickListener { tasksViewModel.finishTask(task) }
         binding.btnRejectTask.setOnClickListener { tasksViewModel.rejectTask(task) }
@@ -85,7 +90,7 @@ class TaskDetailsFragment : Fragment() {
         when (task.status) {
             TaskState.Opened -> setupElementVisibilitiesTaskStateOpened()
             TaskState.Assigned -> setupElementVisibilitiesTaskStateAssigned(
-                authenticationViewModel.isAssignedToMe(task)
+                SessionManager.requireToken().email == task.userEmail
             )
             TaskState.Finished, TaskState.Rejected -> setupElementVisibilitiesTaskStateDoneAndRejected()
         }
@@ -125,7 +130,8 @@ class TaskDetailsFragment : Fragment() {
         binding.tvTaskCreated.text = task.createdAtFormatted()
         binding.tvTaskDescription.text = task.description
         binding.tvTaskName.text = task.title
-        binding.tvTaskPayload.text = if(task.payload == "") "No additional information" else task.payload
+        binding.tvTaskPayload.text =
+            if (task.payload == "") "No additional information" else task.payload
         binding.tvTaskSource.text = task.source
         binding.tvTaskUser.text = task.userEmail
         binding.tvTaskUser.paintFlags = binding.tvTaskUser.paintFlags or Paint.UNDERLINE_TEXT_FLAG

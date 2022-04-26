@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.models.User
 import com.google.common.truth.Truth.assertThat
 import io.mockk.mockk
 import org.junit.Assert.assertThrows

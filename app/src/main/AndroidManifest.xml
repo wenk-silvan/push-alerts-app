@@ -17,7 +17,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.PushAlerts.NoActionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.PushAlerts.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustNothing" />
 
         <service
             android:name=".services.notifications.AppFirebaseMessagingService"

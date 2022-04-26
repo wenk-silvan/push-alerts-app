@@ -9,7 +9,6 @@ import ch.wenksi.pushalerts.errors.TaskUpdateError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.models.User
 import ch.wenksi.pushalerts.repositories.TasksRepository
 import kotlinx.coroutines.launch
 import java.util.*
@@ -21,11 +20,11 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     var tasks: LiveData<List<Task>> = repository.tasks
     var taskUpdate: LiveData<Boolean> = repository.taskUpdate
 
-    fun assignTask(task: Task, user: User) {
-        task.assign(user)
+    fun assignTask(task: Task, userUUID: UUID, userEmail: String) {
+        task.assign(userEmail)
         viewModelScope.launch {
             try {
-                repository.assignTask(task, user)
+                repository.assignTask(task, userUUID)
             } catch (error: TaskUpdateError) {
                 Log.e("Error while assigning task with uuid ${task.uuid}", error.message.toString())
             }

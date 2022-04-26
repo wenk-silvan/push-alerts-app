@@ -10,4 +10,6 @@ object Constants {
     // Shared Preferences Keys
     const val PREFS_TOKEN_VALUE = "TOKEN_VALUE"
     const val PREFS_TOKEN_EXPIRY = "TOKEN_EXPIRY"
+    const val PREFS_TOKEN_EMAIL = "TOKEN_EMAIL"
+    const val PREFS_TOKEN_UUID = "TOKEN_UUID"
 }

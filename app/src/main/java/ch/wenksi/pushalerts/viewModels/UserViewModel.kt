@@ -7,9 +7,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import ch.wenksi.pushalerts.errors.AuthenticationError
 import ch.wenksi.pushalerts.models.Credentials
+import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.Token
 import ch.wenksi.pushalerts.repositories.UserRepository
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
@@ -28,5 +30,12 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
                 Log.e("LOGIN", error.message.toString())
             }
         }
+    }
+
+    fun isAssignedToMe(task: Task): Boolean {
+        if (token.value == null) {
+            throw Error("Token should not be null here.")
+        }
+        return task.userEmail == token.value!!.email
     }
 }

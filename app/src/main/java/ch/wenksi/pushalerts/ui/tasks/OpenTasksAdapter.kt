@@ -11,11 +11,10 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.ItemTaskOpenBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.models.User
 
 class OpenTasksAdapter(
     private val tasks: List<Task>,
-    private val authenticatedUser: User,
+    private val email: String,
     val onClickBtnAssign: (Task) -> Unit,
     val onClickBtnClose: (Task) -> Unit,
     val onClickBtnReject: (Task) -> Unit,
@@ -97,6 +96,6 @@ class OpenTasksAdapter(
     }
 
     private fun assignedToMe(task: Task): Boolean {
-        return task.userEmail == authenticatedUser.email
+        return task.userEmail == email
     }
 }

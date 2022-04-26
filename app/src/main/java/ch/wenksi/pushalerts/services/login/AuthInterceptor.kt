@@ -1,7 +1,5 @@
 package ch.wenksi.pushalerts.services.login
 
-import android.content.Context
-import ch.wenksi.pushalerts.util.Constants
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Request
@@ -32,7 +30,7 @@ class AuthInterceptor : Interceptor {
     }
 
     private fun addTokenToRequest(request: Request): Request {
-        val apiToken: String? = SessionManager.getToken()?.value
+        val apiToken: String? = SessionManager.requireToken()?.value
 
         if (apiToken.isNullOrBlank()) {
             throw InvalidKeyException("No API key provided")

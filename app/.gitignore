@@ -4,4 +4,5 @@
 /build/reports
 /build/test-results
 /build/tmp
+/build/outputs
 google-services.json

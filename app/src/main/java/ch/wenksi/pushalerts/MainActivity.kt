@@ -18,6 +18,7 @@ import ch.wenksi.pushalerts.util.Events
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 
 // 0 - 1000 is reserved for project menu items.
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         projectsViewModel.getProjects()
         observeNotifications()
         observeProjects()
+        Snackbar.make(binding.root, "Logged in as ${SessionManager.requireToken().email}", Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
