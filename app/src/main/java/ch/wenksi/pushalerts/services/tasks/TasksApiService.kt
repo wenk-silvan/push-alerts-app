@@ -2,6 +2,7 @@ package ch.wenksi.pushalerts.services.tasks
 
 import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.models.TaskState
+import ch.wenksi.pushalerts.services.login.AuthInterceptor
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,6 +13,7 @@ class TasksApiService {
     companion object {
         fun createApi(): TasksService {
             val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(AuthInterceptor())
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
 

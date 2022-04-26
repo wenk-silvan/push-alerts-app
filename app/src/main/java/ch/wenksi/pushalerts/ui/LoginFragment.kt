@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentLoginBinding
+import ch.wenksi.pushalerts.services.login.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -56,7 +57,7 @@ class LoginFragment : Fragment() {
 
     private fun observeLogin() {
         userViewModel.token.observe(viewLifecycleOwner) {
-            // Store token
+            SessionManager.storeToken(it)
             Snackbar.make(binding.root, "Logged in user", Snackbar.LENGTH_SHORT).show()
             navigateToHomeScreen()
         }

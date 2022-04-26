@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import ch.wenksi.pushalerts.models.Project
+import ch.wenksi.pushalerts.services.login.SessionManager
 import ch.wenksi.pushalerts.services.notifications.AppFirebaseMessagingService
 import ch.wenksi.pushalerts.util.Events
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
         binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
+        SessionManager.init(application)
         projectsViewModel.getProjects()
         observeNotifications()
         observeProjects()

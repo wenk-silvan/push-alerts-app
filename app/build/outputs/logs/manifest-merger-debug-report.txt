@@ -43,6 +43,7 @@ MERGED from [androidx.fragment:fragment:1.4.1] C:\Users\silva\.gradle\caches\tra
 MERGED from [androidx.core:core-ktx:1.7.0] C:\Users\silva\.gradle\caches\transforms-3\b1354bede2598e7e34b83b2d0073bde0\transformed\jetified-core-ktx-1.7.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\silva\.gradle\caches\transforms-3\234b7f35910d06a2e36f0ccaa8939769\transformed\swiperefreshlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\9768882d60a2684f303bb2ab52ab1971\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.security:security-crypto-ktx:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\1cebc046ea55bc826bb6beaca88d8465\transformed\jetified-security-crypto-ktx-1.1.0-alpha03\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\silva\.gradle\caches\transforms-3\fc55c76a69a58aed62d1ca452dccae12\transformed\jetified-activity-1.2.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\silva\.gradle\caches\transforms-3\5078687ecc2cf791de737f8bb68a3376\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\62709b5ebd04d47aed8a308c42e7367c\transformed\jetified-emoji2-views-helper-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -68,6 +69,7 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\silva\.gradl
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\b27e90bf91f1f7a5531616a8b8d352b9\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\a6c0cae92d1e6467cc9bedc29dde6221\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\silva\.gradle\caches\transforms-3\3884dc5e40b6b172d29fa2f1be5d2368\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\9883dac290a38b527e36bfa9b15a5300\transformed\jetified-security-crypto-1.1.0-alpha03\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\d074de2e5a281f3bc5a5765c8ca9d730\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\silva\.gradle\caches\transforms-3\02c7adc57a98c3c8ffc7eeb7164a50e3\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:17:1-37:12
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\5aa52f2a12735ac4f0d99986e8355687\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:17:1-33:12
@@ -292,6 +294,8 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\silv
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] C:\Users\silva\.gradle\caches\transforms-3\234b7f35910d06a2e36f0ccaa8939769\transformed\swiperefreshlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\9768882d60a2684f303bb2ab52ab1971\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\9768882d60a2684f303bb2ab52ab1971\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto-ktx:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\1cebc046ea55bc826bb6beaca88d8465\transformed\jetified-security-crypto-ktx-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto-ktx:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\1cebc046ea55bc826bb6beaca88d8465\transformed\jetified-security-crypto-ktx-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\silva\.gradle\caches\transforms-3\fc55c76a69a58aed62d1ca452dccae12\transformed\jetified-activity-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\silva\.gradle\caches\transforms-3\fc55c76a69a58aed62d1ca452dccae12\transformed\jetified-activity-1.2.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\silva\.gradle\caches\transforms-3\5078687ecc2cf791de737f8bb68a3376\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:20:5-22:41
@@ -342,6 +346,8 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\silva\.gradle\ca
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\a6c0cae92d1e6467cc9bedc29dde6221\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\silva\.gradle\caches\transforms-3\3884dc5e40b6b172d29fa2f1be5d2368\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\silva\.gradle\caches\transforms-3\3884dc5e40b6b172d29fa2f1be5d2368\transformed\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.security:security-crypto:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\9883dac290a38b527e36bfa9b15a5300\transformed\jetified-security-crypto-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto:1.1.0-alpha03] C:\Users\silva\.gradle\caches\transforms-3\9883dac290a38b527e36bfa9b15a5300\transformed\jetified-security-crypto-1.1.0-alpha03\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\d074de2e5a281f3bc5a5765c8ca9d730\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\silva\.gradle\caches\transforms-3\d074de2e5a281f3bc5a5765c8ca9d730\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\silva\.gradle\caches\transforms-3\02c7adc57a98c3c8ffc7eeb7164a50e3\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:21:5-23:41

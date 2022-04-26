@@ -1,5 +1,6 @@
 package ch.wenksi.pushalerts.services.projects
 
+import ch.wenksi.pushalerts.services.login.AuthInterceptor
 import ch.wenksi.pushalerts.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,6 +11,7 @@ class ProjectsApiService {
     companion object {
         fun createApi(): ProjectsService {
             val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(AuthInterceptor())
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
 
