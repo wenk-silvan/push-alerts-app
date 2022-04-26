@@ -1,5 +1,6 @@
 package ch.wenksi.pushalerts.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,12 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import ch.wenksi.pushalerts.MainActivity
 import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentLoginBinding
 import ch.wenksi.pushalerts.services.login.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
+import java.time.Instant
+import java.util.*
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -42,11 +46,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun hasActiveSession(): Boolean {
-        return false
+        val token = SessionManager.getToken()
+        return token != null
+                && token.expiryUtc > Date.from(Instant.now())
     }
 
     private fun navigateToHomeScreen() {
-        findNavController().navigate(R.id.action_LoginFragment_to_MainFragment)
+        startActivity(Intent(requireContext(), MainActivity::class.java))
     }
 
     private fun onLoginTapped() {
