@@ -16,16 +16,16 @@ import kotlin.NoSuchElementException
 class TasksViewModelTest {
     private lateinit var viewModel: TasksViewModel
     private lateinit var tasks: List<Task>
-    private lateinit var alice: User
-    private lateinit var bob: User
+    private lateinit var alice: String
+    private lateinit var bob: String
     private lateinit var randomUUID: UUID
 
     @Before
     fun setUp() {
         val applicationMock = mockk<Application>()
         viewModel = TasksViewModel(applicationMock)
-        alice = User(email = "alice@company.com")
-        bob = User(email = "bob@company.com")
+        alice = "alice@company.com"
+        bob = "bob@company.com"
         randomUUID = UUID.randomUUID()
         tasks = listOf(
             // Unassigned Tasks
@@ -116,7 +116,7 @@ class TasksViewModelTest {
 
     @Test
     fun `Get tasks of user, returns tasks of Alice`() {
-        val tasks = viewModel.getTasksOfUser(alice.email, tasks)
+        val tasks = viewModel.getTasksOfUser(alice, tasks)
         assertThat(tasks).hasSize(2)
         assertThat(tasks).contains(this.tasks.first { t -> t.title == "C" })
         assertThat(tasks).contains(this.tasks.first { t -> t.title == "E" })
@@ -124,7 +124,7 @@ class TasksViewModelTest {
 
     @Test
     fun `Get tasks of user, returns tasks of Bob`() {
-        val tasks = viewModel.getTasksOfUser(bob.email, tasks)
+        val tasks = viewModel.getTasksOfUser(bob, tasks)
         assertThat(tasks).hasSize(4)
         assertThat(tasks).contains(this.tasks.first { t -> t.title == "D" })
         assertThat(tasks).contains(this.tasks.first { t -> t.title == "F" })
@@ -134,8 +134,8 @@ class TasksViewModelTest {
 
     @Test
     fun `Get tasks of user, returns tasks of Charlie`() {
-        val charlie = User(email = "charlie@company.com")
-        val tasks = viewModel.getTasksOfUser(charlie.email, tasks)
+        val charlie = "charlie@company.com"
+        val tasks = viewModel.getTasksOfUser(charlie, tasks)
         assertThat(tasks).isEmpty()
     }
 

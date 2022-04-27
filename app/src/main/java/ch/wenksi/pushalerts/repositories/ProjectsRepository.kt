@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
+import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.services.projects.ProjectsApiService
 import ch.wenksi.pushalerts.services.projects.ProjectsService
 import com.google.gson.GsonBuilder
@@ -20,8 +21,12 @@ private const val jsonFileName = "projects.json"
 class ProjectsRepository() {
     private val projectsService: ProjectsService = ProjectsApiService.createApi()
     private val _projects: MutableLiveData<List<Project>> = MutableLiveData()
+    private val _error: MutableLiveData<String> = MutableLiveData()
+    private val _logoutRequest: MutableLiveData<Boolean> = MutableLiveData()
 
     val projects: LiveData<List<Project>> get() = _projects
+    val error: LiveData<String> get() = _error
+    val logoutRequest: LiveData<Boolean> get() = _logoutRequest
 
     suspend fun getProjectsFromJson(context: Context) {
         try {
@@ -32,11 +37,9 @@ class ProjectsRepository() {
             val listProjectType = object : TypeToken<List<Project>>() {}.type
             var tempProjects: List<Project> = gson.fromJson(jsonString, listProjectType)
             _projects.value = tempProjects
-        }
-        catch (e: IOException) {
+        } catch (e: IOException) {
             throw ProjectsRetrievalError("Can't open json file: \n${e.message}")
-        }
-        catch (e: Exception) {
+        } catch (e: Exception) {
             throw ProjectsRetrievalError("Error while fetching projects from json file: \n${e.message}")
         }
     }
@@ -48,6 +51,8 @@ class ProjectsRepository() {
             }
             _projects.value = result
         } catch (e: Exception) {
+            if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
+            _error.value = "Error while closing tasks"
             throw ProjectsRetrievalError("Error while fetching projects from web server: \n${e.message}")
         }
     }

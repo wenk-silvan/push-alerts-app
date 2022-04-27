@@ -19,6 +19,8 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     var tasks: LiveData<List<Task>> = repository.tasks
     var taskUpdate: LiveData<Boolean> = repository.taskUpdate
+    var error: LiveData<String> = repository.error
+    var logoutRequest: LiveData<Boolean> = repository.logoutRequest
 
     fun assignTask(task: Task, userUUID: UUID, userEmail: String) {
         task.assign(userEmail)

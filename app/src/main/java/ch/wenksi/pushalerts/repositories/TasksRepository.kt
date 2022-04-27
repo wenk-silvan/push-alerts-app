@@ -4,12 +4,13 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
+import ch.wenksi.pushalerts.models.Token
 import ch.wenksi.pushalerts.services.tasks.TasksApiService
 import ch.wenksi.pushalerts.services.tasks.TasksService
+import ch.wenksi.pushalerts.util.Constants
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
@@ -23,9 +24,13 @@ class TasksRepository() {
     private val tasksService: TasksService = TasksApiService.createApi()
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData()
     private val _taskUpdate: MutableLiveData<Boolean> = MutableLiveData()
+    private val _error: MutableLiveData<String> = MutableLiveData()
+    private val _logoutRequest: MutableLiveData<Boolean> = MutableLiveData()
 
     val tasks: LiveData<List<Task>> get() = _tasks
     val taskUpdate: LiveData<Boolean> get() = _taskUpdate
+    val error: LiveData<String> get() = _error
+    val logoutRequest: LiveData<Boolean> get() = _logoutRequest
 
     suspend fun getTasksFromJson(context: Context) {
         try {
@@ -50,6 +55,8 @@ class TasksRepository() {
             }
             _tasks.value = result
         } catch (e: Exception) {
+            if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
+            _error.value = "Error while fetching tasks"
             throw TasksRetrievalError("Error while fetching tasks from web server: \n${e.message}")
         }
     }
@@ -61,6 +68,8 @@ class TasksRepository() {
             }
             _taskUpdate.value = true
         } catch (e: Exception) {
+            if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
+            _error.value = "Error while assigning tasks"
             throw TasksRetrievalError("Error while assigning task with uuid ${task.uuid}: \n${e.message}")
         }
     }
@@ -72,6 +81,8 @@ class TasksRepository() {
             }
             _taskUpdate.value = true
         } catch (e: Exception) {
+            if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
+            _error.value = "Error while closing tasks"
             throw TasksRetrievalError("Error while closing task with uuid ${taskUUID}: \n${e.message}")
         }
     }

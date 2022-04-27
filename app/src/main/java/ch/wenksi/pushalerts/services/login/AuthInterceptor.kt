@@ -30,7 +30,7 @@ class AuthInterceptor : Interceptor {
     }
 
     private fun addTokenToRequest(request: Request): Request {
-        val apiToken: String? = SessionManager.requireToken()?.value
+        val apiToken: String? = SessionManager.requireToken().value
 
         if (apiToken.isNullOrBlank()) {
             throw InvalidKeyException("No API key provided")

@@ -43,8 +43,14 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
         projectsViewModel.getProjects()
         observeNotifications()
+        observeErrors()
+        observeLogoutRequest()
         observeProjects()
-        Snackbar.make(binding.root, "Logged in as ${SessionManager.requireToken().email}", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            binding.root,
+            "Logged in as ${SessionManager.requireToken().email}",
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -63,15 +69,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return NavigationUI.navigateUp(navController, binding.drawerLayout)
-    }
-
-    private fun observeProjects() {
-        projectsViewModel.projects.observe(this) {
-            projects.clear()
-            projects.addAll(it)
-            addMenuItemsForProjects()
-            AppFirebaseMessagingService.subscribeToNotifications(projects)
-        }
     }
 
     private fun onClickMenuItem(menuItem: MenuItem): Boolean {
@@ -108,6 +105,15 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.invalidate()
     }
 
+    private fun observeProjects() {
+        projectsViewModel.projects.observe(this) {
+            projects.clear()
+            projects.addAll(it)
+            addMenuItemsForProjects()
+            AppFirebaseMessagingService.subscribeToNotifications(projects)
+        }
+    }
+
     private fun observeNotifications() {
         Events.newNotification.observe(this) {
             MaterialAlertDialogBuilder(this@MainActivity)
@@ -116,6 +122,24 @@ class MainActivity : AppCompatActivity() {
                 .setNeutralButton("Ok") { _, _ -> }
                 .show()
             tasksViewModel.getTasks(projectsViewModel.selectedProjectUUID!!)
+        }
+    }
+
+    private fun observeErrors() {
+        tasksViewModel.error.observe(this) {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+        }
+        projectsViewModel.error.observe(this) {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun observeLogoutRequest() {
+        tasksViewModel.logoutRequest.observe(this) {
+            logout()
+        }
+        projectsViewModel.logoutRequest.observe(this) {
+            logout()
         }
     }
 

@@ -21,6 +21,8 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
     private val repository = ProjectsRepository()
 
     var projects: LiveData<List<Project>> = repository.projects
+    var error: LiveData<String> = repository.error
+    var logoutRequest: LiveData<Boolean> = repository.logoutRequest
 
     fun getProjects() {
         viewModelScope.launch {

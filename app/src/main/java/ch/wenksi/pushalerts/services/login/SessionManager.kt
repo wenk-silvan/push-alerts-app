@@ -86,6 +86,7 @@ abstract class SessionManager {
          * Empties the local storage aka. EncryptedSharedPreferences.
          */
         fun clear() {
+            tokenCached = null
             sharedPreferences!!.edit().clear().apply()
         }
 
