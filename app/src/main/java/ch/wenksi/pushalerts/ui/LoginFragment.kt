@@ -56,6 +56,7 @@ class LoginFragment : Fragment() {
     private fun onLoginTapped() {
         val email = binding.tilEmailAddress.editText?.text.toString().trim()
         val password = binding.tilPassword.editText?.text.toString().trim()
+        binding.tilPassword.editText?.setText("")
         userViewModel.login(email, password)
     }
 
