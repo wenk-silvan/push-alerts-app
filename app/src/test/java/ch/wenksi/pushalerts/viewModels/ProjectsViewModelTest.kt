@@ -28,14 +28,14 @@ class ProjectsViewModelTest {
 
     @Test
     fun `Get project by menu id, found existing`() {
-        val project = viewModel.getProjectByMenuId(1)
+        val project = viewModel.getProject(1)
         assertThat(project).isIn(projects)
     }
 
     @Test
     fun `Get project by menu id, found none`() {
         assertThrows(NoSuchElementException::class.java) {
-            viewModel.getProjectByMenuId(-1)
+            viewModel.getProject(-1)
         }
     }
 }

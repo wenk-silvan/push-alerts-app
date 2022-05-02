@@ -26,5 +26,6 @@
         android:id="@+id/AboutFragment"
         android:name="ch.wenksi.pushalerts.ui.AboutFragment"
         android:label="About"
+        app:popUpToInclusive="true"
         tools:layout="@layout/fragment_about" />
 </navigation>

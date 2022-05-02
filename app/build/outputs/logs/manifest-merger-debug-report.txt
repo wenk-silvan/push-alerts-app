@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
 MERGED from [androidx.databinding:viewbinding:7.1.2] C:\Users\silva\.gradle\caches\transforms-3\8170665776543cc41f131b64e5b057b4\transformed\jetified-viewbinding-7.1.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment-ktx:2.4.1] C:\Users\silva\.gradle\caches\transforms-3\74473b6db36de2bb375500aca7af51e6\transformed\navigation-fragment-ktx-2.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.navigation:navigation-fragment:2.4.1] C:\Users\silva\.gradle\caches\transforms-3\3a128c7e92b32bf79a485c4e2e07507f\transformed\navigation-fragment-2.4.1\AndroidManifest.xml:17:1-24:12
@@ -87,20 +87,20 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.2] C:\Users\
 MERGED from [com.google.android.datatransport:transport-api:3.0.0] C:\Users\silva\.gradle\caches\transforms-3\42abc1944e94bd43da3d476d595b6787\transformed\jetified-transport-api-3.0.0\AndroidManifest.xml:15:1-22:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\silva\.gradle\caches\transforms-3\8af9105ddf1a8fb8d459ade857c49ff6\transformed\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\silva\.gradle\caches\transforms-3\8e1328e276642d926de080e2bb5b15f7\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
 	package
 		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:1-49:12
 		INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:2:11-69
@@ -115,7 +115,7 @@ MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.2] C:\Us
 	android:name
 		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:7:5-46:19
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:7:5-47:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\1589480236952ac016a17e5ce1114346\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0] C:\Users\silva\.gradle\caches\transforms-3\1589480236952ac016a17e5ce1114346\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.material:material:1.5.0] C:\Users\silva\.gradle\caches\transforms-3\fbb2046ac5120fd294bf10a413586e47\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
@@ -163,7 +163,7 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.2] C:\Users\
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] C:\Users\silva\.gradle\caches\transforms-3\b62df86180bdd9198003ce8c180760ec\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
 		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:10:9-41
 	android:roundIcon
@@ -173,59 +173,61 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.2] C:\Users\
 	android:allowBackup
 		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:13:9-48
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:14:9-48
+	android:usesCleartextTraffic
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:12:9-44
 activity#ch.wenksi.pushalerts.AuthActivity
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:15:9-26:20
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:16:9-27:20
 	android:screenOrientation
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:18:13-49
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:19:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:20:13-56
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:21:13-56
 	android:exported
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:18:13-36
 	android:theme
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:19:13-64
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:20:13-64
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:17:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:22:17-69
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:22:25-66
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:25:27-74
 activity#ch.wenksi.pushalerts.MainActivity
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:28:9-33:59
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:29:9-34:59
 	android:screenOrientation
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:31:13-49
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:32:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:33:13-56
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:34:13-56
 	android:exported
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:30:13-36
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:31:13-36
 	android:theme
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:32:13-64
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:33:13-64
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:29:13-41
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:30:13-41
 service#ch.wenksi.pushalerts.services.notifications.AppFirebaseMessagingService
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:35:9-41:19
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:36:9-42:19
 	android:exported
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:37:13-37
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:38:13-37
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:36:13-79
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:37:13-79
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:38:13-40:29
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:39:13-41:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:39:17-78
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:40:17-78
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:39:25-75
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:40:25-75
 meta-data#preloaded_fonts
-ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:43:9-45:57
+ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:44:9-46:57
 	android:resource
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:45:13-54
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:46:13-54
 	android:name
-		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:44:13-43
+		ADDED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml:45:13-43
 uses-sdk
 INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Development\hslu\baa\PushAlertsApp\app\src\main\AndroidManifest.xml

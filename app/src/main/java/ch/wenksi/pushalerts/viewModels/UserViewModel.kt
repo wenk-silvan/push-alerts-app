@@ -31,11 +31,4 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-
-    fun isAssignedToMe(task: Task): Boolean {
-        if (token.value == null) {
-            throw Error("Token should not be null here.")
-        }
-        return task.userEmail == token.value!!.email
-    }
 }

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
             MENU_ID_LOGOUT -> logout()
             else -> {
-                val project = projectsViewModel.getProjectByMenuId(menuItem.itemId)
+                val project = projectsViewModel.getProject(menuItem.itemId)
                 if (project != null) {
                     projectsViewModel.selectedProjectUUID = project.uuid
                     tasksViewModel.getTasks(project.uuid)

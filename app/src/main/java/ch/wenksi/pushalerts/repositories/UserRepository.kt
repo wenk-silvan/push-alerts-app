@@ -7,12 +7,12 @@ import ch.wenksi.pushalerts.errors.AuthenticationError
 import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.models.Credentials
 import ch.wenksi.pushalerts.models.Token
-import ch.wenksi.pushalerts.services.login.LoginApiService
+import ch.wenksi.pushalerts.services.login.LoginServiceFactory
 import ch.wenksi.pushalerts.services.login.LoginService
 import kotlinx.coroutines.withTimeout
 
 class UserRepository() {
-    private val loginService: LoginService = LoginApiService.createApi()
+    private val loginService: LoginService = LoginServiceFactory.createApi()
     private val _token: MutableLiveData<Token> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()
 

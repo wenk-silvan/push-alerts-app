@@ -7,8 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
-import ch.wenksi.pushalerts.models.Task
-import ch.wenksi.pushalerts.services.projects.ProjectsApiService
+import ch.wenksi.pushalerts.services.projects.ProjectsServiceFactory
 import ch.wenksi.pushalerts.services.projects.ProjectsService
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
@@ -19,7 +18,7 @@ import java.io.IOException
 private const val jsonFileName = "projects.json"
 
 class ProjectsRepository() {
-    private val projectsService: ProjectsService = ProjectsApiService.createApi()
+    private val projectsService: ProjectsService = ProjectsServiceFactory.createApi()
     private val _projects: MutableLiveData<List<Project>> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()
     private val _logoutRequest: MutableLiveData<Boolean> = MutableLiveData()

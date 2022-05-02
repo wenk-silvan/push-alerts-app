@@ -7,8 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.models.Token
-import ch.wenksi.pushalerts.services.tasks.TasksApiService
+import ch.wenksi.pushalerts.services.tasks.TasksServiceFactory
 import ch.wenksi.pushalerts.services.tasks.TasksService
 import ch.wenksi.pushalerts.util.Constants
 import com.google.gson.GsonBuilder
@@ -21,7 +20,7 @@ import java.util.*
 private const val jsonFileName = "tasks.json"
 
 class TasksRepository() {
-    private val tasksService: TasksService = TasksApiService.createApi()
+    private val tasksService: TasksService = TasksServiceFactory.createApi()
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData()
     private val _taskUpdate: MutableLiveData<Boolean> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()

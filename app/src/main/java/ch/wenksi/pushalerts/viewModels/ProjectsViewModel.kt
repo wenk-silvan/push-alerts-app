@@ -34,7 +34,7 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun getProjectByMenuId(menuId: Int): Project? {
+    fun getProject(menuId: Int): Project? {
         return projects.value?.first() { p -> p.menuId == menuId }
     }
 }

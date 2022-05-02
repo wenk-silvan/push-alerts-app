@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class TasksApiService {
+class TasksServiceFactory {
     companion object {
         fun createApi(): TasksService {
             val okHttpClient = OkHttpClient.Builder()

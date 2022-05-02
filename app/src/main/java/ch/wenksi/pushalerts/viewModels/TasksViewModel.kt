@@ -55,16 +55,15 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getTasks(projectUuid: UUID) {
+    fun getTasks(projectUUID: UUID) {
         viewModelScope.launch {
             try {
-                repository.getTasksFromServer(projectUuid)
+                repository.getTasksFromServer(projectUUID)
             } catch (error: TasksRetrievalError) {
                 Log.e("Error while fetching tasks", error.message.toString())
             }
         }
     }
-
 
     fun getTasks(state: TaskState, tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.status == state }

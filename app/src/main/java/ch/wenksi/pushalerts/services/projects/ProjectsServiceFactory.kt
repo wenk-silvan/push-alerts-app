@@ -1,15 +1,17 @@
-package ch.wenksi.pushalerts.services.login
+package ch.wenksi.pushalerts.services.projects
 
+import ch.wenksi.pushalerts.services.login.AuthInterceptor
 import ch.wenksi.pushalerts.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class LoginApiService {
+class ProjectsServiceFactory {
     companion object {
-        fun createApi(): LoginService {
+        fun createApi(): ProjectsService {
             val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(AuthInterceptor())
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build()
 
@@ -18,7 +20,7 @@ class LoginApiService {
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(LoginService::class.java)
+                .create(ProjectsService::class.java)
         }
     }
 }
