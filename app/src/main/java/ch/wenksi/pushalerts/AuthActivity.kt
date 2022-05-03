@@ -3,8 +3,12 @@ package ch.wenksi.pushalerts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ch.wenksi.pushalerts.databinding.ActivityAuthBinding
-import ch.wenksi.pushalerts.services.login.SessionManager
+import ch.wenksi.pushalerts.services.auth.SessionManager
 
+/**
+ * This activity is launched on startup of the app. It contains the login screens and
+ * navigates to the MainActivity after login or if there is already an existing session.
+ */
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
 

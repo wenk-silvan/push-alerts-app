@@ -1,4 +1,4 @@
-package ch.wenksi.pushalerts.services.login
+package ch.wenksi.pushalerts.services.auth
 
 import okhttp3.Interceptor
 import okhttp3.Protocol
@@ -9,6 +9,10 @@ import java.io.IOException
 import java.security.InvalidKeyException
 import kotlin.jvm.Throws
 
+/**
+ * This class is used to intercept http requests before they are sent across the network.
+ * It reads the session token from the SessionManager and appends it to the request header.
+ */
 class AuthInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

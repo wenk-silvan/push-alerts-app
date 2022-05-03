@@ -15,6 +15,11 @@ import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.tabs.TabLayout
 import java.util.*
 
+/**
+ * Shows the home screen. This class initializes the tab view.
+ * Listens to projects live data and gets tasks when it is triggered
+ * Listens to taskUpdate live data and gets tasks when it is triggered
+ */
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!

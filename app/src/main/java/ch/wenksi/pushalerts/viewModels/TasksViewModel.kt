@@ -13,6 +13,9 @@ import ch.wenksi.pushalerts.repositories.TasksRepository
 import kotlinx.coroutines.launch
 import java.util.*
 
+/**
+ * ViewModel for task data to encapsulate this logic from the user interface (fragments).
+ */
 class TasksViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = TasksRepository()
@@ -22,6 +25,12 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     var error: LiveData<String> = repository.error
     var logoutRequest: LiveData<Boolean> = repository.logoutRequest
 
+    /**
+     * Assigns a task to the user using a TasksRepository
+     * @param task is the task
+     * @param userEmail is the email of the user that is assigned
+     * @param userUUID is the uuid of the user that is assigned
+     */
     fun assignTask(task: Task, userUUID: UUID, userEmail: String) {
         task.assign(userEmail)
         viewModelScope.launch {
@@ -33,6 +42,10 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * Rejects a task to the user using a TasksRepository
+     * @param task is the task
+     */
     fun rejectTask(task: Task) {
         task.reject()
         viewModelScope.launch {
@@ -44,6 +57,10 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * Finishes a task to the user using a TasksRepository
+     * @param task is the task
+     */
     fun finishTask(task: Task) {
         task.finish()
         viewModelScope.launch {
@@ -55,6 +72,11 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+
+    /**
+     * Gets the tasks of the project using a TasksRepository
+     * @param projectUUID is the uuid of the project
+     */
     fun getTasks(projectUUID: UUID) {
         viewModelScope.launch {
             try {
@@ -65,22 +87,37 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * Filters the given tasks by the given TaskState
+     */
     fun getTasks(state: TaskState, tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.status == state }
     }
 
+    /**
+     * Filers the given tasks to open tasks. These are TaskState.Opened and TaskState.Assigned
+     */
     fun getOpenTasks(tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.status == TaskState.Opened || t.status == TaskState.Assigned }
     }
 
+    /**
+     * Filers the given tasks to closed tasks. These are TaskState.Finished and TaskState.Rejected
+     */
     fun getClosedTasks(tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.status == TaskState.Finished || t.status == TaskState.Rejected }
     }
 
+    /**
+     * Filters the given tasks with the user email.
+     */
     fun getTasksOfUser(email: String, tasks: List<Task>): List<Task> {
         return tasks.filter { t -> t.userEmail == email }
     }
 
+    /**
+     * Filters the tasks with the task uuid.
+     */
     fun getTask(uuid: String?): Task {
         return tasks.value?.first { t -> t.uuid.toString() == uuid }
             ?: throw TasksRetrievalError("Task with uuid: ${uuid.toString()} not found.")

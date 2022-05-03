@@ -7,17 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import ch.wenksi.pushalerts.MainActivity
-import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentLoginBinding
-import ch.wenksi.pushalerts.services.login.SessionManager
-import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
+import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.viewModels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.time.Instant
-import java.util.*
 
+/**
+ * Shows the login screen.
+ * This class manages the session. If the there is an existing session the UI switches to the home screen.
+ * The LoginFragment observes the token live data of the UserViewModel and switches to the home screen when it is triggered.
+ */
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!

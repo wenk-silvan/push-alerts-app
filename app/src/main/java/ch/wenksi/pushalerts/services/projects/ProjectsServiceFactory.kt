@@ -1,6 +1,6 @@
 package ch.wenksi.pushalerts.services.projects
 
-import ch.wenksi.pushalerts.services.login.AuthInterceptor
+import ch.wenksi.pushalerts.services.auth.AuthInterceptor
 import ch.wenksi.pushalerts.util.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,6 +9,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ProjectsServiceFactory {
     companion object {
+        /**
+         * Configures and creates a new ProjectsService instance using the retrofit builder
+         */
         fun createApi(): ProjectsService {
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(AuthInterceptor())

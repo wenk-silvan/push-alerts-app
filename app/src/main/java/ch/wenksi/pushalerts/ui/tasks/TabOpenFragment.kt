@@ -16,12 +16,16 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTabOpenBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.services.login.SessionManager
+import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import ch.wenksi.pushalerts.viewModels.UserViewModel
 import kotlin.collections.ArrayList
 
+/**
+ * This class is initializes the RecyclerView for the list of open tasks including the swipe-to-refresh feature.
+ * It also sets up the chips to filter the open tasks.
+ */
 class TabOpenFragment : Fragment() {
     private var _binding: FragmentTabOpenBinding? = null
     private val binding get() = _binding!!

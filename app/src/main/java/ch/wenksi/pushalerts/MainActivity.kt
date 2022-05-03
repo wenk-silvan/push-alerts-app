@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import ch.wenksi.pushalerts.models.Project
-import ch.wenksi.pushalerts.services.login.SessionManager
+import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.services.notifications.AppFirebaseMessagingService
 import ch.wenksi.pushalerts.util.Events
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
@@ -24,6 +24,13 @@ import com.google.firebase.FirebaseApp
 // 0 - 1000 is reserved for project menu items.
 const val MENU_ID_LOGOUT = 1001
 
+/**
+ * This activity contains everything except the login screens.
+ * It configures the navigation drawer.
+ * Listens to the projects live data and dynamically sets the navigation drawer items for each project.
+ * Listens to the logoutRequest live data and finishes the activity.
+ * Listens to the newNotification live data and displays a dialog.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

@@ -11,7 +11,7 @@ import ch.wenksi.pushalerts.R
 import ch.wenksi.pushalerts.databinding.FragmentTaskDetailsBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.services.login.SessionManager
+import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import ch.wenksi.pushalerts.viewModels.UserViewModel
@@ -19,12 +19,14 @@ import com.google.android.material.snackbar.Snackbar
 
 const val BUNDLE_TASK_ID = "bundle_task_uuid"
 
+/**
+ * This class binds the data to the task details screen and changes element visibilities based on the data.
+ */
 class TaskDetailsFragment : Fragment() {
     private var _binding: FragmentTaskDetailsBinding? = null
     private val binding get() = _binding!!
     private val tasksViewModel: TasksViewModel by activityViewModels()
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

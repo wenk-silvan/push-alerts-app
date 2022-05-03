@@ -5,6 +5,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
+/**
+ * This class serves as an adapter for the TabView to select the correct fragment
+ */
 class TabLayoutFragmentAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle

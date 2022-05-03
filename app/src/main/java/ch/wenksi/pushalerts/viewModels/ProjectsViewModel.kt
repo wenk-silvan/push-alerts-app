@@ -15,6 +15,9 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
 
+/**
+ * ViewModel for project data to encapsulate this logic from the user interface (fragments).
+ */
 class ProjectsViewModel(application: Application) : AndroidViewModel(application) {
     var selectedProjectUUID: UUID? = null
 
@@ -24,6 +27,9 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
     var error: LiveData<String> = repository.error
     var logoutRequest: LiveData<Boolean> = repository.logoutRequest
 
+    /**
+     * Gets the projects using a ProjectsRepository
+     */
     fun getProjects() {
         viewModelScope.launch {
             try {
@@ -34,6 +40,10 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    /**
+     * Gets the project with the given menu id.
+     * @param menuId is the id of the menu entry in the navigation drawer
+     */
     fun getProject(menuId: Int): Project? {
         return projects.value?.first() { p -> p.menuId == menuId }
     }

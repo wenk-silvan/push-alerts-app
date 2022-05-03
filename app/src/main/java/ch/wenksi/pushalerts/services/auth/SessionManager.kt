@@ -1,4 +1,4 @@
-package ch.wenksi.pushalerts.services.login
+package ch.wenksi.pushalerts.services.auth
 
 import android.app.Application
 import android.content.SharedPreferences

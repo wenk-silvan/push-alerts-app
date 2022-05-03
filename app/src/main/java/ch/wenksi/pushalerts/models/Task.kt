@@ -8,6 +8,9 @@ import java.util.*
 
 const val DATE_PATTERN = "yyyy/MM/dd, hh:mm"
 
+/**
+ * This class represents a task
+ */
 class Task(
     val uuid: UUID = UUID.randomUUID(),
     val title: String = "",
@@ -20,6 +23,10 @@ class Task(
     var userEmail: String? = null,
     var status: TaskState = TaskState.Opened
 ) {
+    /**
+     * Sets the given email in the task, sets the assignedAt timestamp and updates the status to assigned.
+     * @throws TaskStateError when task has an invalid state or data
+     */
     fun assign(email: String): Task {
         when {
             this.status != TaskState.Opened -> throw TaskStateError("Can't assign user if task state is not Opened.")
@@ -34,6 +41,10 @@ class Task(
         return this
     }
 
+    /**
+     * Sets the closetAt timestamp and updates the status to finished.
+     * @throws TaskStateError when task has an invalid state or data
+     */
     fun finish(): Task {
         when {
             this.status != TaskState.Assigned -> throw TaskStateError("Can't close if task state is not Assigned.")
@@ -47,6 +58,11 @@ class Task(
         return this
     }
 
+
+    /**
+     * Sets the closetAt timestamp and updates the status to rejected.
+     * @throws TaskStateError when task has an invalid state or data
+     */
     fun reject(): Task {
         when {
             this.status != TaskState.Assigned -> throw TaskStateError("Can't reject if task state is not Assigned.")
@@ -60,7 +76,20 @@ class Task(
         return this
     }
 
+    /**
+     * Serves as a getter for the createdAt timestamp formatted using the DATE_PATTERN constant.
+     */
     fun createdAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(createdAt)
+
+
+    /**
+     * Serves as a getter for the assignedAt timestamp formatted using the DATE_PATTERN constant.
+     */
     fun assignedAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(assignedAt)
+
+
+    /**
+     * Serves as a getter for the closedAt timestamp formatted using the DATE_PATTERN constant.
+     */
     fun closedAtFormatted(): String = SimpleDateFormat(DATE_PATTERN).format(closedAt)
 }

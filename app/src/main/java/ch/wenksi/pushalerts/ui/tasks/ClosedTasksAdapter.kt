@@ -13,6 +13,10 @@ import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 import java.lang.Exception
 
+/**
+ * This class is used for the RecyclerView to display the list of closed tasks.
+ * It binds the task data to the a list entry.
+ */
 class ClosedTasksAdapter(
     private val tasks: List<Task>,
     val onClickCard: (Task) -> Unit,

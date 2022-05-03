@@ -2,7 +2,7 @@ package ch.wenksi.pushalerts.services.tasks
 
 import ch.wenksi.pushalerts.util.Constants
 import ch.wenksi.pushalerts.models.TaskState
-import ch.wenksi.pushalerts.services.login.AuthInterceptor
+import ch.wenksi.pushalerts.services.auth.AuthInterceptor
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,6 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class TasksServiceFactory {
     companion object {
+        /**
+         * Configures and creates a new TasksService instance using the retrofit builder
+         */
         fun createApi(): TasksService {
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(AuthInterceptor())

@@ -14,9 +14,11 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
 import java.io.IOException
 
-
 private const val jsonFileName = "projects.json"
 
+/**
+ * This class manages all operations related to the projects using the ProjectsService
+ */
 class ProjectsRepository() {
     private val projectsService: ProjectsService = ProjectsServiceFactory.createApi()
     private val _projects: MutableLiveData<List<Project>> = MutableLiveData()
@@ -43,6 +45,12 @@ class ProjectsRepository() {
         }
     }
 
+    /**
+     * Gets the projects and triggers the projects live data on successful response
+     * Triggers the logoutRequest live data if the error has status code 401
+     * Triggers the error live data if an error occurs
+     * @throws ProjectsRetrievalError if an error occurs during the request
+     */
     suspend fun getProjectsFromServer() {
         try {
             val result = withTimeout(Constants.apiTimeout) {
@@ -51,7 +59,7 @@ class ProjectsRepository() {
             _projects.value = result
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
-            _error.value = "Error while closing tasks"
+            _error.value = "Error while fetching projects"
             throw ProjectsRetrievalError("Error while fetching projects from web server: \n${e.message}")
         }
     }

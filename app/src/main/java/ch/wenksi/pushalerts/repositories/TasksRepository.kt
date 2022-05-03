@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
+import ch.wenksi.pushalerts.errors.TaskUpdateError
 import ch.wenksi.pushalerts.errors.TasksRetrievalError
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
@@ -19,6 +21,9 @@ import java.util.*
 
 private const val jsonFileName = "tasks.json"
 
+/**
+ * This class manages all operations related to the tasks using the TasksService
+ */
 class TasksRepository() {
     private val tasksService: TasksService = TasksServiceFactory.createApi()
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData()
@@ -47,6 +52,13 @@ class TasksRepository() {
         }
     }
 
+    /**
+     * Gets the tasks of the project with the given uuid and triggers the tasks live data on successful response
+     * Triggers the logoutRequest live data if the error has status code 401
+     * Triggers the error live data if an error occurs
+     * @param projectUuid is the uuid of a project
+     * @throws ProjectsRetrievalError if an error occurs during the request
+     */
     suspend fun getTasksFromServer(projectUuid: UUID) {
         try {
             val result = withTimeout(Constants.apiTimeout) {
@@ -60,6 +72,14 @@ class TasksRepository() {
         }
     }
 
+    /**
+     * Assigns the task to the user and triggers the taskUpdate live data on successful response
+     * Triggers the logoutRequest live data if the error has status code 401
+     * Triggers the error live data if an error occurs
+     * @param task is the task which should be updated
+     * @param userUUID is the uuid of the user which is assigned to the task
+     * @throws TaskUpdateError if an error occurs during the request
+     */
     suspend fun assignTask(task: Task, userUUID: UUID) {
         try {
             withTimeout(Constants.apiTimeout) {
@@ -69,10 +89,18 @@ class TasksRepository() {
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
             _error.value = "Error while assigning tasks"
-            throw TasksRetrievalError("Error while assigning task with uuid ${task.uuid}: \n${e.message}")
+            throw TaskUpdateError("Error while assigning task with uuid ${task.uuid}: \n${e.message}")
         }
     }
 
+    /**
+     * Closed the task and triggers the taskUpdate live data on successful response
+     * Triggers the logoutRequest live data if the error has status code 401
+     * Triggers the error live data if an error occurs
+     * @param taskUUID is the uuid of the task which should be updated
+     * @param state must either be finished or rejected
+     * @throws TaskUpdateError if an error occurs during the request
+     */
     suspend fun closeTask(taskUUID: UUID, state: TaskState) {
         try {
             withTimeout(Constants.apiTimeout) {
@@ -82,7 +110,7 @@ class TasksRepository() {
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
             _error.value = "Error while closing tasks"
-            throw TasksRetrievalError("Error while closing task with uuid ${taskUUID}: \n${e.message}")
+            throw TaskUpdateError("Error while closing task with uuid ${taskUUID}: \n${e.message}")
         }
     }
 }

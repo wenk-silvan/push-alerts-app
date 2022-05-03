@@ -12,6 +12,10 @@ import ch.wenksi.pushalerts.databinding.ItemTaskOpenBinding
 import ch.wenksi.pushalerts.models.Task
 import ch.wenksi.pushalerts.models.TaskState
 
+/**
+ * This class is used for the RecyclerView to display the list of open tasks.
+ * It binds the task data to the a list entry.
+ */
 class OpenTasksAdapter(
     private val tasks: List<Task>,
     private val email: String,

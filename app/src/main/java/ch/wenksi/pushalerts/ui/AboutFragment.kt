@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ch.wenksi.pushalerts.databinding.FragmentAboutBinding
 
+/**
+ * The about screen to display licences and contact information
+ */
 class AboutFragment : Fragment() {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!

@@ -11,6 +11,10 @@ import com.google.firebase.messaging.ktx.messaging
 
 const val TAG: String = "AppFirebaseMessagingService"
 
+/**
+ * This class acts as a service to communicate with Firebase Could Messaging.
+ * Make sure that the google-services.json file exists and add this service to the AndroidManifest.
+ */
 class AppFirebaseMessagingService : FirebaseMessagingService() {
     companion object {
         /**
@@ -30,10 +34,17 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
+    /**
+     * Logs a newly registered Firebase Cloud Messaging service instance
+     */
     override fun onNewToken(token: String) {
         Log.d(TAG, "The token refreshed: $token")
     }
 
+    /**
+     * Called when a the app receives a new message from Firebase Cloud Messaging.
+     * After some validation the Events.newNotification live data gets triggered.
+     */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         Log.d(TAG, "From: ${remoteMessage.from}")
 
