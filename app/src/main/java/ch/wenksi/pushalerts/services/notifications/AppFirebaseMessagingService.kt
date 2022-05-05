@@ -9,8 +9,6 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.firebase.messaging.ktx.messaging
 
-const val TAG: String = "AppFirebaseMessagingService"
-
 /**
  * This class acts as a service to communicate with Firebase Could Messaging.
  * Make sure that the google-services.json file exists and add this service to the AndroidManifest.
@@ -25,8 +23,8 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
             projects.forEach { project ->
                 Firebase.messaging.subscribeToTopic(project.name)
                     .addOnCompleteListener { task ->
-                        Log.e(
-                            TAG,
+                        Log.i(
+                            AppFirebaseMessagingService::class.qualifiedName,
                             "${if (task.isSuccessful) "Subscribed" else "Couldn't subscribe"} to ${project.name}"
                         )
                     }
@@ -38,7 +36,9 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
      * Logs a newly registered Firebase Cloud Messaging service instance
      */
     override fun onNewToken(token: String) {
-        Log.d(TAG, "The token refreshed: $token")
+        Log.d(
+            AppFirebaseMessagingService::class.qualifiedName, "The token refreshed: $token"
+        )
     }
 
     /**
@@ -46,20 +46,31 @@ class AppFirebaseMessagingService : FirebaseMessagingService() {
      * After some validation the Events.newNotification live data gets triggered.
      */
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        Log.d(TAG, "From: ${remoteMessage.from}")
+        Log.d(
+            AppFirebaseMessagingService::class.qualifiedName, "From: ${remoteMessage.from}"
+        )
 
         var title = ""
         var body = ""
         var payload: Map<String, String>? = null
 
         if (remoteMessage.data.isNotEmpty()) {
-            Log.d(TAG, "Message data payload: ${remoteMessage.data}")
+            Log.d(
+                AppFirebaseMessagingService::class.qualifiedName,
+                "Message data payload: ${remoteMessage.data}"
+            )
             payload = remoteMessage.data
         }
 
         remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Title: ${it.title}")
-            Log.d(TAG, "Message Notification Body: ${it.body}")
+            Log.d(
+                AppFirebaseMessagingService::class.qualifiedName,
+                "Message Notification Title: ${it.title}"
+            )
+            Log.d(
+                AppFirebaseMessagingService::class.qualifiedName,
+                "Message Notification Body: ${it.body}"
+            )
             title = if (it.title == null) "" else it.title!!
             body = if (it.body == null) "" else it.body!!
         }

@@ -1,5 +1,6 @@
 package ch.wenksi.pushalerts.services.auth
 
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Protocol
 import okhttp3.Request
@@ -27,19 +28,23 @@ class AuthInterceptor : Interceptor {
             .build()
 
         return try {
-            chain.proceed(addTokenToRequest(request))
+            val authenticatedRequest = addTokenToRequest(request)
+            Log.d(
+                AuthInterceptor::class.qualifiedName,
+                "Added token to request header: $authenticatedRequest"
+            )
+            chain.proceed(authenticatedRequest)
         } catch (error: Throwable) {
+            Log.e(
+                AuthInterceptor::class.qualifiedName,
+                "Failed to add token to request header, error: ${error.message}"
+            )
             invalidCredentialsResponse
         }
     }
 
     private fun addTokenToRequest(request: Request): Request {
-        val apiToken: String? = SessionManager.requireToken().value
-
-        if (apiToken.isNullOrBlank()) {
-            throw InvalidKeyException("No API key provided")
-        }
-
+        val apiToken: String = SessionManager.requireToken().value
         return request.newBuilder()
             .header("Authorization", "Bearer $apiToken")
             .build()

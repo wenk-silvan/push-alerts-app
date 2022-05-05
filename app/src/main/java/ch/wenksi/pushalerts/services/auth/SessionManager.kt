@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
+import android.util.Log
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import ch.wenksi.pushalerts.models.Token
@@ -94,28 +95,45 @@ abstract class SessionManager {
          * Decrypts and returns the session token
          */
         private fun getToken(): Token? {
-            if (tokenCached != null) return tokenCached!!
+            if (tokenCached == null) {
+                val value = decrypt(Constants.PREFS_TOKEN_VALUE)
+                val expiry = decrypt(Constants.PREFS_TOKEN_EXPIRY)
+                val email = decrypt(Constants.PREFS_TOKEN_EMAIL)
+                val uuid = decrypt(Constants.PREFS_TOKEN_UUID)
 
-            val value = decrypt(Constants.PREFS_TOKEN_VALUE)
-            val expiry = decrypt(Constants.PREFS_TOKEN_EXPIRY)
-            val email = decrypt(Constants.PREFS_TOKEN_EMAIL)
-            val uuid = decrypt(Constants.PREFS_TOKEN_UUID)
-
-            if (value.isNullOrEmpty() || expiry.isNullOrEmpty()
-                || email.isNullOrEmpty() || uuid.isNullOrEmpty()
-            ) {
-                return null
+                if (value.isNullOrEmpty() || expiry.isNullOrEmpty()
+                    || email.isNullOrEmpty() || uuid.isNullOrEmpty()
+                ) {
+                    Log.i(
+                        SessionManager::class.qualifiedName,
+                        "Read token from shared preferences - No token available"
+                    )
+                    return null
+                }
+                tokenCached = Token(value, Date(expiry), email, UUID.fromString(uuid))
             }
-            tokenCached = Token(value, Date(expiry), email, UUID.fromString(uuid))
+            Log.i(
+                SessionManager::class.qualifiedName,
+                "Read token from shared preferences: ${tokenCached.toString()}"
+            )
             return tokenCached!!
         }
 
         private fun encrypt(key: String, value: String) {
+            Log.d(
+                SessionManager::class.qualifiedName,
+                "Encrypt and store to shared preferences {key: $key, value: $value"
+            )
             sharedPreferences!!.edit().putString(key, value).apply()
         }
 
         private fun decrypt(key: String): String? {
-            return sharedPreferences!!.getString(key, null)
+            val value = sharedPreferences!!.getString(key, null)
+            Log.d(
+                SessionManager::class.qualifiedName,
+                "Read and decrypt from shared preferences {key: $key, value: $value"
+            )
+            return value
         }
     }
 }

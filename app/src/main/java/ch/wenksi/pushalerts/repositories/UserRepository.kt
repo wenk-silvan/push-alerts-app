@@ -33,8 +33,11 @@ class UserRepository() {
             val result = withTimeout(Constants.apiTimeout) {
                 authService.login(credentials)
             }
-            Log.i("TOKEN Value", result.value)
-            Log.i("TOKEN Expiry", result.expiryUtc.toString())
+            Log.i(
+                UserRepository::class.qualifiedName,
+                "Logged in user: ${credentials.email}, token value: ${result.value}, " +
+                        "token expiry: ${result.expiryUtc}"
+            )
             _token.value = result
         } catch (e: Exception) {
             _error.value = "Login failed"

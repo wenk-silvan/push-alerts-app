@@ -64,6 +64,7 @@ class TasksRepository() {
             val result = withTimeout(Constants.apiTimeout) {
                 tasksService.getTasks(projectUuid.toString())
             }
+            Log.i(TasksRepository::class.qualifiedName, "Fetched tasks: \n${result}")
             _tasks.value = result
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
@@ -85,6 +86,10 @@ class TasksRepository() {
             withTimeout(Constants.apiTimeout) {
                 tasksService.assignTask(task.uuid.toString(), userUUID.toString())
             }
+            Log.i(
+                TasksRepository::class.qualifiedName,
+                "Assigned user: $userUUID to task: \n${task.uuid}"
+            )
             _taskUpdate.value = true
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
@@ -106,6 +111,10 @@ class TasksRepository() {
             withTimeout(Constants.apiTimeout) {
                 tasksService.close(taskUUID.toString(), state.ordinal)
             }
+            Log.i(
+                TasksRepository::class.qualifiedName,
+                "Closed task: $taskUUID to state: \n$state"
+            )
             _taskUpdate.value = true
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true

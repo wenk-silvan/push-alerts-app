@@ -56,6 +56,7 @@ class ProjectsRepository() {
             val result = withTimeout(Constants.apiTimeout) {
                 projectsService.getProjects()
             }
+            Log.i(ProjectsRepository::class.qualifiedName, "Fetched projects: \n${result}")
             _projects.value = result
         } catch (e: Exception) {
             if (e.message != null && e.message!!.contains("401")) _logoutRequest.value = true
