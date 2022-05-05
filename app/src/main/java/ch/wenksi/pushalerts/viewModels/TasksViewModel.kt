@@ -31,7 +31,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
      * @param userEmail is the email of the user that is assigned
      * @param userUUID is the uuid of the user that is assigned
      */
-    fun assignTask(task: Task, userUUID: UUID, userEmail: String) {
+    fun assignTask(task: Task, userUUID: String, userEmail: String) {
         task.assign(userEmail)
         viewModelScope.launch {
             try {

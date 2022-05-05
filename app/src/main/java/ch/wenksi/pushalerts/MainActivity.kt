@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
         binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
-        projectsViewModel.getProjects()
+        projectsViewModel.getProjects(SessionManager.requireToken().uuid)
         observeNotifications()
         observeErrors()
         observeLogoutRequest()

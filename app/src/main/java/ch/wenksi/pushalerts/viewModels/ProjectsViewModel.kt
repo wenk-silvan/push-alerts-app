@@ -29,11 +29,12 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
 
     /**
      * Gets the projects using a ProjectsRepository
+     * @param userUUID is the unique identifier of the user
      */
-    fun getProjects() {
+    fun getProjects(userUUID: String) {
         viewModelScope.launch {
             try {
-                repository.getProjectsFromServer()
+                repository.getProjectsFromServer(userUUID)
             } catch (error: ProjectsRetrievalError) {
                 Log.e("Error while fetching projects", error.message.toString())
             }
@@ -45,7 +46,6 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
      * @param menuId is the id of the menu entry in the navigation drawer
      */
     fun getProject(menuId: Int): Project? {
-        Log.d(ProjectsViewModel::class.qualifiedName, "")
         return projects.value?.first() { p -> p.menuId == menuId }
     }
 }

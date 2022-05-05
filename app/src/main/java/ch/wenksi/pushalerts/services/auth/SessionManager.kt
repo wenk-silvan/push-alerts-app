@@ -69,7 +69,7 @@ abstract class SessionManager {
             ) {
                 throw Error("No token found")
             }
-            tokenCached = Token(value, Date(expiry), email, UUID.fromString(uuid))
+            tokenCached = Token(value, Date(expiry), email, uuid)
             return tokenCached!!
         }
 
@@ -110,7 +110,7 @@ abstract class SessionManager {
                     )
                     return null
                 }
-                tokenCached = Token(value, Date(expiry), email, UUID.fromString(uuid))
+                tokenCached = Token(value, Date(expiry), email, uuid)
             }
             Log.i(
                 SessionManager::class.qualifiedName,

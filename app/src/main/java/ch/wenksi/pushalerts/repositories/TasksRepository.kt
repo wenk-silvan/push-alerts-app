@@ -81,10 +81,10 @@ class TasksRepository() {
      * @param userUUID is the uuid of the user which is assigned to the task
      * @throws TaskUpdateError if an error occurs during the request
      */
-    suspend fun assignTask(task: Task, userUUID: UUID) {
+    suspend fun assignTask(task: Task, userUUID: String) {
         try {
             withTimeout(Constants.apiTimeout) {
-                tasksService.assignTask(task.uuid.toString(), userUUID.toString())
+                tasksService.assignTask(task.uuid.toString(), userUUID)
             }
             Log.i(
                 TasksRepository::class.qualifiedName,

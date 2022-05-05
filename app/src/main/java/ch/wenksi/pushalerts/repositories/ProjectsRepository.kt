@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
 import java.io.IOException
+import java.util.*
 
 private const val jsonFileName = "projects.json"
 
@@ -49,12 +50,13 @@ class ProjectsRepository() {
      * Gets the projects and triggers the projects live data on successful response
      * Triggers the logoutRequest live data if the error has status code 401
      * Triggers the error live data if an error occurs
+     * @param userUUID is the unique identifier of the user
      * @throws ProjectsRetrievalError if an error occurs during the request
      */
-    suspend fun getProjectsFromServer() {
+    suspend fun getProjectsFromServer(userUUID: String) {
         try {
             val result = withTimeout(Constants.apiTimeout) {
-                projectsService.getProjects()
+                projectsService.getProjects(userUUID)
             }
             Log.i(ProjectsRepository::class.qualifiedName, "Fetched projects: \n${result}")
             _projects.value = result
