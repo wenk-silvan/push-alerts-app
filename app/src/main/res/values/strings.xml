@@ -29,4 +29,7 @@
     <string name="tilPasswordHint">Password</string>
     <string name="tilEmailHint">Email Address</string>
     <string name="btnLogin">login</string>
+    <string name="ivStateIcon">Icon to indicate if finished or rejected</string>
+    <string name="ivTaskSource">Icon for task source</string>
+    <string name="ivDescriptionIcon">Icon for task description</string>
 </resources>

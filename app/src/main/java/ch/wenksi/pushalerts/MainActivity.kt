@@ -135,9 +135,11 @@ class MainActivity : AppCompatActivity() {
     private fun observeErrors() {
         tasksViewModel.error.observe(this) {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            logout()
         }
         projectsViewModel.error.observe(this) {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            logout()
         }
     }
 

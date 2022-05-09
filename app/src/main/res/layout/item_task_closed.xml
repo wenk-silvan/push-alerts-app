@@ -31,7 +31,8 @@
             tools:src="@drawable/ic_outline_check_circle_24"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/spacing_body"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/ivStateIcon" />
 
         <ImageView
             android:id="@+id/ivTaskSourceIcon"
@@ -40,7 +41,8 @@
             android:src="@drawable/ic_outline_notifications_24"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/spacing_body"
-            app:layout_constraintTop_toBottomOf="@id/tvTaskName" />
+            app:layout_constraintTop_toBottomOf="@id/tvTaskName"
+            android:contentDescription="@string/ivTaskSource" />
 
         <TextView
             android:id="@+id/tvTaskSource"
@@ -60,7 +62,8 @@
             android:src="@drawable/ic_outline_description_24"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/spacing_body"
-            app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon" />
+            app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon"
+            android:contentDescription="@string/ivDescriptionIcon" />
 
 
         <TextView
