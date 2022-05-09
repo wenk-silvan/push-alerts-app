@@ -1,6 +1,5 @@
 package ch.wenksi.pushalerts.repositories
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,14 +11,8 @@ import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.services.tasks.TasksServiceFactory
 import ch.wenksi.pushalerts.services.tasks.TasksService
 import ch.wenksi.pushalerts.util.Constants
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
-import java.io.IOException
 import java.util.*
-
-
-private const val jsonFileName = "tasks.json"
 
 /**
  * This class manages all operations related to the tasks using the TasksService

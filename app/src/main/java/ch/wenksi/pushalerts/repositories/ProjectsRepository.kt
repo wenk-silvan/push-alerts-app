@@ -1,6 +1,5 @@
 package ch.wenksi.pushalerts.repositories
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,13 +8,7 @@ import ch.wenksi.pushalerts.errors.ProjectsRetrievalError
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.services.projects.ProjectsServiceFactory
 import ch.wenksi.pushalerts.services.projects.ProjectsService
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
-import java.io.IOException
-import java.util.*
-
-private const val jsonFileName = "projects.json"
 
 /**
  * This class manages all operations related to the projects using the ProjectsService
