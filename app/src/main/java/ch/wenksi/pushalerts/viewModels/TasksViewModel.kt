@@ -80,7 +80,7 @@ class TasksViewModel(application: Application) : AndroidViewModel(application) {
     fun getTasks(projectUUID: UUID) {
         viewModelScope.launch {
             try {
-                repository.getTasksFromServer(projectUUID)
+                repository.getTasks(projectUUID)
             } catch (error: TasksRetrievalError) {
                 Log.e("Error while fetching tasks", error.message.toString())
             }

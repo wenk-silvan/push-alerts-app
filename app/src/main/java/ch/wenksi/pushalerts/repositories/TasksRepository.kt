@@ -36,22 +36,6 @@ class TasksRepository() {
     val error: LiveData<String> get() = _error
     val logoutRequest: LiveData<Boolean> get() = _logoutRequest
 
-    suspend fun getTasksFromJson(context: Context) {
-        try {
-            val jsonString = context.assets.open(jsonFileName)
-                .bufferedReader().use { it.readText() }
-            Log.i("data", jsonString)
-            val gson = GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
-            val listTaskType = object : TypeToken<List<Task>>() {}.type
-            val tempTasks: List<Task> = gson.fromJson(jsonString, listTaskType)
-            _tasks.value = tempTasks
-        } catch (e: IOException) {
-            throw TasksRetrievalError("Can't open json file: \n${e.message}")
-        } catch (e: Exception) {
-            throw TasksRetrievalError("Error while fetching tasks from json file: \n${e.message}")
-        }
-    }
-
     /**
      * Gets the tasks of the project with the given uuid and triggers the tasks live data on successful response
      * Triggers the logoutRequest live data if the error has status code 401
@@ -59,7 +43,7 @@ class TasksRepository() {
      * @param projectUuid is the uuid of a project
      * @throws ProjectsRetrievalError if an error occurs during the request
      */
-    suspend fun getTasksFromServer(projectUuid: UUID) {
+    suspend fun getTasks(projectUuid: UUID) {
         try {
             val result = withTimeout(Constants.apiTimeout) {
                 tasksService.getTasks(projectUuid.toString())

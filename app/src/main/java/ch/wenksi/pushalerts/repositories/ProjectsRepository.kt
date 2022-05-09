@@ -30,22 +30,6 @@ class ProjectsRepository() {
     val error: LiveData<String> get() = _error
     val logoutRequest: LiveData<Boolean> get() = _logoutRequest
 
-    suspend fun getProjectsFromJson(context: Context) {
-        try {
-            val jsonString = context.assets.open(jsonFileName)
-                .bufferedReader().use { it.readText() }
-            Log.i("data", jsonString)
-            val gson = GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
-            val listProjectType = object : TypeToken<List<Project>>() {}.type
-            var tempProjects: List<Project> = gson.fromJson(jsonString, listProjectType)
-            _projects.value = tempProjects
-        } catch (e: IOException) {
-            throw ProjectsRetrievalError("Can't open json file: \n${e.message}")
-        } catch (e: Exception) {
-            throw ProjectsRetrievalError("Error while fetching projects from json file: \n${e.message}")
-        }
-    }
-
     /**
      * Gets the projects and triggers the projects live data on successful response
      * Triggers the logoutRequest live data if the error has status code 401
@@ -53,7 +37,7 @@ class ProjectsRepository() {
      * @param userUUID is the unique identifier of the user
      * @throws ProjectsRetrievalError if an error occurs during the request
      */
-    suspend fun getProjectsFromServer(userUUID: String) {
+    suspend fun getProjects(userUUID: String) {
         try {
             val result = withTimeout(Constants.apiTimeout) {
                 projectsService.getProjects(userUUID)

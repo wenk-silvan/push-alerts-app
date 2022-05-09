@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="Mine"
+            android:text="@string/chipFilterMine"
             app:chipCornerRadius="8dp" />
 
         <com.google.android.material.chip.Chip
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="Done"
+            android:text="@string/chipFilterDone"
             app:chipCornerRadius="8dp" />
 
         <com.google.android.material.chip.Chip
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:checkable="true"
             android:checked="false"
-            android:text="Rejected"
+            android:text="@string/chipFilterRejected"
             app:chipCornerRadius="8dp" />
     </com.google.android.material.chip.ChipGroup>
 
