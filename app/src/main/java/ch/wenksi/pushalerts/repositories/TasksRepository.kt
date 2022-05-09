@@ -17,7 +17,7 @@ import java.util.*
 /**
  * This class manages all operations related to the tasks using the TasksService
  */
-class TasksRepository() {
+class TasksRepository {
     private val tasksService: TasksService = TasksServiceFactory.createApi()
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData()
     private val _taskUpdate: MutableLiveData<Boolean> = MutableLiveData()

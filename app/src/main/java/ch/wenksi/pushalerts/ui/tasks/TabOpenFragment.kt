@@ -31,7 +31,6 @@ class TabOpenFragment : Fragment() {
     private val binding get() = _binding!!
     private val tasksViewModel: TasksViewModel by activityViewModels()
     private val projectsViewModel: ProjectsViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by activityViewModels()
     private val tasks: ArrayList<Task> = arrayListOf()
     private lateinit var recyclerViewAdapter: OpenTasksAdapter
 

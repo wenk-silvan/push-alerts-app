@@ -80,7 +80,7 @@ abstract class SessionManager {
             encrypt(Constants.PREFS_TOKEN_VALUE, token.value)
             encrypt(Constants.PREFS_TOKEN_EXPIRY, token.expiryUtc.toString())
             encrypt(Constants.PREFS_TOKEN_EMAIL, token.email)
-            encrypt(Constants.PREFS_TOKEN_UUID, token.uuid.toString())
+            encrypt(Constants.PREFS_TOKEN_UUID, token.uuid)
         }
 
         /**

@@ -13,7 +13,7 @@ import kotlinx.coroutines.withTimeout
 /**
  * This class manages all operations related to the projects using the ProjectsService
  */
-class ProjectsRepository() {
+class ProjectsRepository {
     private val projectsService: ProjectsService = ProjectsServiceFactory.createApi()
     private val _projects: MutableLiveData<List<Project>> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()

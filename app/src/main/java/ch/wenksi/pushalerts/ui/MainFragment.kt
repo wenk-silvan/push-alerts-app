@@ -13,7 +13,6 @@ import ch.wenksi.pushalerts.ui.tasks.TabLayoutFragmentAdapter
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.tabs.TabLayout
-import java.util.*
 
 /**
  * Shows the home screen. This class initializes the tab view.
@@ -29,7 +28,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }

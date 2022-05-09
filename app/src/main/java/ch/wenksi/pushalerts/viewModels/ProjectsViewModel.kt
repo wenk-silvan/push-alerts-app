@@ -42,6 +42,6 @@ class ProjectsViewModel(application: Application) : AndroidViewModel(application
      * @param menuId is the id of the menu entry in the navigation drawer
      */
     fun getProject(menuId: Int): Project? {
-        return projects.value?.first() { p -> p.menuId == menuId }
+        return projects.value?.first { p -> p.menuId == menuId }
     }
 }

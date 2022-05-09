@@ -14,7 +14,7 @@ import kotlinx.coroutines.withTimeout
 /**
  * This class manages all operations related to the user authentication using the UsersService
  */
-class UserRepository() {
+class UserRepository {
     private val authService: AuthService = AuthServiceFactory.createApi()
     private val _token: MutableLiveData<Token> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()

@@ -14,7 +14,6 @@ import ch.wenksi.pushalerts.models.TaskState
 import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
-import ch.wenksi.pushalerts.viewModels.UserViewModel
 import com.google.android.material.snackbar.Snackbar
 
 const val BUNDLE_TASK_ID = "bundle_task_uuid"
