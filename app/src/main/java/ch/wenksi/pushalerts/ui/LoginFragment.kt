@@ -35,10 +35,11 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if (hasActiveSession()) {
             navigateToHomeScreen()
+        } else {
+            SessionManager.clear()
+            observeLogin()
+            binding.btnLogin.setOnClickListener { onLoginTapped() }
         }
-        SessionManager.clear()
-        observeLogin()
-        binding.btnLogin.setOnClickListener { onLoginTapped() }
     }
 
     override fun onDestroyView() {
