@@ -36,6 +36,7 @@ class LoginFragment : Fragment() {
         if (hasActiveSession()) {
             navigateToHomeScreen()
         }
+        SessionManager.clear()
         observeLogin()
         binding.btnLogin.setOnClickListener { onLoginTapped() }
     }
