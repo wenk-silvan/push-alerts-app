@@ -1,6 +1,7 @@
 package ch.wenksi.pushalerts.ui.tasks
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.LayoutInflater
@@ -81,10 +82,10 @@ class OpenTasksAdapter(
             binding.tvAssigned.visibility = View.GONE
             binding.btnReject.visibility = View.GONE
             binding.btnClose.visibility = View.GONE
-            binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#f3f6f4"))
+            binding.mcvTaskOpen.setCardBackgroundColor(getCardBackgroundColor(taskOpen = true))
         } else if (task.status == TaskState.Assigned) {
             binding.btnAssign.visibility = View.GONE
-            binding.mcvTaskOpen.setCardBackgroundColor(Color.parseColor("#ffffff"))
+            binding.mcvTaskOpen.setCardBackgroundColor(getCardBackgroundColor(taskOpen = false))
             if (assignedToMe(task)) {
                 binding.btnReject.visibility = View.VISIBLE
                 binding.btnClose.visibility = View.VISIBLE
@@ -101,5 +102,17 @@ class OpenTasksAdapter(
 
     private fun assignedToMe(task: Task): Boolean {
         return task.userEmail == email
+    }
+
+    private fun getCardBackgroundColor(taskOpen: Boolean): Int {
+        val darkMode =
+            context.resources.configuration.uiMode.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+        val colorString = if (taskOpen) {
+            if (darkMode) "#222222" else "#f3f6f4"
+
+        } else {
+            if (darkMode) "#121212" else "#ffffff"
+        }
+        return Color.parseColor(colorString)
     }
 }

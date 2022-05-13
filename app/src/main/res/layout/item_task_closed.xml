@@ -28,29 +28,29 @@
             android:id="@+id/ivStateIcon"
             android:layout_width="@dimen/size_icon_small"
             android:layout_height="@dimen/size_icon_small"
-            tools:src="@drawable/ic_outline_check_circle_24"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/spacing_body"
+            android:contentDescription="@string/ivStateIcon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/ivStateIcon" />
+            tools:src="@drawable/ic_outline_check_circle_24" />
 
         <ImageView
             android:id="@+id/ivTaskSourceIcon"
             android:layout_width="@dimen/size_icon_small"
             android:layout_height="@dimen/size_icon_small"
+            android:layout_marginTop="@dimen/spacing_body"
+            android:contentDescription="@string/ivTaskSource"
             android:src="@drawable/ic_outline_notifications_24"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/spacing_body"
-            app:layout_constraintTop_toBottomOf="@id/tvTaskName"
-            android:contentDescription="@string/ivTaskSource" />
+            app:layout_constraintTop_toBottomOf="@id/tvTaskName" />
 
         <TextView
             android:id="@+id/tvTaskSource"
             style="@style/Widget.PushAlerts.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_body"
             android:layout_marginStart="@dimen/spacing_body"
+            android:layout_marginTop="@dimen/spacing_body"
             app:layout_constraintStart_toEndOf="@id/ivTaskSourceIcon"
             app:layout_constraintTop_toBottomOf="@id/tvTaskName"
             tools:text="This is the source" />
@@ -59,11 +59,11 @@
             android:id="@+id/ivDescriptionIcon"
             android:layout_width="@dimen/size_icon_small"
             android:layout_height="@dimen/size_icon_small"
+            android:layout_marginTop="@dimen/spacing_body"
+            android:contentDescription="@string/ivDescriptionIcon"
             android:src="@drawable/ic_outline_description_24"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="@dimen/spacing_body"
-            app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon"
-            android:contentDescription="@string/ivDescriptionIcon" />
+            app:layout_constraintTop_toBottomOf="@id/ivTaskSourceIcon" />
 
 
         <TextView
@@ -71,8 +71,8 @@
             style="@style/Widget.PushAlerts.Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_body"
             android:layout_marginStart="@dimen/spacing_body"
+            android:layout_marginTop="@dimen/spacing_body"
             app:layout_constraintStart_toEndOf="@id/ivDescriptionIcon"
             app:layout_constraintTop_toBottomOf="@id/tvTaskSource"
             tools:text="This is a description" />
