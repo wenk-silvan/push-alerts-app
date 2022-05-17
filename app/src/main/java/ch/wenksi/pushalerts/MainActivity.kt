@@ -10,7 +10,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import ch.wenksi.pushalerts.models.Project
 import ch.wenksi.pushalerts.services.auth.SessionManager
 import ch.wenksi.pushalerts.services.notifications.AppFirebaseMessagingService
@@ -18,6 +17,7 @@ import ch.wenksi.pushalerts.util.Events
 import ch.wenksi.pushalerts.viewModels.ProjectsViewModel
 import ch.wenksi.pushalerts.viewModels.TasksViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import ch.wenksi.pushalerts.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseApp
 
@@ -44,20 +44,19 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(applicationContext)
         setContentView(binding.root)
         setSupportActionBar(binding.topAppBar)
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
-        binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
-        binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
+
+        setupNavigation()
         projectsViewModel.getProjects(SessionManager.requireToken().uuid)
-        observeNotifications()
-        observeErrors()
-        observeLogoutRequest()
-        observeProjects()
         Snackbar.make(
             binding.root,
             "Logged in as ${SessionManager.requireToken().email}",
             Snackbar.LENGTH_SHORT
         ).show()
+
+        observeNotifications()
+        observeErrors()
+        observeLogoutRequest()
+        observeProjects()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -83,10 +82,14 @@ class MainActivity : AppCompatActivity() {
             i.isChecked = false
         }
         when (menuItem.itemId) {
-            R.id.AboutFragment -> findNavController(R.id.nav_host_fragment_content_main)
-                .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
+            R.id.AboutFragment -> {
+                findNavController(R.id.nav_host_fragment_content_main)
+                    .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
+            }
             MENU_ID_LOGOUT -> logout()
             else -> {
+                findNavController(R.id.nav_host_fragment_content_main)
+                    .navigate(R.id.action_Global_to_MainFragment)
                 val project = projectsViewModel.getProject(menuItem.itemId)
                 if (project != null) {
                     projectsViewModel.selectedProjectUUID = project.uuid
@@ -155,5 +158,16 @@ class MainActivity : AppCompatActivity() {
     private fun logout() {
         SessionManager.clear()
         finish()
+    }
+
+    private fun setupNavigation() {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.MainFragment, R.id.AboutFragment),
+            binding.drawerLayout
+        )
+        binding.navigationView.setupWithNavController(navController)
+        binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
+        binding.navigationView.setNavigationItemSelectedListener { i -> onClickMenuItem(i) }
     }
 }
