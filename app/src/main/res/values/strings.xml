@@ -22,9 +22,9 @@
     <string name="tvTaskStatus_Assigned">Assigned to: </string>
     <string name="tvTaskStatus_Rejected">Rejected by: </string>
     <string name="tvTaskStatus_Done">Done by: </string>
+
+    <!-- FRAGMENT MAIN -->
     <string name="errorTaskDetailsMissingArguments">Error while opening task details.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ivCompanyLogo">The company logo</string>
     <string name="tilPasswordHint">Password</string>
     <string name="tilEmailHint">Email Address</string>
@@ -36,5 +36,11 @@
     <string name="chipFilterRejected">Rejected</string>
     <string name="chipFilterMine">Mine</string>
     <string name="chipFilterUnassigned">Unassigned</string>
+
+    <!-- FRAGMENT ABOUT -->
     <string name="title">Push Alerts</string>
+    <string name="tvAuthor">Silvan Wenk</string>
+    <string name="tvAuthorLabel">Author</string>
+    <string name="tvDescription">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</string>
+    <string name="tvLicenseLabel">Licenses</string>
 </resources>
