@@ -84,18 +84,10 @@ class MainActivity : AppCompatActivity() {
         when (menuItem.itemId) {
             R.id.AboutFragment -> {
                 findNavController(R.id.nav_host_fragment_content_main)
-                    .navigate(R.id.action_MainFragment_to_AboutFragment) // TODO: Don't navigate in.
+                    .navigate(R.id.action_MainFragment_to_AboutFragment)
             }
             MENU_ID_LOGOUT -> logout()
-            else -> {
-                findNavController(R.id.nav_host_fragment_content_main)
-                    .navigate(R.id.action_Global_to_MainFragment)
-                val project = projectsViewModel.getProject(menuItem.itemId)
-                if (project != null) {
-                    projectsViewModel.selectedProjectUUID = project.uuid
-                    tasksViewModel.getTasks(project.uuid)
-                }
-            }
+            else -> onClickProjectMenuItem(menuItem)
         }
         menuItem.isChecked = true
         binding.drawerLayout.close()
@@ -112,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         menu.add(R.id.Actions, MENU_ID_LOGOUT, Menu.NONE, "Logout")
             .setIcon(R.drawable.ic_baseline_logout_24)
         menu.getItem(0).isChecked = true
+        if (projects.isNotEmpty()) setAppBarTitle(projects.first().name)
         binding.navigationView.invalidate()
     }
 
@@ -155,9 +148,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun onClickProjectMenuItem(menuItem: MenuItem) {
+        findNavController(R.id.nav_host_fragment_content_main)
+            .navigate(R.id.action_Global_to_MainFragment)
+        val project = projectsViewModel.getProject(menuItem.itemId)
+        if (project != null) {
+            setAppBarTitle(project.name)
+            projectsViewModel.selectedProjectUUID = project.uuid
+            tasksViewModel.getTasks(project.uuid)
+        }
+    }
+
     private fun logout() {
         SessionManager.clear()
         finish()
+    }
+
+    private fun setAppBarTitle(title: String) {
+        binding.topAppBar.title = "Project $title"
     }
 
     private fun setupNavigation() {
