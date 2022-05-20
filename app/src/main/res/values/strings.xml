@@ -40,7 +40,7 @@
     <!-- FRAGMENT ABOUT -->
     <string name="title">Push Alerts</string>
     <string name="tvAuthor">Silvan Wenk</string>
+    <string name="tvEmail">silvan.wenk@stud.hslu.ch</string>
     <string name="tvAuthorLabel">Author</string>
-    <string name="tvDescription">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</string>
     <string name="tvLicenseLabel">Licenses</string>
 </resources>
