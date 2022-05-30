@@ -12,3 +12,6 @@ Use Android Studio to run the app on your emulator or real Android device.
 
 ## Authors
 - Silvan Wenk [silvan.wenk@gmail.com]
+
+## Version
+- v1.0.0
