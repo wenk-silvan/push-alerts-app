@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:icon="@drawable/schindlerlogo"
+        android:icon="@drawable/ic_baseline_image_24"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/schindlerlogo"
+        android:roundIcon="@drawable/ic_baseline_image_24"
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.PushAlerts">

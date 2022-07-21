@@ -5,4 +5,5 @@
 /build/test-results
 /build/tmp
 /build/outputs
+/build/outputs/
 google-services.json
